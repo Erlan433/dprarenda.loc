@@ -1,0 +1,61 @@
+body{
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom,rgb(0, 0, 0) 0%, rgb(61, 61, 61) 80%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.glass{
+    width: 70%;
+    height: 70%;
+    background-color: rgb(255, 255, 255, 0.1);
+    backdrop-filter: 12px;
+    border: 2px solid rgb(131, 131, 131);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5%;
+}
+
+h1{
+    font-size: 40px;
+    color: white;
+    margin: 0;
+}
+
+.operatButns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 150px;
+}
+
+.newAdminButn, .changeAdmnButn, .deletAdmnButn{
+    background-color: transparent;
+    border-radius: 12px;
+    border: 2px solid rgb(255, 255, 255);
+    color: white;
+    padding: 40px 80px;
+}
+
+.newAdminButn:hover, .changeAdmnButn:hover, .deletAdmnButn:hover{
+    box-shadow: 0 0 10px white;
+}
+
+.exitAdminButn{
+    background-color: red;
+    border-radius: 12px;
+    border: 2px solid rgb(61, 61, 61);
+    color: rgb(255, 255, 255);
+    padding: 20px 40px;
+}
+
+.exitAdminButn:hover{
+    background-color: rgb(255, 0, 0, 0.8);
+    box-shadow: 0 0 10px rgba(61, 61, 61);
+}
