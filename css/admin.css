@@ -38,9 +38,22 @@ h1{
 .newAdminButn, .changeAdmnButn, .deletAdmnButn{
     background-color: transparent;
     border-radius: 12px;
-    border: 2px solid rgb(255, 255, 255);
     color: white;
-    padding: 40px 80px;
+    font-size: 25px;
+    width: 300px;
+    height: 100px;
+}
+
+.newAdminButn{
+    border: 2px solid rgba(81, 255, 0);
+}
+
+.changeAdmnButn{
+    border: 2px solid rgba(0, 30, 255);
+}
+
+.deletAdmnButn{
+    border: 2px solid rgba(255, 0, 0);
 }
 
 .newAdminButn:hover, .changeAdmnButn:hover, .deletAdmnButn:hover{
@@ -50,9 +63,10 @@ h1{
 .exitAdminButn{
     background-color: red;
     border-radius: 12px;
-    border: 2px solid rgb(61, 61, 61);
+    border: none;
     color: rgb(255, 255, 255);
-    padding: 20px 40px;
+    font-size: 20px;
+    padding: 30px 70px;
 }
 
 .exitAdminButn:hover{

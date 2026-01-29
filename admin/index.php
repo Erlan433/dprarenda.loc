@@ -1,10 +1,17 @@
+<?php
+    include $_SERVER["DOCUMENT_ROOT"]."/db.php";
+    session_start();
+    if(!isset($_SESSION["email"])){
+        header("Location: /");
+    }
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin_DPR</title>
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
     <div class="glass">
