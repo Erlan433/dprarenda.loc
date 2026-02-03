@@ -1,11 +1,22 @@
+<?php
+            require_once './db.php';
+
+            $sql = "SELECT * FROM rooms";
+            $result = query($sql);
+            $rooms = array();
+            if ($result && $result->num_rows > 0) {
+                $rooms = $result->fetch_all();
+            }
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DPR</title>
     <link rel="icon" href="./images/помещение №1.png" type="image/x-icon">
-    <link rel="stylesheet" href="./css/home.css">
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script src="https://kit.fontawesome.com/d38ec0eb27.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +31,7 @@
                 <i class="fa-solid fa-caret-down"></i>
             </div>
             <div class="admin">
-                <a href="pswrdAdmn.php">Админ</a>
+                <a href="/admin/">Админ</a>
             </div>
         </div> 
     </header>
@@ -28,36 +39,19 @@
         <h1>Пустые помещения</h1>
 
         <div class="pustPomesheniya">
-            <?php
-            require_once './db.php';
-
-            $sql = "SELECT * FROM rooms";
-            $result = query($sql);
-
-            if ($result && $result->num_rows > 0) {
-
-                while ($row = $result->fetch_assoc()) {
-                    ?>
-                    <div class="pustPomesh">
-                        <?php echo $row['image']?>
-                        <div class="ttlAndPrc">
-                            <h2 class="title"><?php echo $row['title']?></h2>
-                            <p class="price"><?php echo $row['price']?></p>
-                        </div>
-                        <p class="dscrptn"><?php echo $row['description']?></p>
-                    </div>
-                    <?php
-                }
-
-                echo "</table>";
-            } else {
-                ?>
-                <p class="p1">Нет помещений</p> 
-                <?php
-            }
-
-            $conn->close();
-            ?>
+            <?php for($i = 0; $i < count($rooms); $i++): ?>
+            <div class="pustPomesh">
+                <?php echo $rooms[$i][4]?>
+                <div class="ttlAndPrc">
+                    <h2 class="title"><?php echo $rooms[$i][1]?></h2>
+                    <p class="price"><?php echo $rooms[$i][2]?></p>
+                </div>
+                <p class="dscrptn"><?php echo $rooms[$i][3]?></p>
+            </div>
+            <?php endfor ?>
+            <?php if(count($rooms) == 0): ?>
+                <h2>Пустых помещения нет!</h2>
+            <?php endif ?>
         </div>
     </main>
     <footer>

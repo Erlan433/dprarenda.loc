@@ -1,6 +1,9 @@
 <?php
     include $_SERVER["DOCUMENT_ROOT"]."/db.php";
     session_start();
+    if(isset($_SESSION['email'])){
+        header("Location: /");
+    }
     $message = "";
     if(isset($_POST["login"])){
         $email = $_POST["email"];

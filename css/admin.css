@@ -29,10 +29,10 @@ h1{
 }
 
 .operatButns{
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 150px;
 }
 
 .newAdminButn, .changeAdmnButn, .deletAdmnButn{
@@ -40,8 +40,8 @@ h1{
     border-radius: 12px;
     color: white;
     font-size: 25px;
-    width: 300px;
-    height: 100px;
+    width: 200px;
+    height: 80px;
 }
 
 .newAdminButn{

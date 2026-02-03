@@ -2,7 +2,7 @@
     include $_SERVER["DOCUMENT_ROOT"]."/db.php";
     session_start();
     if(!isset($_SESSION["email"])){
-        header("Location: /");
+        header("Location: /login/");
     }
 ?>
 <html lang="en">
@@ -21,7 +21,7 @@
             <button class="changeAdmnButn">Редактировать</button>
             <button class="deletAdmnButn">Удалить</button>
         </div>
-        <button class="exitAdminButn">Выйти c Админа</button>
+        <a href="/logout/" class="exitAdminButn">Выйти c Админа</a>
     </div>
 </body>
 </html>
