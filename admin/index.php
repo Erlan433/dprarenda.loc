@@ -17,9 +17,9 @@
     <div class="glass">
         <h1>Админские операции</h1>
         <div class="operatButns">
-            <button class="newAdminButn">Cоздать новое</button>
-            <button class="changeAdmnButn">Редактировать</button>
-            <button class="deletAdmnButn">Удалить</button>
+            <a href="/admin/new/" class="newAdminButn">Cоздать новое</a>
+            <a href="" class="changeAdmnButn">Редактировать</a>
+            <a href="" class="deletAdmnButn">Удалить</a>
         </div>
         <a href="/logout/" class="exitAdminButn">Выйти c Админа</a>
     </div>

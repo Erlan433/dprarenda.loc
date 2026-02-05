@@ -42,6 +42,9 @@ h1{
     font-size: 25px;
     width: 200px;
     height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .newAdminButn{
@@ -58,6 +61,7 @@ h1{
 
 .newAdminButn:hover, .changeAdmnButn:hover, .deletAdmnButn:hover{
     box-shadow: 0 0 10px white;
+    cursor: pointer;
 }
 
 .exitAdminButn{
@@ -72,4 +76,16 @@ h1{
 .exitAdminButn:hover{
     background-color: rgb(255, 0, 0, 0.8);
     box-shadow: 0 0 10px rgba(61, 61, 61);
+    cursor: pointer;
+}
+
+input{
+    padding: 10px 25px;
+    width: 300px;
+    height: 60px;
+    border-radius: 100px;
+    border: none;
+    background-color: rgb(221, 221, 221);
+    display: block;
+    margin-bottom: 25px;
 }

@@ -25,15 +25,7 @@
 <body>
     <header>
         <a href="home.html" class="logo">DPR</a>
-        <div class="dropDown1">
-            <div class="user">
-                <p>Пользователь</p>
-                <i class="fa-solid fa-caret-down"></i>
-            </div>
-            <div class="admin">
-                <a href="/admin/">Админ</a>
-            </div>
-        </div> 
+        <p class="telefon">+7(978)777-77-77</p>
     </header>
     <main>
         <h1>Пустые помещения</h1>
@@ -55,7 +47,7 @@
         </div>
     </main>
     <footer>
-        <p class="telefon">+7(978)777-77-77</p>
+        <p class="copyright">&copy; 2026 Все права защищены</p>
     </footer>
 </body>
 </html>

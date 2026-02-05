@@ -19,36 +19,11 @@ header > .logo{
     margin-left: 30px;
 }
 
-header > .dropDown1{
-    position: relative;
-    display: inline-block;
-}
-
-header > .dropDown1 > .user{
+header > .telefon{
+    color: white;
     font-size: 30px;
-    color: rgb(255, 255, 255);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-right: 30px;
 }
-
-header > .dropDown1 > .admin{
-    display: none;
-    position: absolute;
-    min-width: 160px;
-    z-index: 1;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    color: gray;
-}
-
-header > .dropDown1 > .admin > p{
-    display: block;
-}
-
-.dropDown1:hover .admin {display: block;}
 
 main{
     width: 100%;
@@ -118,12 +93,12 @@ footer{
     height: 12%;
     background: linear-gradient(to top,rgb(0, 0, 0) 0%, rgb(102, 102, 102) 100%);
     display: flex;
-    justify-content: end;
     align-items: center;
+    color: white;
 }
 
-footer > .telefon{
+footer > .copyright{
     color: white;
-    font-size: 30px;
-    margin-right: 30px;
+    font-size: 20px;
+    margin-left: 30px;
 }
