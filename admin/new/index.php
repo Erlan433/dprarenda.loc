@@ -1,5 +1,6 @@
 <?php
-    include $_SERVER["DOCUMENT_ROOT"]."/db.php";
+    $root = $_SERVER["DOCUMENT_ROOT"];
+    include $root."/db.php";
     session_start();
     if(!isset($_SESSION["email"])){
         header("Location: /login/");
@@ -15,7 +16,11 @@
                 $filetype = finfo_file($finfo, $_FILES["foto"]["tmp_name"]);
                 finfo_close($finfo);
                 if ($filetype == "image/jpeg" || $filetype == "image/png" || $filetype == "image/gif"){
-                    
+                    $exp = explode(".", $_FILES["foto"]["name"]);
+                    $fname = "/images/".getRandomString(20).".".end($exp);
+                    move_uploaded_file($_FILES["foto"]["tmp_name"], $root.$fname);
+                    $sql = "INSERT INTO rooms (title, price, description, picture) VALUES ('$title', '$price', '$description', '$fname')";
+                    $conn->query($sql);
                 }
             }
         }

@@ -24,30 +24,30 @@
 </head>
 <body>
     <header>
-        <a href="home.html" class="logo">DPR</a>
-        <p class="telefon">+7(978)777-77-77</p>
+        <div class="container">
+            <a href="home.html" class="logo">DPR</a>
+            <p class="telefon">+7(978)777-77-77</p>
+        </div>
     </header>
     <main>
         <h1>Пустые помещения</h1>
 
-        <div class="pustPomesheniya">
+        <div class="pustPomesheniya container">
             <?php for($i = 0; $i < count($rooms); $i++): ?>
-            <div class="pustPomesh">
-                <?php echo $rooms[$i][4]?>
-                <div class="ttlAndPrc">
+                <div class="pustPomesh" style="background-image: url(<?php echo $rooms[$i][4]?>)">
                     <h2 class="title"><?php echo $rooms[$i][1]?></h2>
-                    <p class="price"><?php echo $rooms[$i][2]?></p>
+                    <p class="price"><?php echo $rooms[$i][2]?> р</p>
                 </div>
-                <p class="dscrptn"><?php echo $rooms[$i][3]?></p>
-            </div>
             <?php endfor ?>
             <?php if(count($rooms) == 0): ?>
-                <h2>Пустых помещения нет!</h2>
+                <h2>Пустых помещений нет!</h2>
             <?php endif ?>
         </div>
     </main>
     <footer>
-        <p class="copyright">&copy; 2026 Все права защищены</p>
+        <div class="container">
+            <p class="copyright">&copy; 2026 Все права защищены</p>
+        </div>
     </footer>
 </body>
 </html>
