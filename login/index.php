@@ -20,7 +20,7 @@
                 $message = "Неверный пароль";
             }
         }else{
-            $message = "Неверный email";
+            $message = "Неверный логин";
         }
     }
     
@@ -33,17 +33,32 @@
     <link rel="icon" href="./images/помещение №1.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/login.css">
+    <script src="https://kit.fontawesome.com/bbeb167ece.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="glass">
+    <div class="form">
         <h1>Проверка пароля</h1>
         <form action="" method="post">
             <input type="hidden" name="login" value="1">
-            <input type="text" placeholder="Введите email" name="email">
-            <input type="password" placeholder="Введите пароль" name="password">
+            <div class="input-container">
+                <label for="email" class="input-wrapper">
+                    <i class="fas fa-envelope icon"></i>
+                    <input type="text" id="email" name="email" placeholder="Введите логин" class="custom-input">
+                </label>
+                <div class="underline"></div>
+            </div>
+
+            <div class="input-container">
+                <label for="password" class="input-wrapper">
+                    <i class="fas fa-lock icon"></i>
+                    <input type="password" id="password" name="password" placeholder="Введите пароль" class="custom-input">
+                </label>
+                <div class="underline"></div>
+            </div>
             <button type="submit">Войти</button>
-            <p><?php echo $message ?></p>
+            <p class="msg"><?php echo $message ?></p>
         </form>
+        <a href="/" class="return">Вернуться назад</a>
     </div>
 </body>
 </html>

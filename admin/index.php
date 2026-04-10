@@ -14,14 +14,12 @@
     <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
-    <div class="glass">
+    <div class="form">
         <h1>Админские операции</h1>
-        <div class="operatButns">
-            <a href="/admin/new/" class="newAdminButn">Cоздать новое</a>
-            <a href="" class="changeAdmnButn">Редактировать</a>
-            <a href="" class="deletAdmnButn">Удалить</a>
-        </div>
-        <a href="/logout/" class="exitAdminButn">Выйти c Админа</a>
+        <a href="/admin/new/" class="newAdminButn">Cоздать новое</a>
+        <a href="" class="changeAdmnButn">Редактировать</a>
+        <a href="" class="deletAdmnButn">Удалить</a>
+        <a href="/logout/" class="exitAdminButn">Выйти</a>
     </div>
 </body>
 </html>

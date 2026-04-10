@@ -4,60 +4,105 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    /*background: linear-gradient(to bottom,rgb(0, 0, 0) 0%, rgb(61, 61, 61) 100%);*/
-    background-image: url(/images/loginFon.jpg);
+    background: linear-gradient(45deg,rgb(0, 0, 0) 0%, rgb(102, 102, 102) 100%);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     background-color: rgb(100, 100, 100);
-    color: white;
 }
 
-.glass{
-    border-radius: 60px;
+.form{
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3% 2%;
-    background-color: rgb(160, 160, 160, 0.2);
-    backdrop-filter: blur(15px);
+    padding: 4% 2%;
+    background-color: white;
 }
 
-.glass h1{
-    margin-bottom: 30px;
+.form h1{
+    margin-bottom: 75px;
+    font-size: 40px;
 }
 
-input{
-    width: 300px;
-    height: 60px;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 0 10px rgba(0, 0, 0);
-    font-size: 20px;
-    display: block;
-    margin-bottom: 25px;
-    padding: 10px 25px;
+.input-container {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    position: relative;
+    color: #555;
+}
+
+.icon {
+    margin-right: 15px;
+    font-size: 30px;
+}
+
+.custom-input {
+    flex-grow: 1;
     border: none;
-    border-radius: 100px;
+    outline: none;
+    background-color: transparent; 
+    padding: 5px 0; 
+    font-size: 20px;
+}
+
+.custom-input::placeholder {
+    color: #888; 
+}
+
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #a0a0a0;
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-out;
+}
+
+.input-wrapper:focus-within + .underline{
+    background-color: #616161;
 }
 
 button{
     padding: 10px 25px;
-    width: 300px;
+    width: 400px;
     height: 60px;
     border-radius: 100px;
-    border: 2px solid rgb(255, 255, 255);
-    background-color: rgb(0, 0, 0);
+    border: none;
+    background: linear-gradient(45deg,rgb(0, 0, 0) 0%, rgb(102, 102, 102) 100%);
     color: white;
     font-size: 20px;
     display: block;
-    margin-bottom: 25px;
+    margin: 50px 0;
+    transition: all 0.3s ease;
 }
 
 button:hover{
-    box-shadow: 0 0 10px rgb(255, 255, 255);
+    cursor: pointer;
+    background: linear-gradient(45deg,rgb(33, 33, 33) 0%, rgb(131, 131, 131) 100%);
 }
 
-p{
-    margin: 5px 0;
+.msg{
+    margin: 10px 0;
+    color: red;
+    font-size: 20px;
+}
 
+.return{
+    margin-top: 80px;
+    font-size: 20px;
+    color: #555;
+}
+
+.return:hover{
+    color: #212121;
 }

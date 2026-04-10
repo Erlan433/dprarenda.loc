@@ -1,11 +1,6 @@
 <?php
-$host = "localhost";       // Хост (обычно localhost)
-$username = "root";         // Имя пользователя MySQL
-$password = "";             // Пароль пользователя MySQL (если есть)
-$database = "arendadpr";   // Имя базы данных
 
-// Устанавливаем соединение с базой данных
-$conn = new mysqli($host, $username, $password, $database);
+$conn = new mysqli("localhost", "root", "", "arendadpr");
 
 // Проверяем соединение
 if ($conn->connect_error) {

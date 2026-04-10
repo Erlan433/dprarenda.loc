@@ -25,7 +25,7 @@
 <body>
     <header>
         <div class="container">
-            <a href="home.html" class="logo">DPR</a>
+            <a href="index.html" class="logo">DPR</a>
             <p class="telefon">+7(978)777-77-77</p>
         </div>
     </header>
@@ -34,9 +34,13 @@
 
         <div class="pustPomesheniya container">
             <?php for($i = 0; $i < count($rooms); $i++): ?>
-                <div class="pustPomesh" style="background-image: url(<?php echo $rooms[$i][4]?>)">
-                    <h2 class="title"><?php echo $rooms[$i][1]?></h2>
-                    <p class="price"><?php echo $rooms[$i][2]?> р</p>
+                <div class="pustPomesh">
+                    <div class="img" style="background-image: url(<?php echo $rooms[$i][4]?>)"></div>
+                    <p class="title"><?php echo $rooms[$i][1]?></p>
+                    <p class="price"><b><?php echo $rooms[$i][2]?> ₽</b></p>
+                    <span class="location">
+                        <i class="fa-solid fa-location-dot"></i>г. Симферополь
+                    </span>
                 </div>
             <?php endfor ?>
             <?php if(count($rooms) == 0): ?>
