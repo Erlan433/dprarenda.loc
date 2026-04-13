@@ -17,7 +17,7 @@
     <div class="form">
         <h1>Админские операции</h1>
         <a href="/admin/new/" class="newAdminButn">Cоздать новое</a>
-        <a href="" class="changeAdmnButn">Редактировать</a>
+        <a href="/admin/edit/" class="changeAdmnButn">Редактировать</a>
         <a href="" class="deletAdmnButn">Удалить</a>
         <a href="/logout/" class="exitAdminButn">Выйти</a>
     </div>
