@@ -7,7 +7,25 @@
         $title = $_POST["title"];
         $price = $_POST["price"];
         $description = $_POST["description"];
-        $old_image = $_POST["old_image"];
+        $image = $_POST["old_foto"];
+        if(isset($_FILES["foto"]) && $_FILES["foto"]["error"] == 0){
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $filetype = finfo_file($finfo, $_FILES["foto"]["tmp_name"]);
+            finfo_close($finfo);
+            $name = getRandomString(22);
+            if($filetype == "image/jpeg" || $filetype == "image/gif" || $filetype == "image/png"){
+                $filename = $name.".".strtolower(substr(strrchr(basename($_FILES["foto"]["name"]), "."), 1));
+                $fname = "/images/".$filename;
+                $path = $_SERVER["DOCUMENT_ROOT"];
+                if(move_uploaded_file($_FILES["foto"]["tmp_name"], $path.$fname)){
+                    unlink($path.$image);
+                    $image = $fname;
+                }
+            }
+        }
+        $sql = "UPDATE rooms SET title = '$title', price = '$price', description = '$description', picture = '$image' WHERE id = '$id'";
+        $conn->query($sql);
+        header("Location: /admin/edit/");
     } else if(isset($_GET["r"])) {
         $id = $_GET["r"];
         $sql = "SELECT title, price, description, picture FROM rooms WHERE id = $id";
