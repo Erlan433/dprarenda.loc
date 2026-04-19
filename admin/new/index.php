@@ -35,13 +35,13 @@
     <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
-    <div class="glass">
+    <div class="form">
         <h1>Добавление помещения</h1>
         <form action="" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="new" value="1">
             <input type="text" name="title" placeholder="Введите название помещения">
             <input type="number" name="price" placeholder="Введите цену помещения">
-            <input type="text" name="description" placeholder="Введите описание помещения">
+            <textarea name="description" placeholder="Введите описание помещения"></textarea>
             <input type="file" name="foto">
             <input type="submit" value="сохранить">
         </form>

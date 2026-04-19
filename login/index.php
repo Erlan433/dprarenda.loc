@@ -41,19 +41,13 @@
         <form action="" method="post">
             <input type="hidden" name="login" value="1">
             <div class="input-container">
-                <label for="email" class="input-wrapper">
-                    <i class="fas fa-envelope icon"></i>
-                    <input type="text" id="email" name="email" placeholder="Введите логин" class="custom-input">
-                </label>
-                <div class="underline"></div>
+                <i class="fas fa-envelope icon"></i>
+                <input type="text" id="email" name="email" placeholder="Введите логин" class="custom-input">
             </div>
 
             <div class="input-container">
-                <label for="password" class="input-wrapper">
-                    <i class="fas fa-lock icon"></i>
-                    <input type="password" id="password" name="password" placeholder="Введите пароль" class="custom-input">
-                </label>
-                <div class="underline"></div>
+                <i class="fas fa-lock icon"></i>
+                <input type="password" id="password" name="password" placeholder="Введите пароль" class="custom-input">
             </div>
             <button type="submit">Войти</button>
             <p class="msg"><?php echo $message ?></p>

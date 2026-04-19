@@ -56,10 +56,16 @@ main > h1{
     flex-direction: column;
     justify-content: space-between;
     border-radius: 20px;
+    transition: all 0.3s ease;
 }
 
 .pustPomesh:hover{
     box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+.pustPomesh:active{
+    transition-duration: 0s;
+    box-shadow: 0 0 20px rgb(0, 0, 0);
 }
 
 .img{
