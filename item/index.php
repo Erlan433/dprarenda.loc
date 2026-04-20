@@ -1,11 +1,10 @@
 <?php
     include $_SERVER["DOCUMENT_ROOT"]."/db.php";
-
-    $sql = "SELECT * FROM rooms";
-    $result = query($sql);
-    $rooms = array();
-    if ($result && $result->num_rows > 0) {
-        $rooms = $result->fetch_all();
+    if(isset($_GET["i"])){
+        $id = $_GET["i"];
+        $sql = "SELECT title, price, description, picture FROM rooms WHERE id = $id";
+        $result = query($sql);
+        $room = $result->fetch_row();
     }
 ?>
 
@@ -30,23 +29,17 @@
         </div>
     </header>
     <main>
-        <h1>Пустые помещения</h1>
-
-        <div class="pustPomesheniya container">
-            <?php for($i = 0; $i < count($rooms); $i++): ?>
-                <a class="pustPomesh" href="/item/?i=<?php echo $rooms[$i][0]?>">
-                    <div class="img" style="background-image: url(<?php echo $rooms[$i][4]?>)"></div>
-                    <p class="title"><?php echo $rooms[$i][1]?></p>
-                    <p class="price"><b><?php echo $rooms[$i][2]?> ₽</b></p>
-                    <span class="location">
-                        <i class="fa-solid fa-location-dot"></i>г. Симферополь
-                    </span>
-                </a>
-            <?php endfor ?>
-            <?php if(count($rooms) == 0): ?>
-                <h2>Пустых помещений нет!</h2>
-            <?php endif ?>
-        </div>
+       <div class="container main-content">
+            <div class="left">
+                <h1><?php echo $room[0] ?></h1>
+                <img src="<?php echo $room[3] ?>" alt="foto">
+                <h2>Описание</h2>
+                <p class="item-description"><?php echo $room[2] ?></p>
+            </div>
+            <div class="right">
+                <p class="item-price"><?php echo $room[1] ?> ₽</p>
+            </div>
+       </div> 
     </main>
     <footer>
         <div class="container">

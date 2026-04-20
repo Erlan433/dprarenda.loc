@@ -7,16 +7,14 @@ if ($conn->connect_error) {
     die("Ошибка подключения к базе данных: " . $conn->connect_error);
 }
 
-// Устанавливаем кодировку соединения (важно для правильной работы с кириллицей)
 $conn->set_charset("utf8mb4");
 
-// Функция для выполнения SQL запросов (чтобы код был чище)
 function query($sql) {
-    global $conn; // Доступ к переменной $conn внутри функции
+    global $conn;
     $result = $conn->query($sql);
     if (!$result) {
         echo "Ошибка в SQL запросе: " . $conn->error . "<br>";
-        echo "Запрос: " . $sql . "<br>"; // Выводим запрос для отладки
+        echo "Запрос: " . $sql . "<br>";
         return false;
     }
     return $result;

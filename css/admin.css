@@ -1,11 +1,12 @@
 body{
-    height: 100%;
+    min-height: 100vh;
     width: 100%;
     background: linear-gradient(45deg,rgb(0, 0, 0) 0%, rgb(102, 102, 102) 100%);
     background-image: url(/images/AdminFon.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,10 +19,9 @@ body{
     gap: 30px;
     align-items: center;
     border-radius: 15px;
-    padding: 50px 0;
     transform: translateY(50px);
     opacity: 0;
-    padding: 40px;
+    padding: 50px 40px;
     animation: appearanceFromBottom 0.6s 0.3s forwards, formShadow 0.6s 0.6s forwards;
 }
 
@@ -59,7 +59,7 @@ h1{
     margin: 50px 0;
 }
 
-.newAdminButn, .editAdmnButn, .deletAdmnButn, .exitAdminButn{
+.newAdminButn, .editAdmnButn, .deletAdmnButn, .exitAdminButn, .new-safe-btn{
     height: 90px;
     width: 280px;
     background: linear-gradient(45deg,rgb(0, 0, 0) 0%, rgb(102, 102, 102) 100%);
@@ -73,7 +73,11 @@ h1{
     margin: 0 20px;
 }
 
-.newAdminButn:hover, .editAdmnButn:hover, .deletAdmnButn:hover, .exitAdminButn:hover{
+.new-safe-btn{
+    height: 70px;
+}
+
+.newAdminButn:hover, .editAdmnButn:hover, .deletAdmnButn:hover, .exitAdminButn:hover, .new-safe-btn:hover{
     background: linear-gradient(45deg,rgb(33, 33, 33) 0%, rgb(131, 131, 131) 100%);
     cursor: pointer;
 }
@@ -88,9 +92,28 @@ h1{
     background: linear-gradient(45deg,rgb(170, 33, 33) 0%, rgb(255, 0, 0) 100%);
 }
 
-input, textarea{
-    width: 200px;
-    height: 40px;
-    padding: 20px;
-    border-radius: 30px;
+input, textarea, select{
+    width: 400px;
+    min-height: 50px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid rgb(105, 105, 105);
+    font-size: 17px;
+}
+
+.block-foto{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.return{
+    margin-top: 10px;
+    font-size: 20px;
+    color: #363636;
+    transition: 0.2s;
+}
+
+.return:hover{
+    color: #000000;
 }

@@ -10,6 +10,7 @@
         $title = $_POST["title"];
         $price = $_POST["price"];
         $description = $_POST["description"];
+        $sale = $_POST["sale"];
         if (isset($_FILES["foto"])){
             if($_FILES["foto"]["error"] == 0){
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -19,7 +20,7 @@
                     $exp = explode(".", $_FILES["foto"]["name"]);
                     $fname = "/images/".getRandomString(20).".".end($exp);
                     move_uploaded_file($_FILES["foto"]["tmp_name"], $root.$fname);
-                    $sql = "INSERT INTO rooms (title, price, description, picture) VALUES ('$title', '$price', '$description', '$fname')";
+                    $sql = "INSERT INTO rooms (title, price, description, picture, sale) VALUES ('$title', '$price', '$description', '$fname', '$sale')";
                     $conn->query($sql);
                 }
             }
@@ -42,10 +43,17 @@
             <input type="text" name="title" placeholder="Введите название помещения">
             <input type="number" name="price" placeholder="Введите цену помещения">
             <textarea name="description" placeholder="Введите описание помещения"></textarea>
-            <input type="file" name="foto">
-            <input type="submit" value="сохранить">
+            <div class="block-foto">
+                <label for="foto">Выберите фотографию помещения</label>
+                <input type="file" name="foto">
+            </div>
+            <select name="sale" id="select">
+                <option value="0">Аренда</option>
+                <option value="1">Продажа</option>
+            </select>
+            <input type="submit" value="сохранить" class="new-safe-btn">
         </form>
-        <a href="/logout/" class="exitAdminButn">Выйти c Админа</a>
+        <a href="/admin/" class="return">Вернуться</a>
     </div>
 </body>
 </html>

@@ -57,6 +57,7 @@ main > h1{
     justify-content: space-between;
     border-radius: 20px;
     transition: all 0.3s ease;
+    color: black;
 }
 
 .pustPomesh:hover{
@@ -108,4 +109,36 @@ footer .container .copyright{
     color: white;
     font-size: 20px;
     margin-left: 30px;
+}
+
+.main-content{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: 50px;
+}
+
+.main-content h1{
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+
+.main-content img{
+    width: 100%;
+    margin-bottom: 50px;
+    border-radius: 20px;
+}
+
+.main-content h2{
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+
+.main-content .item-description{
+    font-size: 28px;
+}
+
+.main-content .item-price{
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 50px;
 }

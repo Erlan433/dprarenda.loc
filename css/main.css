@@ -2,6 +2,7 @@
     box-sizing: border-box;
     text-decoration: none;
     font-family: "Roboto", sans-serif;
+    list-style-type: none;
     margin: 0;
     padding: 0;
 }
@@ -10,3 +11,4 @@
     height: 100%;
     margin: 0 80px;
 }
+
