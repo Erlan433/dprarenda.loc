@@ -13,7 +13,7 @@
         $sql = "DELETE FROM rooms WHERE id IN ($del)";
         $conn->query($sql);
     }
-    $sql = "SELECT id, title, price, picture FROM rooms";
+    $sql = "SELECT id, title, picture FROM rooms";
     $result = $conn->query($sql);
     $rooms = $result->fetch_all();
 ?>
@@ -37,9 +37,8 @@
                 <?php for($i = 0; $i < count($rooms); $i++): ?>
                     <li>
                         <input type="checkbox" name="check[]" id="check<?php echo $rooms[$i][0] ?>" value="<?php echo $rooms[$i][0] ?>">
-                        <img src="<?php echo $rooms[$i][3] ?>" alt="foto" height="50">
-                        <span><?php echo $rooms[$i][1] ?></span> 
-                        <span><?php echo $rooms[$i][2] ?> ₽</span>
+                        <img src="<?php echo $rooms[$i][2] ?>" alt="foto" height="50">
+                        <label for="check<?php echo $rooms[$i][0] ?>"><?php echo $rooms[$i][1] ?></label> 
                     </li>
                 <?php endfor ?>
             </ul>

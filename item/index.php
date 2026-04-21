@@ -2,7 +2,7 @@
     include $_SERVER["DOCUMENT_ROOT"]."/db.php";
     if(isset($_GET["i"])){
         $id = $_GET["i"];
-        $sql = "SELECT title, price, description, picture FROM rooms WHERE id = $id";
+        $sql = "SELECT title, price, description, picture, sale FROM rooms WHERE id = $id";
         $result = query($sql);
         $room = $result->fetch_row();
     }
@@ -16,10 +16,6 @@
     <link rel="icon" href="/images/помещение №1.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/main.css">
-    <script src="https://kit.fontawesome.com/d38ec0eb27.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -37,7 +33,7 @@
                 <p class="item-description"><?php echo $room[2] ?></p>
             </div>
             <div class="right">
-                <p class="item-price"><?php echo $room[1] ?> ₽</p>
+                <p class="item-price"><?php echo $room[1] ?> ₽<?php echo ($room[4] == 0 ? " в аренду" : "") ?></p>
             </div>
        </div> 
     </main>

@@ -8,6 +8,7 @@
         $price = $_POST["price"];
         $description = $_POST["description"];
         $image = $_POST["old_foto"];
+        $sale = $_POST["sale"];
         if(isset($_FILES["foto"]) && $_FILES["foto"]["error"] == 0){
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $filetype = finfo_file($finfo, $_FILES["foto"]["tmp_name"]);
@@ -23,12 +24,12 @@
                 }
             }
         }
-        $sql = "UPDATE rooms SET title = '$title', price = '$price', description = '$description', picture = '$image' WHERE id = '$id'";
+        $sql = "UPDATE rooms SET title = '$title', price = '$price', description = '$description', picture = '$image', sale = '$sale' WHERE id = '$id'";
         $conn->query($sql);
         header("Location: /admin/edit/");
     } else if(isset($_GET["r"])) {
         $id = $_GET["r"];
-        $sql = "SELECT title, price, description, picture FROM rooms WHERE id = $id";
+        $sql = "SELECT title, price, description, picture, sale FROM rooms WHERE id = $id";
         $result = $conn->query($sql);
         $room = $result->fetch_row();
     }
@@ -55,6 +56,10 @@
             <img src="<?php echo $room[3] ?>" alt="foto">
             <input type="file" name="foto" id="foto">
             <input type="hidden" name="old_foto" value="<?php echo $room[3] ?>">
+            <select name="sale" id="select">
+                <option value="0">Аренда</option>
+                <option value="1" <?php echo ($room[4] == 1 ? "selected" : "") ?>>Продажа</option>
+            </select>
             <input type="submit" value="Сохранить">
         </form>
     </main>

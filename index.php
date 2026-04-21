@@ -37,7 +37,7 @@
                 <a class="pustPomesh" href="/item/?i=<?php echo $rooms[$i][0]?>">
                     <div class="img" style="background-image: url(<?php echo $rooms[$i][4]?>)"></div>
                     <p class="title"><?php echo $rooms[$i][1]?></p>
-                    <p class="price"><b><?php echo $rooms[$i][2]?> ₽</b></p>
+                    <p class="price"><?php echo $rooms[$i][2]?> ₽<?php echo ($rooms[$i][5] == 0 ? " в аренду" : "") ?></p>
                     <span class="location">
                         <i class="fa-solid fa-location-dot"></i>г. Симферополь
                     </span>
