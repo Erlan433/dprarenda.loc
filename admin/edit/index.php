@@ -17,6 +17,7 @@
 </head>
 <body>
     <main class="form">
+        <h1>Редактировать объект</h1>
         <ul>
             <?php for($i = 0; $i < count($rooms); $i++): ?>
                 <li>
@@ -25,6 +26,7 @@
                 </li>
             <?php endfor ?>
         </ul>
+        <a href="/admin/" class="return">Вернуться</a>
     </main>
 </body>
 </html>

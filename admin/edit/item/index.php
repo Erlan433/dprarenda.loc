@@ -41,10 +41,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin_DPR</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <script src="https://kit.fontawesome.com/d38ec0eb27.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <main class="container">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form class="edit-form" action="" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo $id ?>">
             <label for="title">Название</label>
             <input type="text" name="title" id="title" value="<?php echo $room[0] ?>">
