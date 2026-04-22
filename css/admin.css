@@ -73,8 +73,15 @@ h1{
     margin: 0 20px;
 }
 
-.new-safe-btn{
+.new-safe-btn {
     height: 70px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.new-safe-btn:active {
+    transform: scale(0.97);
 }
 
 .newAdminButn:hover, .editAdmnButn:hover, .deletAdmnButn:hover, .exitAdminButn:hover, .new-safe-btn:hover{
@@ -92,19 +99,101 @@ h1{
     background: linear-gradient(45deg,rgb(170, 33, 33) 0%, rgb(255, 0, 0) 100%);
 }
 
-input, textarea, select{
+input:not([type="submit"]):not([type="hidden"]):not([type="file"]):not([type="checkbox"]),
+textarea, select {
     width: 400px;
     min-height: 50px;
-    padding: 15px;
+    padding: 12px 15px;
     border-radius: 10px;
-    border: 2px solid rgb(105, 105, 105);
-    font-size: 17px;
+    border: 2px solid rgb(160, 160, 160);
+    font-size: 16px;
+    background: #ffffff;
+    color: #1a1a1a;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    outline: none;
 }
 
-.block-foto{
+input:not([type="submit"]):not([type="hidden"]):not([type="file"]):not([type="checkbox"]):focus,
+textarea:focus, select:focus {
+    border-color: #5a5a5a;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+select {
+    width: 400px;
+    min-height: 50px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 2px solid rgb(160, 160, 160);
+    font-size: 16px;
+    background: #ffffff;
+    color: #1a1a1a;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23555' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+}
+
+.block-foto {
+    width: 400px;
+}
+
+.block-foto input[type="file"] {
+    display: none;
+}
+
+.foto-label {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 120px;
+    padding: 20px 16px;
+    border-radius: 12px;
+    border: 2px dashed rgb(160, 160, 160);
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: border-color 0.25s, background 0.25s, color 0.25s;
+    color: #555;
+    text-align: center;
+}
+
+.foto-label:hover {
+    border-color: #222;
+    background: rgba(255, 255, 255, 0.92);
+    color: #111;
+}
+
+.foto-label .icon-image {
+    opacity: 0.6;
+    transition: opacity 0.25s, transform 0.25s;
+}
+
+.foto-label:hover .icon-image {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+.foto-label-text {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    word-break: break-all;
+}
+
+.foto-label-hint {
+    font-size: 12px;
+    color: #888;
+    font-weight: 400;
 }
 
 .return{

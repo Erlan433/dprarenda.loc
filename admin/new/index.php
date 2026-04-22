@@ -34,6 +34,7 @@
     <title>Admin_DPR</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/admin.css">
+    <script src="https://kit.fontawesome.com/d38ec0eb27.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="form">
@@ -44,8 +45,12 @@
             <input type="number" name="price" placeholder="Введите цену помещения">
             <textarea name="description" placeholder="Введите описание помещения"></textarea>
             <div class="block-foto">
-                <label for="foto">Выберите фотографию помещения</label>
-                <input type="file" name="foto">
+                <input type="file" name="foto" id="foto" accept="image/jpeg,image/png,image/gif">
+                <label for="foto" class="foto-label">
+                    <i class="fa-regular fa-image fa-2x icon-image"></i>
+                    <span class="foto-label-text">Выберите фотографию</span>
+                    <span class="foto-label-hint">JPG, PNG, GIF</span>
+                </label>
             </div>
             <select name="sale" id="select">
                 <option value="0">Аренда</option>
@@ -55,5 +60,11 @@
         </form>
         <a href="/admin/" class="return">Вернуться</a>
     </div>
+    <script>
+        document.getElementById('foto').addEventListener('change', function () {
+            const label = document.querySelector('.foto-label-text');
+            label.textContent = this.files.length ? this.files[0].name : 'Выберите фотографию';
+        });
+    </script>
 </body>
 </html>
