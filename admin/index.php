@@ -18,15 +18,15 @@
     <div class="form">
         <h1>Админские операции</h1>
         <div class="adminOperations">
-            <a href="/admin/new/" class="newAdminButn">
+            <a href="/admin/new/" class="operationButn">
                 <i class="fa-solid fa-plus"></i>
                 Cоздать
             </a>
-            <a href="/admin/edit/" class="editAdmnButn">
+            <a href="/admin/edit/" class="operationButn">
                 <i class="fa-solid fa-pen"></i>
                 Редактировать
             </a>
-            <a href="/admin/delete/" class="deletAdmnButn">
+            <a href="/admin/delete/" class="operationButn">
                 <i class="fa-solid fa-trash"></i>
                 Удалить
             </a>

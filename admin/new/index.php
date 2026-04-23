@@ -56,7 +56,7 @@
                 <option value="0">Аренда</option>
                 <option value="1">Продажа</option>
             </select>
-            <input type="submit" value="сохранить" class="new-safe-btn">
+            <input type="submit" value="сохранить" class="safe-btn">
         </form>
         <a href="/admin/" class="return">Вернуться</a>
     </div>

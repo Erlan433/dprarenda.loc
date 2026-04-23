@@ -10,6 +10,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 50px 20px;
 }
 
 .form{
@@ -19,7 +20,7 @@ body{
     gap: 30px;
     align-items: center;
     border-radius: 15px;
-    transform: translateY(50px);
+    transform: translateY(30px);
     opacity: 0;
     padding: 50px 40px;
     animation: appearanceFromBottom 0.6s 0.3s forwards, formShadow 0.6s 0.6s forwards;
@@ -59,34 +60,22 @@ h1{
     margin: 50px 0;
 }
 
-.newAdminButn, .editAdmnButn, .deletAdmnButn, .exitAdminButn, .new-safe-btn{
+.operationButn, .exitAdminButn, .safe-btn{
     height: 90px;
     width: 280px;
     background: linear-gradient(45deg,rgb(0, 0, 0) 0%, rgb(102, 102, 102) 100%);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     color: white;
     font-size: 25px;
     border-radius: 12px;
     margin: 0 20px;
-}
-
-.new-safe-btn {
-    height: 70px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-}
-
-.new-safe-btn:active {
-    transform: scale(0.97);
-}
-
-.newAdminButn:hover, .editAdmnButn:hover, .deletAdmnButn:hover, .exitAdminButn:hover, .new-safe-btn:hover{
-    background: linear-gradient(45deg,rgb(33, 33, 33) 0%, rgb(131, 131, 131) 100%);
-    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
 }
 
 .exitAdminButn{
@@ -95,8 +84,58 @@ h1{
     width: 300px;
 }
 
+.safe-btn {
+    height: 70px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.operationButn::after, .exitAdminButn::after, .safe-btn::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 100px;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.25) 0%, transparent 70%);
+    opacity: 0;
+    transform: scale(0.4);
+    transition: all 0.15s ease;
+    pointer-events: none;
+}
+
+.exitAdminButn::after{
+    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.25) 0%, transparent 70%);
+}
+
+.operationButn:hover, .exitAdminButn:hover, .safe-btn:hover {
+    background: linear-gradient(45deg, rgb(33, 33, 33) 0%, rgb(140, 140, 140) 100%);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+}
+
 .exitAdminButn:hover{
-    background: linear-gradient(45deg,rgb(170, 33, 33) 0%, rgb(255, 0, 0) 100%);
+    background: linear-gradient(45deg, rgb(170, 33, 33) 0%, rgb(255, 0, 0) 100%);
+    box-shadow: 0 8px 28px rgba(255, 0, 0, 0.5);
+}
+
+.operationButn:hover::after, .exitAdminButn:hover::after, .safe-btn:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.exitAdminButn:hover::after{
+    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.25) 0%, transparent 70%);
+}
+
+.operationButn:active, .exitAdminButn:active, .safe-btn:active {
+    transform: translateY(1px) scale(0.97);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(45deg, rgb(10, 10, 10) 0%, rgb(80, 80, 80) 100%);
+    transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.08s ease;
+}
+
+.exitAdminButn:active{
+    background: linear-gradient(45deg, rgb(112, 37, 37) 0%, rgb(182, 27, 27) 100%);
 }
 
 input:not([type="submit"]):not([type="hidden"]):not([type="file"]):not([type="checkbox"]),
@@ -125,14 +164,6 @@ textarea {
 }
 
 select {
-    width: 400px;
-    min-height: 50px;
-    padding: 12px 15px;
-    border-radius: 10px;
-    border: 2px solid rgb(160, 160, 160);
-    font-size: 16px;
-    background: #ffffff;
-    color: #1a1a1a;
     cursor: pointer;
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23555' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
@@ -205,6 +236,8 @@ select {
 
 .return:hover{
     color: #000000;
+    scale: 1.05;
+    transform: translateY(-2px);
 }
 
 .form ul{
@@ -219,7 +252,7 @@ select {
     scrollbar-color: #888 #ddd;
 }
 
-.form ul li{
+.form ul a li{
     display: flex;
     align-items: center;
     gap: 18px;
@@ -229,11 +262,11 @@ select {
     transition: background 0.2s, transform 0.2s;
 }
 
-.form ul li:hover{
+.form ul a li:hover{
     background: rgba(255,255,255,0.9);
 }
 
-.form ul li img{
+.form ul a li img{
     width: 70px;
     height: 50px;
     object-fit: cover;
@@ -241,19 +274,20 @@ select {
     flex-shrink: 0;
 }
 
-.form ul li a{
+.form ul a p.title{
     font-size: 18px;
     color: #1a1a1a;
     font-weight: 500;
     transition: color 0.2s;
 }
 
-.form ul li a:hover{
+.form ul a p.title:hover{
     color: #555;
 }
 
 body .container{
-    min-height: 100vh;
+    /* 100px = 50px сверху + 50px снизу (padding body) */
+    min-height: calc(100vh - 100px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -261,88 +295,104 @@ body .container{
     margin: 0;
 }
 
-.edit-form{
+/* ── admin/edit/item/index.php ── */
+
+.edit-card {
     background: linear-gradient(45deg, rgb(193,193,193) 80%, rgb(255,255,255) 100%);
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    align-items: stretch;
     border-radius: 15px;
-    padding: 50px 40px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 40px;
+    max-width: 860px;
     width: 100%;
-    max-width: 520px;
     animation: appearanceFromBottom 0.6s 0.3s forwards, formShadow 0.6s 0.6s forwards;
     opacity: 0;
     transform: translateY(30px);
 }
 
-.edit-form label{
-    font-size: 15px;
+.edit-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.edit-card-header h2 { font-size: 20px; font-weight: 700; }
+.edit-card-header p  { font-size: 13px; color: #555; margin-top: 3px; }
+
+.edit-photo-title {
+    font-size: 14px;
     font-weight: 600;
-    color: #2a2a2a;
-    margin-bottom: -8px;
+    color: #444;
+    margin-bottom: 10px;
 }
 
-.edit-form input[type="text"],
-.edit-form input[type="number"],
-.edit-form textarea,
-.edit-form select{
+.edit-photo-preview {
     width: 100%;
-    min-height: 50px;
-    padding: 12px 15px;
-    border-radius: 10px;
-    border: 2px solid rgb(105,105,105);
-    font-size: 16px;
-    background: #fff;
-    transition: border-color 0.2s;
-}
-
-.edit-form input[type="text"]:focus,
-.edit-form input[type="number"]:focus,
-.edit-form textarea:focus,
-.edit-form select:focus{
-    outline: none;
-    border-color: #333;
-}
-
-.edit-form textarea{
-    min-height: 110px;
-    resize: vertical;
-}
-
-.edit-form img{
-    width: 100%;
-    max-height: 220px;
+    max-height: 180px;
     object-fit: cover;
     border-radius: 10px;
     border: 2px solid #bbb;
+    margin-bottom: 12px;
 }
 
-.edit-form input[type="file"]{
-    border: none;
-    padding: 6px 0;
-    font-size: 15px;
-    background: transparent;
-    width: 100%;
+.edit-card-content{
+    display: flex;
+    gap: 20px;
 }
 
-.edit-form input[type="submit"]{
-    width: 100%;
-    height: 55px;
-    background: linear-gradient(45deg, rgb(0,0,0) 0%, rgb(102,102,102) 100%);
-    color: #fff;
-    font-size: 18px;
+.edit-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.edit-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.edit-field label {
+    font-size: 13px;
     font-weight: 600;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin-top: 8px;
+    color: #2a2a2a;
 }
 
-.edit-form input[type="submit"]:hover{
-    background: linear-gradient(45deg, rgb(33,33,33) 0%, rgb(131,131,131) 100%);
+.edit-field input,
+.edit-field textarea,
+.edit-field select {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 2px solid rgb(160,160,160);
+    font-size: 15px;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s;
 }
+
+.edit-field input:focus,
+.edit-field textarea:focus,
+.edit-field select:focus { border-color: #333; }
+
+.edit-field textarea { min-height: 100px; resize: vertical; }
+
+.edit-footer {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+    padding-top: 16px;
+    border-top: 2px solid rgba(0,0,0,0.2);
+}
+
+.edit-footer .return { margin: 0; font-size: 25px;}
+.edit-footer .safe-btn { margin: 0; width: auto; padding: 0 36px; }
 
 /* ── admin/delete/index.php ── */
 

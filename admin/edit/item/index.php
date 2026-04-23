@@ -36,7 +36,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,24 +47,73 @@
 </head>
 <body>
     <main class="container">
-        <form class="edit-form" action="" method="post" enctype="multipart/form-data">
+        <form class="edit-card" action="" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo $id ?>">
-            <label for="title">Название</label>
-            <input type="text" name="title" id="title" value="<?php echo $room[0] ?>">
-            <label for="price">Цена</label>
-            <input type="number" name="price" id="price" value="<?php echo $room[1] ?>">
-            <label for="description">Описание</label>
-            <textarea name="description" id="description"><?php echo $room[2] ?></textarea>
-            <label for="foto">Фотография</label>
-            <img src="<?php echo $room[3] ?>" alt="foto">
-            <input type="file" name="foto" id="foto">
             <input type="hidden" name="old_foto" value="<?php echo $room[3] ?>">
-            <select name="sale" id="select">
-                <option value="0">Аренда</option>
-                <option value="1" <?php echo ($room[4] == 1 ? "selected" : "") ?>>Продажа</option>
-            </select>
-            <input type="submit" value="Сохранить">
+
+            <div class="edit-card-content">
+                <div class="edit-left">
+                    <div class="edit-card-header">
+                        <i class="fa-regular fa-building fa-2x"></i>
+                        <h2>Редактирование помещения</h2>
+                    </div>
+    
+                    <p class="edit-photo-title">
+                        <i class="fa-regular fa-image"></i> Фотография помещения
+                    </p>
+                    <img src="<?php echo $room[3] ?>" alt="Фото" class="edit-photo-preview" id="photo-preview">
+    
+                    <div class="block-foto">
+                        <input type="file" name="foto" id="foto" accept="image/jpeg,image/png,image/gif">
+                        <label for="foto" class="foto-label">
+                            <i class="fa-regular fa-image fa-2x icon-image"></i>
+                            <span class="foto-label-text">Выберите файл</span>
+                            <span class="foto-label-hint">JPG, PNG, GIF</span>
+                        </label>
+                    </div>
+                </div>
+    
+                <div class="edit-right">
+                    <div class="edit-field">
+                        <label for="title">Название помещения</label>
+                        <input type="text" name="title" id="title" value="<?php echo $room[0] ?>">
+                    </div>
+                    <div class="edit-field">
+                        <label for="price">Цена (₽)</label>
+                        <input type="number" name="price" id="price" value="<?php echo $room[1] ?>">
+                    </div>
+                    <div class="edit-field">
+                        <label for="description">Описание</label>
+                        <textarea name="description" id="description"><?php echo $room[2] ?></textarea>
+                    </div>
+                    <div class="edit-field">
+                        <label for="select">Тип</label>
+                        <select name="sale" id="select">
+                            <option value="0">Аренда</option>
+                            <option value="1" <?php echo ($room[4] == 1 ? "selected" : "") ?>>Продажа</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="edit-footer">
+                <a href="/admin/edit/" class="return">Отмена</a>
+                <input type="submit" value="Сохранить" class="safe-btn">
+            </div>
         </form>
     </main>
+
+    <script>
+        document.getElementById('foto').addEventListener('change', function () {
+            const label = document.querySelector('.foto-label-text');
+            label.textContent = this.files.length ? this.files[0].name : 'Выберите файл';
+
+            if (this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = e => document.getElementById('photo-preview').src = e.target.result;
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    </script>
 </body>
 </html>

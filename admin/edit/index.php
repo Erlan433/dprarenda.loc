@@ -20,10 +20,12 @@
         <h1>Редактировать объект</h1>
         <ul>
             <?php for($i = 0; $i < count($rooms); $i++): ?>
-                <li>
-                    <img src="<?php echo $rooms[$i][2] ?>" alt="foto" height="50">
-                    <a href="/admin/edit/item/?r=<?php echo $rooms[$i][0] ?>"><?php echo $rooms[$i][1] ?></a>
-                </li>
+                <a href="/admin/edit/item/?r=<?php echo $rooms[$i][0] ?>">
+                    <li>
+                        <img src="<?php echo $rooms[$i][2] ?>" alt="foto" height="50">
+                        <p class="title"><?php echo $rooms[$i][1] ?></p>
+                    </li>
+                </a>
             <?php endfor ?>
         </ul>
         <a href="/admin/" class="return">Вернуться</a>
