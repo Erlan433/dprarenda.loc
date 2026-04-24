@@ -59,7 +59,7 @@
                     </div>
     
                     <p class="edit-photo-title">
-                        <i class="fa-regular fa-image"></i> Фотография помещения
+                        <i class="fa-regular fa-image"></i> Главная фотография помещения
                     </p>
                     <img src="<?php echo $room[3] ?>" alt="Фото" class="edit-photo-preview" id="photo-preview">
     
@@ -93,6 +93,8 @@
                             <option value="1" <?php echo ($room[4] == 1 ? "selected" : "") ?>>Продажа</option>
                         </select>
                     </div>
+                    <input type="file" id="file_select" onchange="uploadImg(this.files, <?php ehco $id ?>)" accept="image/jpeg,image/png,image/gif">
+                    <input type="button" id="add_pictures" value="добавить фото">
                 </div>
             </div>
 
@@ -103,17 +105,6 @@
         </form>
     </main>
 
-    <script>
-        document.getElementById('foto').addEventListener('change', function () {
-            const label = document.querySelector('.foto-label-text');
-            label.textContent = this.files.length ? this.files[0].name : 'Выберите файл';
-
-            if (this.files[0]) {
-                const reader = new FileReader();
-                reader.onload = e => document.getElementById('photo-preview').src = e.target.result;
-                reader.readAsDataURL(this.files[0]);
-            }
-        });
-    </script>
+    <script src="/js/script.js"></script>
 </body>
 </html>

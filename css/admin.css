@@ -381,6 +381,10 @@ body .container{
 
 .edit-field textarea { min-height: 100px; resize: vertical; }
 
+#file_select{
+    display: none;
+}
+
 .edit-footer {
     grid-column: 1 / -1;
     display: flex;
