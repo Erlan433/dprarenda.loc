@@ -22,7 +22,9 @@ function uploadImg(files, id){
     xmlhttp.send(form_data);
     xmlhttp.onreadystatechange = function(){
         if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-            
+            let image = new Image();
+            image.src = xmlhttp.responseText;
+            document.querySelector(".fotos").appendChild(image);
         }
     }
 }

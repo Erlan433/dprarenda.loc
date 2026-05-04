@@ -32,6 +32,9 @@
         $sql = "SELECT title, price, description, picture, sale FROM rooms WHERE id = $id";
         $result = $conn->query($sql);
         $room = $result->fetch_row();
+        $sql = "SELECT id, picture FROM pictures WHERE room_id = $id";
+        $result = $conn->query($sql);
+        $pictures = $result->fetch_all();
     }
 ?>
 
@@ -71,6 +74,15 @@
                             <span class="foto-label-hint">JPG, PNG, GIF</span>
                         </label>
                     </div>
+
+                    <div class="fotos">
+                        <?php for($i = 0; $i < count($pictures); $i++): ?>
+                            <div class="img-item" style="background-image: url(<?php echo $pictures[$i][1] ?>);">
+                                <span class="cross" title="Удалить">&times;</span>
+                            </div>
+                            
+                        <?php endfor ?>
+                    </div>
                 </div>
     
                 <div class="edit-right">
@@ -93,7 +105,7 @@
                             <option value="1" <?php echo ($room[4] == 1 ? "selected" : "") ?>>Продажа</option>
                         </select>
                     </div>
-                    <input type="file" id="file_select" onchange="uploadImg(this.files, <?php ehco $id ?>)" accept="image/jpeg,image/png,image/gif">
+                    <input type="file" id="file_select" onchange="uploadImg(this.files, <?php echo $id ?>)" accept="image/jpeg,image/png,image/gif">
                     <input type="button" id="add_pictures" value="добавить фото">
                 </div>
             </div>
