@@ -78,7 +78,7 @@
                     <div class="fotos">
                         <?php for($i = 0; $i < count($pictures); $i++): ?>
                             <div class="img-item" style="background-image: url(<?php echo $pictures[$i][1] ?>);">
-                                <span class="cross" title="Удалить">&times;</span>
+                                <span class="cross" title="Удалить" id="del-<?php echo $pictures[$i][0] ?>" onclick="deletePic(<?php echo $pictures[$i][0] ?>)">&times;</span>
                             </div>
                             
                         <?php endfor ?>

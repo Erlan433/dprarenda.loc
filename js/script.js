@@ -22,10 +22,26 @@ function uploadImg(files, id){
     xmlhttp.send(form_data);
     xmlhttp.onreadystatechange = function(){
         if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-            let image = new Image();
-            image.src = xmlhttp.responseText;
-            document.querySelector(".fotos").appendChild(image);
+            let div = document.createElement("div");
+            div.style.backgroundImage = "url(" + xmlhttp.responseText + ")";
+            div.classList.add("img-item");
+            let span = document.createElement("span");
+            span.classList.add("cross");
+            span.innerHTML = "&times;";
+            div.appendChild(span);
+            document.querySelector(".fotos").appendChild(div);
         }
     }
 }
 
+function deletePic(id){
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("POST", "/admin/edit/item/delete/");
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("i=" + id);
+    xmlhttp.onreadystatechange = function(){
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200 && xmlhttp.responseText == 1){
+            document.getElementById("del-" + id).parentElement.remove();
+        }
+    }
+}
