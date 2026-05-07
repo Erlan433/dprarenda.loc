@@ -14,7 +14,6 @@
             $data = $result->fetch_row();
             if($password == $data[0]){
                 $_SESSION["email"] = $email;
-                $message = "Успешный вход";
                 header("Location: /admin/");
             }else{
                 $message = "Неверный пароль";

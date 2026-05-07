@@ -1,5 +1,6 @@
 body{
     min-height: 100vh;
+    height: auto;
     width: 100%;
     background: linear-gradient(45deg,rgb(0, 0, 0) 0%, rgb(102, 102, 102) 100%);
     background-image: url(/images/AdminFon.jpg);
@@ -10,7 +11,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px 20px;
+    padding: 40px 0;
+}
+
+.new-body{
+    align-items: flex-start;
 }
 
 .form{
@@ -26,6 +31,8 @@ body{
     animation: appearanceFromBottom 0.6s 0.3s forwards, formShadow 0.6s 0.6s forwards;
 }
 
+
+
 .form form{
     display: flex;
     flex-direction: column;
@@ -34,7 +41,7 @@ body{
 }
 
 @keyframes formShadow {
-    to{box-shadow: 30px 30px rgba(0, 0, 0)}
+    to{box-shadow: 30px 30px 10px rgba(0, 0, 0)}
 }
 
 @keyframes appearanceFromBottom {
@@ -67,7 +74,7 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
     color: white;
     font-size: 25px;
     border-radius: 12px;
@@ -109,13 +116,13 @@ h1{
 
 .operationButn:hover, .exitAdminButn:hover, .safe-btn:hover {
     background: linear-gradient(45deg, rgb(33, 33, 33) 0%, rgb(140, 140, 140) 100%);
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
 .exitAdminButn:hover{
     background: linear-gradient(45deg, rgb(170, 33, 33) 0%, rgb(255, 0, 0) 100%);
-    box-shadow: 0 8px 28px rgba(255, 0, 0, 0.5);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.5);
 }
 
 .operationButn:hover::after, .exitAdminButn:hover::after, .safe-btn:hover::after {
@@ -123,12 +130,8 @@ h1{
     transform: scale(1);
 }
 
-.exitAdminButn:hover::after{
-    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.25) 0%, transparent 70%);
-}
-
 .operationButn:active, .exitAdminButn:active, .safe-btn:active {
-    transform: translateY(1px) scale(0.97);
+    transform: translateY(1px) scale(0.98);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     background: linear-gradient(45deg, rgb(10, 10, 10) 0%, rgb(80, 80, 80) 100%);
     transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.08s ease;
@@ -236,7 +239,7 @@ select {
 
 .return:hover{
     color: #000000;
-    scale: 1.05;
+    scale: 1.02;
     transform: translateY(-2px);
 }
 
@@ -259,11 +262,13 @@ select {
     background: rgba(255,255,255,0.65);
     border-radius: 10px;
     padding: 10px 18px;
+    border: 2px solid transparent;
     transition: background 0.2s, transform 0.2s;
 }
 
 .form ul a li:hover{
-    background: rgba(255,255,255,0.9);
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(108, 108, 108, 0.5);
 }
 
 .form ul a li img{
@@ -279,10 +284,6 @@ select {
     color: #1a1a1a;
     font-weight: 500;
     transition: color 0.2s;
-}
-
-.form ul a p.title:hover{
-    color: #555;
 }
 
 body .container{

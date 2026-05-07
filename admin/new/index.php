@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="/css/admin.css">
     <script src="https://kit.fontawesome.com/d38ec0eb27.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="new-body">
     <div class="form">
         <h1>Добавление помещения</h1>
         <form action="" method="POST" enctype="multipart/form-data">
