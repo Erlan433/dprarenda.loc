@@ -148,3 +148,13 @@ footer .container .copyright{
     font-weight: bold;
     margin-left: 50px;
 }
+
+.main-content .item-fotos{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.main-content .item-fotos img{
+    width: 100%;
+}

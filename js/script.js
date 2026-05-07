@@ -22,12 +22,15 @@ function uploadImg(files, id){
     xmlhttp.send(form_data);
     xmlhttp.onreadystatechange = function(){
         if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            let imgLoaded = JSON.parse(xmlhttp.responseText);
             let div = document.createElement("div");
-            div.style.backgroundImage = "url(" + xmlhttp.responseText + ")";
+            div.style.backgroundImage = "url(" + imgLoaded.file + ")";
             div.classList.add("img-item");
             let span = document.createElement("span");
             span.classList.add("cross");
             span.innerHTML = "&times;";
+            span.id = "del-" + imgLoaded.id;
+            span.setAttribute("onclick", "deletePic(" + imgLoaded.id + ")")
             div.appendChild(span);
             document.querySelector(".fotos").appendChild(div);
         }

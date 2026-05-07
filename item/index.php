@@ -5,6 +5,9 @@
         $sql = "SELECT title, price, description, picture, sale FROM rooms WHERE id = $id";
         $result = query($sql);
         $room = $result->fetch_row();
+        $sql = "SELECT id, picture FROM pictures WHERE room_id = $id";
+        $result = query($sql);
+        $pictures = $result->fetch_all();
     }
 ?>
 
@@ -34,6 +37,12 @@
             </div>
             <div class="right">
                 <p class="item-price"><?php echo $room[1] ?> ₽<?php echo ($room[4] == 0 ? " в аренду" : "") ?></p>
+                <div class="item-fotos">
+                    <img src="<?php echo $room[3] ?>" alt="foto">
+                    <?php for($i = 0; $i < count($pictures); $i++): ?>
+                        <img src="<?php echo $pictures[$i][1] ?>" alt="foto">
+                    <?php endfor; ?>
+                </div>
             </div>
        </div> 
     </main>

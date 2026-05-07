@@ -3,6 +3,7 @@
     include $root."/db.php";
     $id = $_POST["id"];
     $fname = "";
+    $last = 0;
     if (isset($_FILES["picture"])){
         if($_FILES["picture"]["error"] == 0){
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -14,8 +15,9 @@
                 move_uploaded_file($_FILES["picture"]["tmp_name"], $root.$fname);
                 $sql = "INSERT INTO pictures (room_id, picture) VALUES ('$id', '$fname')";
                 $conn->query($sql);
+                $last = $conn->insert_id;
             }
         }
     }
-    echo $fname;
+    echo json_encode(array('file'=> $fname, 'id'=> $last));
 ?>
