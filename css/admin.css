@@ -14,10 +14,6 @@ body{
     padding: 40px 0;
 }
 
-.new-body{
-    align-items: flex-start;
-}
-
 .form{
     background: linear-gradient(45deg,rgb(193, 193, 193) 80%, rgb(255, 255, 255) 100%);
     display: flex;
@@ -30,8 +26,6 @@ body{
     padding: 50px 40px;
     animation: appearanceFromBottom 0.6s 0.3s forwards, formShadow 0.6s 0.6s forwards;
 }
-
-
 
 .form form{
     display: flex;
@@ -67,7 +61,7 @@ h1{
     margin: 50px 0;
 }
 
-.operationButn, .exitAdminButn, .safe-btn{
+.operationButn, .exitAdminButn, .safe-btn, .apply-btn{
     height: 90px;
     width: 280px;
     background: linear-gradient(45deg,rgb(0, 0, 0) 0%, rgb(102, 102, 102) 100%);
@@ -77,44 +71,39 @@ h1{
     gap: 15px;
     color: white;
     font-size: 25px;
+    border: none;
     border-radius: 12px;
     margin: 0 20px;
     position: relative;
     overflow: hidden;
     transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
 }
 
 .exitAdminButn{
-    background: linear-gradient(45deg,rgb(112, 37, 37) 0%, rgb(182, 27, 27) 100%);
+    background: linear-gradient(45deg,rgb(146, 48, 48) 0%, rgb(255, 52, 52) 100%);
     height: 100px;
     width: 300px;
 }
 
 .safe-btn {
     height: 70px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
 }
 
-.operationButn::after, .exitAdminButn::after, .safe-btn::after{
+.operationButn::after{
     content: '';
     position: absolute;
     inset: 0;
     border-radius: 100px;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.25) 0%, transparent 70%);
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.142) 0%, transparent 70%);
     opacity: 0;
     transform: scale(0.4);
     transition: all 0.15s ease;
     pointer-events: none;
 }
 
-.exitAdminButn::after{
-    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.25) 0%, transparent 70%);
-}
-
-.operationButn:hover, .exitAdminButn:hover, .safe-btn:hover {
+.operationButn:hover, .exitAdminButn:hover, .safe-btn:hover, .apply-btn:hover {
     background: linear-gradient(45deg, rgb(33, 33, 33) 0%, rgb(140, 140, 140) 100%);
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
@@ -125,12 +114,12 @@ h1{
     box-shadow: 0 8px 25px rgba(255, 0, 0, 0.5);
 }
 
-.operationButn:hover::after, .exitAdminButn:hover::after, .safe-btn:hover::after {
+.operationButn:hover::after{
     opacity: 1;
     transform: scale(1);
 }
 
-.operationButn:active, .exitAdminButn:active, .safe-btn:active {
+.operationButn:active, .exitAdminButn:active, .safe-btn:active, .apply-btn:active {
     transform: translateY(1px) scale(0.98);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     background: linear-gradient(45deg, rgb(10, 10, 10) 0%, rgb(80, 80, 80) 100%);
@@ -181,6 +170,12 @@ select {
 
 .block-foto input[type="file"] {
     display: none;
+}
+
+.new-block-foto{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .foto-label {
@@ -286,16 +281,6 @@ select {
     transition: color 0.2s;
 }
 
-body .container{
-    /* 100px = 50px сверху + 50px снизу (padding body) */
-    min-height: calc(100vh - 100px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-    margin: 0;
-}
-
 /* ── admin/edit/item/index.php ── */
 
 .edit-card {
@@ -320,17 +305,18 @@ body .container{
     color: #222;
 }
 
-.edit-card-header h2 { font-size: 20px; font-weight: 700; }
-.edit-card-header p  { font-size: 13px; color: #555; margin-top: 3px; }
-
-.edit-photo-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: #444;
-    margin-bottom: 10px;
+.edit-card-header h2 { 
+    font-size: 20px;
+    font-weight: 700;
 }
 
-.edit-photo-preview {
+.edit-card-header p{ 
+    font-size: 13px;
+    color: #555;
+    margin-top: 3px;
+}
+
+.edit-photo-preview{
     width: 100%;
     max-height: 180px;
     object-fit: cover;
@@ -374,43 +360,12 @@ body .container{
     gap: 16px;
 }
 
-.edit-field {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.edit-field label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #2a2a2a;
-}
-
-.edit-field input,
-.edit-field textarea,
-.edit-field select {
-    width: 100%;
-    min-height: 46px;
-    padding: 10px 14px;
-    border-radius: 10px;
-    border: 2px solid rgb(160,160,160);
-    font-size: 15px;
-    background: #fff;
-    outline: none;
-    transition: border-color 0.2s;
-}
-
-.edit-field input:focus,
-.edit-field textarea:focus,
-.edit-field select:focus { border-color: #333; }
-
-.edit-field textarea { min-height: 100px; resize: vertical; }
-
 #file_select{
     display: none;
 }
 
 .edit-footer {
+    width: 100%;
     grid-column: 1 / -1;
     display: flex;
     justify-content: flex-end;
@@ -457,19 +412,10 @@ body .container{
     border-color: #333;
 }
 
-.container form input[type="submit"].apply-btn{
-    height: 46px;
-    width: auto;
-    padding: 0 30px;
-    background: linear-gradient(45deg, rgb(0,0,0) 0%, rgb(102,102,102) 100%);
-    color: #fff;
+.apply-btn{
+    width: 200px;
+    height: 50px;
     font-size: 16px;
-    font-weight: 600;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin-top: 0;
 }
 
 .container form input[type="submit"].apply-btn:hover{
@@ -485,7 +431,6 @@ body .container{
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #888 #ddd;
-    padding: 0;
 }
 
 .delete-list li{

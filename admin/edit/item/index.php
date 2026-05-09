@@ -61,7 +61,7 @@
                         <h2>Редактирование помещения</h2>
                     </div>
     
-                    <p class="edit-photo-title">
+                    <p class="photo-title">
                         <i class="fa-regular fa-image"></i> Главная фотография помещения
                     </p>
                     <img src="<?php echo $room[3] ?>" alt="Фото" class="edit-photo-preview" id="photo-preview">
@@ -86,19 +86,19 @@
                 </div>
     
                 <div class="edit-right">
-                    <div class="edit-field">
+                    <div class="label-input">
                         <label for="title">Название помещения</label>
                         <input type="text" name="title" id="title" value="<?php echo $room[0] ?>">
                     </div>
-                    <div class="edit-field">
+                    <div class="label-input">
                         <label for="price">Цена (₽)</label>
                         <input type="number" name="price" id="price" value="<?php echo $room[1] ?>">
                     </div>
-                    <div class="edit-field">
+                    <div class="label-input">
                         <label for="description">Описание</label>
                         <textarea name="description" id="description"><?php echo $room[2] ?></textarea>
                     </div>
-                    <div class="edit-field">
+                    <div class="label-input">
                         <label for="select">Тип</label>
                         <select name="sale" id="select">
                             <option value="0">Аренда</option>

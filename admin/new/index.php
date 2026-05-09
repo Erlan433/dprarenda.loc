@@ -27,6 +27,8 @@
         }
     }
 ?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,35 +38,47 @@
     <link rel="stylesheet" href="/css/admin.css">
     <script src="https://kit.fontawesome.com/d38ec0eb27.js" crossorigin="anonymous"></script>
 </head>
-<body class="new-body">
+<body>
     <div class="form">
         <h1>Добавление помещения</h1>
         <form action="" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="new" value="1">
-            <input type="text" name="title" placeholder="Введите название помещения">
-            <input type="number" name="price" placeholder="Введите цену помещения">
-            <textarea name="description" placeholder="Введите описание помещения"></textarea>
-            <div class="block-foto">
-                <input type="file" name="foto" id="foto" accept="image/jpeg,image/png,image/gif">
-                <label for="foto" class="foto-label">
-                    <i class="fa-regular fa-image fa-2x icon-image"></i>
-                    <span class="foto-label-text">Выберите фотографию</span>
-                    <span class="foto-label-hint">JPG, PNG, GIF</span>
-                </label>
+            <div class="label-input">
+                <label for="title">Название помещения</label>
+                <input type="text" name="title" id="title" placeholder="Введите название помещения">
             </div>
-            <select name="sale" id="select">
-                <option value="0">Аренда</option>
-                <option value="1">Продажа</option>
-            </select>
+            <div class="label-input">
+                    <label for="price">Цена (₽)</label>
+                    <input type="number" name="price" id="price" placeholder="Введите цену помещения">
+            </div>
+            <div class="label-input">
+                <label for="description">Описание</label>
+                <textarea name="description" id="description" placeholder="Введите описание помещения"></textarea>
+            </div>
+            <div class="new-block-foto">
+                <p class="photo-title">
+                    <i class="fa-regular fa-image"></i> Главная фотография помещения
+                </p>
+                <div class="block-foto">
+                    <input type="file" name="foto" id="foto" accept="image/jpeg,image/png,image/gif">
+                    <label for="foto" class="foto-label">
+                        <i class="fa-regular fa-image fa-2x icon-image"></i>
+                        <span class="foto-label-text">Выберите фотографию</span>
+                        <span class="foto-label-hint">JPG, PNG, GIF</span>
+                    </label>
+                </div>
+            </div>
+            <div class="label-input">
+                <label for="select">Тип</label>
+                <select name="sale" id="select">
+                    <option value="0">Аренда</option>
+                    <option value="1">Продажа</option>
+                </select>
+            </div>
             <input type="submit" value="сохранить" class="safe-btn">
         </form>
         <a href="/admin/" class="return">Вернуться</a>
     </div>
-    <script>
-        document.getElementById('foto').addEventListener('change', function () {
-            const label = document.querySelector('.foto-label-text');
-            label.textContent = this.files.length ? this.files[0].name : 'Выберите фотографию';
-        });
-    </script>
+    <script src="/js/script.js"></script>
 </body>
 </html>

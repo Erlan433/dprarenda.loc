@@ -1,11 +1,10 @@
 body{
     width: 100%;
-    height: auto;
 }
 
 header{
     width: 100%;
-    height: 80px;
+    height: 100px;
     background: linear-gradient(to right,rgb(0, 0, 0) 0%, rgb(102, 102, 102) 100%);
     position: fixed;
     top: 0;
@@ -29,16 +28,16 @@ header .container .telefon{
 
 main{
     width: 100%;
-    /* header=80px + footer=80px, остаток заполняем */
-    min-height: calc(100vh - 160px);
+    /* header=100px + footer=100px, остаток заполняем */
+    min-height: calc(100vh - 200px);
     display: flex;
     flex-direction: column;
     justify-content: baseline;
     align-items: center;
     gap: 50px;
     padding: 50px 0;
-    /* отступ равен высоте фиксированного хедера */
-    margin-top: 80px;
+    /* отступ равен высоте фиксированного хедера иначе все уходит под header*/
+    margin-top: 100px;
 }
 
 main > h1{
@@ -61,7 +60,7 @@ main > h1{
     flex-direction: column;
     justify-content: space-between;
     border-radius: 20px;
-    transition: all 0.3s ease;
+    transition: 0.15s;
     color: black;
 }
 
@@ -101,7 +100,7 @@ main > h1{
 
 footer{
     width: 100%;
-    height: 80px;
+    height: 100px;
     background: linear-gradient(to right,rgb(0, 0, 0) 0%, rgb(102, 102, 102) 100%);
     color: white;
 }
@@ -147,6 +146,7 @@ footer .container .copyright{
     font-size: 50px;
     font-weight: bold;
     margin-left: 50px;
+    margin-bottom: 50px;
 }
 
 .main-content .item-fotos{
