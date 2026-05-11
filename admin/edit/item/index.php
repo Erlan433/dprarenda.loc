@@ -6,7 +6,7 @@
         $id = $_POST["id"];
         $title = $_POST["title"];
         $price = $_POST["price"];
-        $description = $_POST["description"];
+        $description = preg_replace("/\n/", "<br>", ($_POST["description"]));
         $image = $_POST["old_foto"];
         $sale = $_POST["sale"];
         if(isset($_FILES["foto"]) && $_FILES["foto"]["error"] == 0){
@@ -32,6 +32,7 @@
         $sql = "SELECT title, price, description, picture, sale FROM rooms WHERE id = $id";
         $result = $conn->query($sql);
         $room = $result->fetch_row();
+        $room[2] = preg_replace("<<br>>", "\n", $room[2]);
         $sql = "SELECT id, picture FROM pictures WHERE room_id = $id";
         $result = $conn->query($sql);
         $pictures = $result->fetch_all();

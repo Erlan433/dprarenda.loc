@@ -9,7 +9,7 @@
     if (isset($_POST["new"])){
         $title = $_POST["title"];
         $price = $_POST["price"];
-        $description = $_POST["description"];
+        $description = preg_replace("/\n/", "<br>", ($_POST["description"]));
         $sale = $_POST["sale"];
         if (isset($_FILES["foto"])){
             if($_FILES["foto"]["error"] == 0){

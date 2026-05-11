@@ -164,6 +164,14 @@ select {
     padding-right: 40px;
 }
 
+select{
+    border-radius: 15px;
+}
+
+option{
+    border-radius: 10px;
+}
+
 .block-foto {
     width: 400px;
 }
