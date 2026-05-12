@@ -35,7 +35,6 @@ main{
     min-height: calc(100vh - 140px);
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
     align-items: center;
     gap: 50px;
     padding: 50px 0;
@@ -135,6 +134,24 @@ footer .container .copyright{
     color: white;
     font-size: 20px;
     margin-left: 30px;
+}
+
+@media(max-width: 1500px){
+    .pustPomesheniya{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width: 1200px){
+    .pustPomesheniya{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 900px){
+    .pustPomesheniya{
+        grid-template-columns: 1fr;
+    }
 }
 
 .main-content{
