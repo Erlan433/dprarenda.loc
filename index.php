@@ -28,7 +28,7 @@
         <div class="container">
             <a href="/" class="logo">DPR </a>
             <span class="telefon">
-                <i class="fa-solid fa-phone"></i>
+                <a href="tel:+79787777777"><i class="fa-solid fa-phone"></i></a>
                 <p>+7(978)777-77-77</p>
             </span>
         </div>

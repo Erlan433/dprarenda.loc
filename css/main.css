@@ -30,3 +30,15 @@
     color: #444;
     margin-bottom: 10px;
 }
+
+@media(max-width: 768px){
+    .container{
+        margin: 0 60px;
+    }
+}
+
+@media(max-width: 425px){
+    .container{
+        margin: 0 40px;
+    }
+}
