@@ -6,6 +6,7 @@
         $id = $_POST["id"];
         $title = $_POST["title"];
         $price = $_POST["price"];
+        $location = $_POST["location"];
         $description = preg_replace("/\n/", "<br>", ($_POST["description"]));
         $image = $_POST["old_foto"];
         $sale = $_POST["sale"];
@@ -24,12 +25,12 @@
                 }
             }
         }
-        $sql = "UPDATE rooms SET title = '$title', price = '$price', description = '$description', picture = '$image', sale = '$sale' WHERE id = '$id'";
+        $sql = "UPDATE rooms SET title = '$title', price = '$price', description = '$description', picture = '$image', sale = '$sale', location = '$location' WHERE id = '$id'";
         $conn->query($sql);
         header("Location: /admin/edit/");
     } else if(isset($_GET["r"])) {
         $id = $_GET["r"];
-        $sql = "SELECT title, price, description, picture, sale FROM rooms WHERE id = $id";
+        $sql = "SELECT title, price, description, picture, sale, location FROM rooms WHERE id = $id";
         $result = $conn->query($sql);
         $room = $result->fetch_row();
         $room[2] = preg_replace("<<br>>", "\n", $room[2]);
@@ -89,15 +90,19 @@
                 <div class="edit-right">
                     <div class="label-input">
                         <label for="title">Название помещения</label>
-                        <input type="text" name="title" id="title" value="<?php echo $room[0] ?>">
+                        <input type="text" name="title" id="title" value="<?php echo $room[0] ?>" placeholder="Введите название помещения">
                     </div>
                     <div class="label-input">
                         <label for="price">Цена (₽)</label>
-                        <input type="number" name="price" id="price" value="<?php echo $room[1] ?>">
+                        <input type="number" name="price" id="price" value="<?php echo $room[1] ?>" placeholder="Введите цену помещения">
+                    </div>
+                    <div class="label-input">
+                        <label for="location">Местоположение</label>
+                        <input type="text" name="location" id="location" value="<?php echo $room[5] ?>" placeholder="Введите местоположение помещения">
                     </div>
                     <div class="label-input">
                         <label for="description">Описание</label>
-                        <textarea name="description" id="description"><?php echo $room[2] ?></textarea>
+                        <textarea name="description" id="description" placeholder="Введите описание помещения"><?php echo $room[2] ?></textarea>
                     </div>
                     <div class="label-input">
                         <label for="select">Тип</label>

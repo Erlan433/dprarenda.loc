@@ -9,6 +9,7 @@
     if (isset($_POST["new"])){
         $title = $_POST["title"];
         $price = $_POST["price"];
+        $location = $_POST["location"];
         $description = preg_replace("/\n/", "<br>", ($_POST["description"]));
         $sale = $_POST["sale"];
         if (isset($_FILES["foto"])){
@@ -20,7 +21,7 @@
                     $exp = explode(".", $_FILES["foto"]["name"]);
                     $fname = "/images/".getRandomString(20).".".end($exp);
                     move_uploaded_file($_FILES["foto"]["tmp_name"], $root.$fname);
-                    $sql = "INSERT INTO rooms (title, price, description, picture, sale) VALUES ('$title', '$price', '$description', '$fname', '$sale')";
+                    $sql = "INSERT INTO rooms (title, price, description, picture, sale, location) VALUES ('$title', '$price', '$description', '$fname', '$sale', '$location')";
                     $conn->query($sql);
                 }
             }
@@ -48,8 +49,12 @@
                 <input type="text" name="title" id="title" placeholder="Введите название помещения">
             </div>
             <div class="label-input">
-                    <label for="price">Цена (₽)</label>
-                    <input type="number" name="price" id="price" placeholder="Введите цену помещения">
+                <label for="price">Цена (₽)</label>
+                <input type="number" name="price" id="price" placeholder="Введите цену помещения">
+            </div>
+            <div class="label-input">
+                <label for="location">Местоположение</label>
+                <input type="text" name="location" id="location" placeholder="Введите местоположение помещения">
             </div>
             <div class="label-input">
                 <label for="description">Описание</label>

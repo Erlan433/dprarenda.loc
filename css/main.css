@@ -31,13 +31,13 @@
     margin-bottom: 10px;
 }
 
-@media(max-width: 768px){
+@media(max-width: 770px){
     .container{
         margin: 0 60px;
     }
 }
 
-@media(max-width: 425px){
+@media(max-width: 445px){
     .container{
         margin: 0 40px;
     }

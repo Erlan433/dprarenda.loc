@@ -16,8 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DPR &mdash; продажа пустых помещений</title>
     <link rel="icon" href="/images/помещение №1.png" type="image/x-icon">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/style.css?m=<?php echo rand() ?>">
+    <link rel="stylesheet" href="/css/main.css?m=<?php echo rand() ?>">
     <script src="https://kit.fontawesome.com/d38ec0eb27.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,7 +43,7 @@
                     <a class="title" href="/item/?i=<?php echo $rooms[$i][0]?>"><?php echo $rooms[$i][1]?></a>
                     <p class="price"><?php echo $rooms[$i][2]?> ₽<?php echo ($rooms[$i][5] == 0 ? " в аренду" : "") ?></p>
                     <span class="location">
-                        <i class="fa-solid fa-location-dot"></i>г. Симферополь
+                        <i class="fa-solid fa-location-dot"></i><?php echo $rooms[$i][6]?>
                     </span>
                     <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="btn-pustPomesh">
                         <span>Подробнее</span>
