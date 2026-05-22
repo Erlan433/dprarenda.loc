@@ -77,6 +77,11 @@
                         </label>
                     </div>
 
+                    <hr>
+
+                    <input type="file" id="file_select" onchange="uploadImg(this.files, <?php echo $id ?>)" accept="image/jpeg,image/png,image/gif">
+                    <input type="button" id="add_pictures" value="добавить фото">
+
                     <div class="fotos">
                         <?php for($i = 0; $i < count($pictures); $i++): ?>
                             <div class="img-item" style="background-image: url(<?php echo $pictures[$i][1] ?>);">
@@ -111,8 +116,6 @@
                             <option value="1" <?php echo ($room[4] == 1 ? "selected" : "") ?>>Продажа</option>
                         </select>
                     </div>
-                    <input type="file" id="file_select" onchange="uploadImg(this.files, <?php echo $id ?>)" accept="image/jpeg,image/png,image/gif">
-                    <input type="button" id="add_pictures" value="добавить фото">
                 </div>
             </div>
 

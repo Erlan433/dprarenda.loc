@@ -75,15 +75,36 @@
             </div>
             <div class="label-input">
                 <label for="select">Тип</label>
-                <select name="sale" id="select">
+                <!-- <select name="sale" id="select">
                     <option value="0">Аренда</option>
                     <option value="1">Продажа</option>
-                </select>
+                </select> -->
+                <div class="select">
+                    <button type="button" class="select-btn">Аренда</button>
+                    <div class="drop-down">
+                        <label for="arenda">Аренда</label>
+                        <input type="radio" id="arenda" value="0" name="sale">
+                        <label for="prodaja">Продажа</label>
+                        <input type="radio" id="prodaja" value="1" name="sale">
+                    </div>
+                </div>
             </div>
             <input type="submit" value="сохранить" class="safe-btn">
         </form>
         <a href="/admin/" class="return">Вернуться</a>
     </div>
+    <script>
+        document.querySelector(".select-btn").onclick = function (){
+            document.querySelector(".drop-down").style.display = 'block';
+        }
+
+        const labels = document.querySelectorAll(".drop-down label");
+        labels.forEach(label => {
+            label.onclick = function (){
+                document.querySelector(".drop-down").style.display = 'none';
+            }
+        });
+    </script>
     <script src="/js/script.js"></script>
 </body>
 </html>
