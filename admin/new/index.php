@@ -40,71 +40,72 @@
     <script src="https://kit.fontawesome.com/d38ec0eb27.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="form">
-        <h1>Добавление помещения</h1>
-        <form action="" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="new" value="1">
-            <div class="label-input">
-                <label for="title">Название помещения</label>
-                <input type="text" name="title" id="title" placeholder="Введите название помещения">
-            </div>
-            <div class="label-input">
-                <label for="price">Цена (₽)</label>
-                <input type="number" name="price" id="price" placeholder="Введите цену помещения">
-            </div>
-            <div class="label-input">
-                <label for="location">Местоположение</label>
-                <input type="text" name="location" id="location" placeholder="Введите местоположение помещения">
-            </div>
-            <div class="label-input">
-                <label for="description">Описание</label>
-                <textarea name="description" id="description" placeholder="Введите описание помещения"></textarea>
-            </div>
-            <div class="new-block-foto">
-                <p class="photo-title">
-                    <i class="fa-regular fa-image"></i> Главная фотография помещения
-                </p>
-                <div class="block-foto">
-                    <input type="file" name="foto" id="foto" accept="image/jpeg,image/png,image/gif">
-                    <label for="foto" class="foto-label">
-                        <i class="fa-regular fa-image fa-2x icon-image"></i>
-                        <span class="foto-label-text">Выберите фотографию</span>
-                        <span class="foto-label-hint">JPG, PNG, GIF</span>
-                    </label>
+    <main class="container">
+        <form class="edit-card" action="" method="post" enctype="multipart/form-data">
+            <input type="hidden">
+
+            <div class="edit-card-content">
+                <div class="edit-left">
+                    <div class="edit-card-header">
+                        <i class="fa-regular fa-building fa-2x"></i>
+                        <h2>Добавление помещения</h2>
+                    </div>
+
+                    <div>
+                        <p class="photo-title">
+                            <i class="fa-regular fa-image"></i> Главная фотография помещения
+                        </p>
+        
+                        <div class="block-foto">
+                            <input type="file" name="foto" id="foto" accept="image/jpeg,image/png,image/gif">
+                            <label for="foto" class="foto-label">
+                                <i class="fa-regular fa-image fa-2x icon-image"></i>
+                                <span class="foto-label-text">Выберите файл</span>
+                                <span class="foto-label-hint">JPG, PNG, GIF</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="label-input">
+                        <label for="select">Тип</label>
+                        <div class="select">
+                            <button type="button" class="select-btn">Аренда</button>
+                            <div class="drop-down" style="display: none">
+                                <label for="arenda">Аренда</label>
+                                <input type="radio" id="arenda" value="0" name="sale">
+                                <label for="prodaja">Продажа</label>
+                                <input type="radio" id="prodaja" value="1" name="sale">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="label-input">
-                <label for="select">Тип</label>
-                <!-- <select name="sale" id="select">
-                    <option value="0">Аренда</option>
-                    <option value="1">Продажа</option>
-                </select> -->
-                <div class="select">
-                    <button type="button" class="select-btn">Аренда</button>
-                    <div class="drop-down">
-                        <label for="arenda">Аренда</label>
-                        <input type="radio" id="arenda" value="0" name="sale">
-                        <label for="prodaja">Продажа</label>
-                        <input type="radio" id="prodaja" value="1" name="sale">
+    
+                <div class="edit-right">
+                    <div class="label-input">
+                        <label for="title">Название помещения</label>
+                        <input type="text" name="title" id="title" placeholder="Введите название помещения">
+                    </div>
+                    <div class="label-input">
+                        <label for="price">Цена (₽)</label>
+                        <input type="number" name="price" id="price" placeholder="Введите цену помещения">
+                    </div>
+                    <div class="label-input">
+                        <label for="location">Местоположение</label>
+                        <input type="text" name="location" id="location" placeholder="Введите местоположение помещения">
+                    </div>
+                    <div class="label-input">
+                        <label for="description">Описание</label>
+                        <textarea name="description" id="description" placeholder="Введите описание помещения"></textarea>
                     </div>
                 </div>
             </div>
-            <input type="submit" value="сохранить" class="safe-btn">
-        </form>
-        <a href="/admin/" class="return">Вернуться</a>
-    </div>
-    <script>
-        document.querySelector(".select-btn").onclick = function (){
-            document.querySelector(".drop-down").style.display = 'block';
-        }
 
-        const labels = document.querySelectorAll(".drop-down label");
-        labels.forEach(label => {
-            label.onclick = function (){
-                document.querySelector(".drop-down").style.display = 'none';
-            }
-        });
-    </script>
+            <div class="edit-footer">
+                <a href="/admin/" class="return">Отмена</a>
+                <input type="submit" value="Сохранить" class="safe-btn">
+            </div>
+        </form>
+    </main>
+    <script src="/js/select.js"></script>
     <script src="/js/script.js"></script>
 </body>
 </html>

@@ -158,7 +158,8 @@ textarea {
 .select-btn {
     cursor: pointer;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23555' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url(/images/chevron-down.png);
+    background-size: 20px 15px;
     background-repeat: no-repeat;
     background-position: right 14px center;
     padding-right: 40px;
@@ -167,7 +168,6 @@ textarea {
 }
 
 .drop-down{
-    display: none;
     position: absolute;
     z-index: 1;
     border-radius: 10px;
@@ -315,14 +315,14 @@ textarea {
 
 .edit-card-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 14px;
     margin-bottom: 20px;
     color: #222;
 }
 
 .edit-card-header h2 { 
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 700;
 }
 
@@ -344,11 +344,6 @@ textarea {
 .edit-card-content{
     display: flex;
     gap: 20px;
-}
-
-hr{
-    margin: 12px 0;
-    border: 2px solid rgb(90, 90, 90);
 }
 
 .fotos{
@@ -373,6 +368,12 @@ hr{
     float: right;
     margin: 0 5px;
     cursor: pointer;
+}
+
+.edit-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .edit-right {
