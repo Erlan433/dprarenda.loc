@@ -1,11 +1,34 @@
 <?php
     include $_SERVER["DOCUMENT_ROOT"]."/db.php";
-
-    $sql = "SELECT * FROM rooms";
-    $result = query($sql);
+    
     $rooms = array();
-    if ($result && $result->num_rows > 0) {
-        $rooms = $result->fetch_all();
+    $search = "";
+    $filter = "";
+    if(isset($_POST["seek"])){
+        $search = $_POST["search"];
+        $sql = "SELECT * FROM rooms WHERE title LIKE '%$search%'";
+        $result = query($sql);
+        if ($result && $result->num_rows > 0) {
+            $rooms = $result->fetch_all();
+        }
+    } else if(isset($_GET["filter"])) {
+        $filter = $_GET["filter"];
+        if($filter == "rent"){
+            $sale = 0;
+        } else {
+            $sale = 1;
+        }
+        $sql = "SELECT * FROM rooms WHERE sale = $sale";
+        $result = query($sql);
+        if ($result && $result->num_rows > 0) {
+            $rooms = $result->fetch_all();
+        }
+    } else {
+        $sql = "SELECT * FROM rooms";
+        $result = query($sql);
+        if ($result && $result->num_rows > 0) {
+            $rooms = $result->fetch_all();
+        }
     }
 ?>
 
@@ -35,6 +58,18 @@
     </header>
     <main>
         <h1>Пустые помещения</h1>
+
+        <form action="" method="post">
+            <input type="hidden" name="seek" value="1">
+            <input type="text" name="search" placeholder="Поиск..." value="<?php echo $search ?>">
+            <input type="submit" value="Найти">
+        </form>
+
+        <div>
+            <a href="?" style="<?php echo ($filter == '' ? 'border: 2px solid black' : '') ?>">Все</a>
+            <a href="?filter=rent" style="<?php echo ($filter == 'rent' ? 'border: 2px solid black' : '') ?>">В аренду</a>
+            <a href="?filter=sale" style="<?php echo ($filter == 'sale' ? 'border: 2px solid black' : '') ?>">В продажу</a>
+        </div>
 
         <div class="pustPomesheniya container">
             <?php for($i = 0; $i < count($rooms); $i++): ?>
