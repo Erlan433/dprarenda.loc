@@ -32,7 +32,7 @@
     <link rel="icon" href="./images/помещение №1.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/login.css">
-    <script src="https://kit.fontawesome.com/bbeb167ece.js" crossorigin="anonymous"></script>
+    <link href="/fontawesome/css/all.css" rel="stylesheet">
 </head>
 <body>
     <div class="form">

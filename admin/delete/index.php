@@ -26,7 +26,7 @@
     <title>Admin DPR</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/admin.css">
-    <script src="https://kit.fontawesome.com/d38ec0eb27.js" crossorigin="anonymous"></script>
+    <link href="/fontawesome/css/all.css" rel="stylesheet">
 </head>
 <body>
     <form class="form" action="" method="post">

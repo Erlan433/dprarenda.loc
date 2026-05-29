@@ -7,10 +7,6 @@
     if(isset($_POST["seek"])){
         $search = $_POST["search"];
         $sql = "SELECT * FROM rooms WHERE title LIKE '%$search%'";
-        $result = query($sql);
-        if ($result && $result->num_rows > 0) {
-            $rooms = $result->fetch_all();
-        }
     } else if(isset($_GET["filter"])) {
         $filter = $_GET["filter"];
         if($filter == "rent"){
@@ -19,16 +15,17 @@
             $sale = 1;
         }
         $sql = "SELECT * FROM rooms WHERE sale = $sale";
-        $result = query($sql);
-        if ($result && $result->num_rows > 0) {
-            $rooms = $result->fetch_all();
-        }
+    } else if(isset($_POST["from"]) || isset($_POST["to"])) {
+        $from = $_POST["from"] != "" ? $_POST["from"] : 0;
+        $to = $_POST["to"] != "" ? $_POST["to"] : 1000000000;
+        $sql = "SELECT * FROM rooms WHERE price BETWEEN $from AND $to";
+        echo $sql;
     } else {
         $sql = "SELECT * FROM rooms";
-        $result = query($sql);
-        if ($result && $result->num_rows > 0) {
-            $rooms = $result->fetch_all();
-        }
+    }
+    $result = query($sql);
+    if ($result && $result->num_rows > 0) {
+        $rooms = $result->fetch_all();
     }
 ?>
 
@@ -41,10 +38,9 @@
     <link rel="icon" href="/images/помещение №1.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/style.css?m=<?php echo rand() ?>">
     <link rel="stylesheet" href="/css/main.css?m=<?php echo rand() ?>">
-    <script src="https://kit.fontawesome.com/d38ec0eb27.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="/fontawesome/css/all.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -52,23 +48,43 @@
             <a href="/" class="logo">DPR </a>
             <span class="telefon">
                 <a href="tel:+79787777777"><i class="fa-solid fa-phone"></i></a>
-                <p>+7(978)777-77-77</p>
+                <p>+7(978) 231-16-37</p>
             </span>
         </div>
     </header>
     <main>
         <h1>Пустые помещения</h1>
 
-        <form action="" method="post">
-            <input type="hidden" name="seek" value="1">
-            <input type="text" name="search" placeholder="Поиск..." value="<?php echo $search ?>">
-            <input type="submit" value="Найти">
-        </form>
-
-        <div>
-            <a href="?" style="<?php echo ($filter == '' ? 'border: 2px solid black' : '') ?>">Все</a>
-            <a href="?filter=rent" style="<?php echo ($filter == 'rent' ? 'border: 2px solid black' : '') ?>">В аренду</a>
-            <a href="?filter=sale" style="<?php echo ($filter == 'sale' ? 'border: 2px solid black' : '') ?>">В продажу</a>
+        <div class="filters">
+            <div class="filter">
+                <button id="price-filter"><i class="fa-solid fa-filter-circle-dollar"></i> Цена</button>
+                <div class="searchAndBtn">
+                    <form action="" method="post">
+                        <input type="hidden" name="seek" value="1">
+                        <div class="search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" name="search" placeholder="Поиск..." value="<?php echo $search ?>" autocomplete="off">
+                        </div>
+                        <input type="submit" value="Найти">
+                    </form>
+                </div>
+            </div>
+    
+            <form action="" method="post" class="price-modal" style="display: none;">
+                <div class="xmark"><i class="fa-solid fa-xmark" id="xmark"></i></div>
+                <div class="modal-h2"><h2>Фильтр цены</h2></div>
+                <label for="from">От</label>
+                <input type="number" name="from" id="from" placeholder="0">
+                <label for="to">До</label>
+                <input type="number" name="to" id="to" placeholder="&infin;">
+                <input type="submit" value="Показать">
+            </form>
+    
+            <div class="selectType">
+                <a href="?" style="<?php echo ($filter == '' ? 'border: 2px solid rgb(0, 150, 255)' : '') ?>">Все</a>
+                <a href="?filter=rent" style="<?php echo ($filter == 'rent' ? 'border: 2px solid rgb(0, 150, 255)' : '') ?>">В аренду</a>
+                <a href="?filter=sale" style="<?php echo ($filter == 'sale' ? 'border: 2px solid rgb(0, 150, 255)' : '') ?>">В продажу</a>
+            </div>
         </div>
 
         <div class="pustPomesheniya container">
@@ -96,5 +112,7 @@
             <p class="copyright">&copy; 2026 Все права защищены</p>
         </div>
     </footer>
+    <div class="cover" style="display: none;"></div>
+    <script src="/js/modal.js"></script>
 </body>
 </html>
