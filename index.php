@@ -4,9 +4,15 @@
     $rooms = array();
     $search = "";
     $filter = "";
+    $sale = -1;
     if(isset($_POST["seek"])){
         $search = $_POST["search"];
         $sql = "SELECT * FROM rooms WHERE title LIKE '%$search%'";
+    } else if(isset($_POST["from"]) || isset($_POST["to"])) {
+        $sales = $_POST["sale"] == -1 ? "0,1" : $_POST["sale"];
+        $from = $_POST["from"] != "" ? $_POST["from"] : 0;
+        $to = $_POST["to"] != "" ? $_POST["to"] : 1000000000;
+        $sql = "SELECT * FROM rooms WHERE price BETWEEN $from AND $to AND sale IN ($sales)";
     } else if(isset($_GET["filter"])) {
         $filter = $_GET["filter"];
         if($filter == "rent"){
@@ -15,18 +21,14 @@
             $sale = 1;
         }
         $sql = "SELECT * FROM rooms WHERE sale = $sale";
-    } else if(isset($_POST["from"]) || isset($_POST["to"])) {
-        $from = $_POST["from"] != "" ? $_POST["from"] : 0;
-        $to = $_POST["to"] != "" ? $_POST["to"] : 1000000000;
-        $sql = "SELECT * FROM rooms WHERE price BETWEEN $from AND $to";
-        echo $sql;
     } else {
         $sql = "SELECT * FROM rooms";
     }
-    $result = query($sql);
+    $result = $conn->query($sql);
     if ($result && $result->num_rows > 0) {
         $rooms = $result->fetch_all();
     }
+    echo $sale;
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +59,16 @@
 
         <div class="filters">
             <div class="filter">
-                <button id="price-filter"><i class="fa-solid fa-filter-circle-dollar"></i> Цена</button>
+                <!-- ФИЛЬТР -->
+                 <div style="position: relative;">
+                     <button class="button-filter"><i class="fa-solid fa-filter"></i> Фильтр</button>
+                     <div class="drop-down" style="display: none">
+                         <button class="filter-select-price">Цена</button>
+                         <button class="filter-select-square-price">Цена за м²</button>
+                     </div>
+                 </div>
+
+                <!-- ПОИСКОВИК -->
                 <div class="searchAndBtn">
                     <form action="" method="post">
                         <input type="hidden" name="seek" value="1">
@@ -69,8 +80,10 @@
                     </form>
                 </div>
             </div>
-    
+
+            <!-- ФОРМОЧКА ФИЛЬТРА ЦЕНЫ -->
             <form action="" method="post" class="price-modal" style="display: none;">
+                <input type="hidden" name="sale" value="<?php echo $sale ?>">
                 <div class="xmark"><i class="fa-solid fa-xmark" id="xmark"></i></div>
                 <div class="modal-h2"><h2>Фильтр цены</h2></div>
                 <label for="from">От</label>
@@ -79,20 +92,35 @@
                 <input type="number" name="to" id="to" placeholder="&infin;">
                 <input type="submit" value="Показать">
             </form>
+
+            <!-- ФОРМОЧКА ФИЛЬТРА ЦЕНЫ ЗА КВАДРАТНЫЙ МЕТР -->
+            <form action="" method="post" class="square-price-modal" style="display: none;">
+                <input type="hidden" name="sale" value="<?php echo $sale ?>">
+                <div class="xmark"><i class="fa-solid fa-xmark" id="xmark"></i></div>
+                <div class="modal-h2"><h2>Фильтр цены за квадратный метр</h2></div>
+                <label for="from">От</label>
+                <input type="number" name="from" id="from" placeholder="0">
+                <label for="to">До</label>
+                <input type="number" name="to" id="to" placeholder="&infin;">
+                <input type="submit" value="Показать">
+            </form>
     
+            <!-- ВЫБОР ТИПА -->
             <div class="selectType">
-                <a href="?" style="<?php echo ($filter == '' ? 'border: 2px solid rgb(0, 150, 255)' : '') ?>">Все</a>
-                <a href="?filter=rent" style="<?php echo ($filter == 'rent' ? 'border: 2px solid rgb(0, 150, 255)' : '') ?>">В аренду</a>
-                <a href="?filter=sale" style="<?php echo ($filter == 'sale' ? 'border: 2px solid rgb(0, 150, 255)' : '') ?>">В продажу</a>
+                <a href="?" style="<?php echo ($sale == -1 ? 'border: 2px solid rgb(0, 150, 255)' : '') ?>">Все</a>
+                <a href="?filter=rent" style="<?php echo ($sale == 0 ? 'border: 2px solid rgb(0, 150, 255)' : '') ?>">В аренду</a>
+                <a href="?filter=sale" style="<?php echo ($sale == 1 ? 'border: 2px solid rgb(0, 150, 255)' : '') ?>">В продажу</a>
             </div>
         </div>
 
+        <!-- ПУСТЫЕ ПОМЕЩЕНИЯ -->
         <div class="pustPomesheniya container">
             <?php for($i = 0; $i < count($rooms); $i++): ?>
                 <div class="pustPomesh">
                     <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="img" style="background-image: url(<?php echo $rooms[$i][4]?>)"></a>
                     <a class="title" href="/item/?i=<?php echo $rooms[$i][0]?>"><?php echo $rooms[$i][1]?></a>
-                    <p class="price"><?php echo $rooms[$i][2]?> ₽<?php echo ($rooms[$i][5] == 0 ? " в аренду" : "") ?></p>
+                    <p class="price"><?php echo $rooms[$i][2]?> ₽<?php echo ($rooms[$i][5] == 0 ? " в месяц" : "") ?></p>
+                    <p class="square_price"><?php echo $rooms[$i][7]?> ₽<?php echo ($rooms[$i][5] == 0 ? " за м² в месяц" : " за м²") ?></p>
                     <span class="location">
                         <i class="fa-solid fa-location-dot"></i><?php echo $rooms[$i][6]?>
                     </span>
@@ -112,7 +140,9 @@
             <p class="copyright">&copy; 2026 Все права защищены</p>
         </div>
     </footer>
+
     <div class="cover" style="display: none;"></div>
-    <script src="/js/modal.js"></script>
+
+    <script src="/js/select-filter.js"></script>
 </body>
 </html>

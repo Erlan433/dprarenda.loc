@@ -1,0 +1,38 @@
+// ПЕРЕМЕННЫЕ ВЫБОРА
+const buttonFilter = document.querySelector(".button-filter");
+const dropDown = document.querySelector(".drop-down");
+const filterSelectPrice = document.querySelector(".filter-select-price");
+const filterSelectSquarePrice = document.querySelector(".filter-select-square-price");
+
+// ПЕРЕМЕННЫЕ ФИЛЬТРА ЦЕНЫ
+const cover = document.querySelector(".cover");
+const priceModal = document.querySelector(".price-modal");
+const squarePriceModal = document.querySelector(".square-price-modal");
+const xmark = document.querySelector("#xmark");
+
+// ПЕРЕМЕННЫЕ ФИЛЬТРА ЦЕНЫ ЗА КВАДРАТНЫЙ МЕТР
+
+buttonFilter.onclick = function (){
+    if (dropDown.style.display == 'none'){
+        dropDown.style.display = 'flex';
+    } else {
+        dropDown.style.display = 'none';
+    }
+}
+
+filterSelectPrice.onclick = function (){
+    dropDown.style.display = 'none';
+    cover.style.display = "block";
+    priceModal.style.display = "flex";
+}
+
+filterSelectSquarePrice.onclick = function (){
+    dropDown.style.display = 'none';
+    cover.style.display = "block";
+    squarePriceModal.style.display = "flex";
+}
+
+xmark.onclick = function() {
+    cover.style.display = "none";
+    priceModal.style.display = "none";
+}

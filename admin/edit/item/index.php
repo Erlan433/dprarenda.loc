@@ -6,6 +6,7 @@
         $id = $_POST["id"];
         $title = $_POST["title"];
         $price = $_POST["price"];
+        $square_price = $_POST["square_price"];
         $location = $_POST["location"];
         $description = preg_replace("/\n/", "<br>", ($_POST["description"]));
         $image = $_POST["old_foto"];
@@ -25,7 +26,7 @@
                 }
             }
         }
-        $sql = "UPDATE rooms SET title = '$title', price = '$price', description = '$description', picture = '$image', sale = '$sale', location = '$location' WHERE id = '$id'";
+        $sql = "UPDATE rooms SET title = '$title', price = '$price', description = '$description', picture = '$image', sale = '$sale', location = '$location', square_price = '$square_price' WHERE id = '$id'";
         $conn->query($sql);
         header("Location: /admin/edit/");
     } else if(isset($_GET["r"])) {
@@ -102,6 +103,10 @@
                         <input type="number" name="price" id="price" value="<?php echo $room[1] ?>" placeholder="Введите цену помещения">
                     </div>
                     <div class="label-input">
+                        <label for="square_price">Цена за квадртный метр (₽)</label>
+                        <input type="number" name="square_price" id="square_price" placeholder="Введите цену за квадртный метр">
+                    </div>
+                    <div class="label-input">
                         <label for="location">Местоположение</label>
                         <input type="text" name="location" id="location" value="<?php echo $room[5] ?>" placeholder="Введите местоположение помещения">
                     </div>
@@ -111,17 +116,13 @@
                     </div>
                     <div class="label-input">
                         <label for="select">Тип</label>
-                        <!-- <select name="sale" id="select">
-                            <option value="0">Аренда</option>
-                            <option value="1" <?php echo ($room[4] == 1 ? "selected" : "") ?>>Продажа</option>
-                        </select> -->
-                        <div class="select">
-                            <button type="button" class="select-btn"><?php echo ($room[4] == 1 ? "Продажа" : "Аренда") ?></button>
-                            <div class="drop-down">
+                        <div class="select" id="select">
+                            <button type="button" class="select-btn"><span><?php echo ($room[4] == 1 ? "Продажа" : "Аренда") ?></span><i class="fa-solid fa-chevron-down"></i></button>
+                            <div class="drop-down" style="display: none;">
                                 <label for="arenda">Аренда</label>
-                                <input type="radio" id="arenda" value="0" name="sale">
+                                <input type="radio" id="arenda" value="0" name="sale" <?php echo ($room[4] == 0) ? 'checked' : ''; ?>>
                                 <label for="prodaja">Продажа</label>
-                                <input type="radio" id="prodaja" value="1" name="sale">
+                                <input type="radio" id="prodaja" value="1" name="sale" <?php echo ($room[4] == 1) ? 'checked' : ''; ?>>
                             </div>
                         </div>
                     </div>
@@ -135,7 +136,7 @@
         </form>
     </main>
 
-    <script src="/js/select.js"></script>
+    <script src="/js/select-admin.js"></script>
     <script src="/js/script.js"></script>
 </body>
 </html>

@@ -32,22 +32,29 @@
     <form class="form" action="" method="post">
         <h1>Удалить объект</h1>
         <div class="delete-toolbar">
-            <select name="select" id="select">
-                <option value="no">-------</option>
-                <option value="delete">Удалить</option>
-            </select>
+            <div class="select" id="select">
+                <button type="button" class="select-btn select-btn-delete"><span>-------</span><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="drop-down drop-down-delete" style="display: none">
+                    <label for="arenda">-------</label>
+                    <input type="radio" id="arenda" value="no" name="select">
+                    <label for="prodaja">Удалить</label>
+                    <input type="radio" id="prodaja" value="delete" name="select">
+                </div>
+            </div>
             <input type="submit" value="Применить" class="apply-btn">
         </div>
         <ul class="delete-list">
             <?php for($i = 0; $i < count($rooms); $i++): ?>
                 <li>
-                    <input type="checkbox" name="check[]" id="check<?php echo $rooms[$i][0] ?>" value="<?php echo $rooms[$i][0] ?>">
                     <img src="<?php echo $rooms[$i][2] ?>" alt="foto">
+                    <input type="checkbox" name="check[]" id="check<?php echo $rooms[$i][0] ?>" value="<?php echo $rooms[$i][0] ?>">
                     <label for="check<?php echo $rooms[$i][0] ?>"><?php echo $rooms[$i][1] ?></label>
                 </li>
             <?php endfor ?>
         </ul>
         <a href="/admin/" class="return">Вернуться</a>
     </form>
+
+    <script src="/js/select-admin.js"></script>
 </body>
 </html>

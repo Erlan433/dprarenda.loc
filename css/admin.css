@@ -130,6 +130,25 @@ h1{
     background: linear-gradient(45deg, rgb(112, 37, 37) 0%, rgb(182, 27, 27) 100%);
 }
 
+.label-input{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.label-input label{
+    font-size: 14px;
+    font-weight: 600;
+    color: #2a2a2a;
+}
+
+.photo-title{
+    font-size: 14px;
+    font-weight: 600;
+    color: #2a2a2a;
+    margin-bottom: 10px;
+}
+
 input:not([type="submit"]):not([type="hidden"]):not([type="file"]):not([type="checkbox"]),
 textarea, .select-btn, .drop-down label{
     width: 400px;
@@ -138,7 +157,7 @@ textarea, .select-btn, .drop-down label{
     border-radius: 10px;
     border: 2px solid rgb(160, 160, 160);
     font-size: 16px;
-    background: #ffffff;
+    background-color: white;
     color: #1a1a1a;
     transition: border-color 0.25s, box-shadow 0.25s;
     outline: none;
@@ -157,24 +176,37 @@ textarea {
 
 .select-btn {
     cursor: pointer;
-    appearance: none;
-    background-image: url(/images/chevron-down.png);
-    background-size: 20px 15px;
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    padding-right: 40px;
-    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     position: relative;
+}
+
+.select-btn:hover, .select-btn:focus{
+    border-color: #5a5a5a;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
 }
 
 .drop-down{
     position: absolute;
     z-index: 1;
     border-radius: 10px;
+    background-color: white;
+    border: 2px solid rgb(160, 160, 160);
+    overflow: hidden;
+    width: 400px;
 }
 
 .drop-down label{
     display: block;
+    border: none;
+    border-top: 2px solid #e0e0e0;
+    border-radius: 0px;
+    font-weight: lighter;
+}
+
+.drop-down label:hover{
+    background-color: #e0e0e0;
 }
 
 .drop-down input{
@@ -302,11 +334,10 @@ textarea {
 .edit-card {
     background: linear-gradient(45deg, rgb(193,193,193) 80%, rgb(255,255,255) 100%);
     border-radius: 15px;
-    padding: 40px;
+    padding: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px 40px;
-    max-width: 860px;
     width: 100%;
     animation: appearanceFromBottom 0.6s 0.3s forwards, formShadow 0.6s 0.6s forwards;
     opacity: 0;
@@ -376,6 +407,10 @@ textarea {
     gap: 16px;
 }
 
+hr{
+    border: 1px solid rgb(150, 150, 150);
+}
+
 .edit-right {
     display: flex;
     flex-direction: column;
@@ -424,22 +459,8 @@ textarea {
     gap: 50px;
 }
 
-.container form select#select{
-    width: auto;
-    min-width: 160px;
-    min-height: 46px;
-    padding: 10px 14px;
-    border-radius: 10px;
-    border: 2px solid rgb(105,105,105);
-    font-size: 16px;
-    background: #fff;
-    cursor: pointer;
-    transition: border-color 0.2s;
-}
-
-.container form select#select:focus{
-    outline: none;
-    border-color: #333;
+.select-btn-delete, .drop-down-delete{
+    width: 200px;
 }
 
 .apply-btn{
@@ -467,7 +488,7 @@ textarea {
     background: rgba(255,255,255,0.65);
     border: 2px solid transparent;
     border-radius: 10px;
-    padding: 0 15px;
+    padding: 0 15px 0 0;
     transition: background 0.2s;
     cursor: pointer;
 }

@@ -9,17 +9,6 @@ if ($conn->connect_error) {
 
 $conn->set_charset("utf8mb4");
 
-function query($sql) {
-    global $conn;
-    $result = $conn->query($sql);
-    if (!$result) {
-        echo "Ошибка в SQL запросе: " . $conn->error . "<br>";
-        echo "Запрос: " . $sql . "<br>";
-        return false;
-    }
-    return $result;
-}
-
 function getRandomString($n) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $randomString = '';

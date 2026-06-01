@@ -9,6 +9,7 @@
     if (isset($_POST["new"])){
         $title = $_POST["title"];
         $price = $_POST["price"];
+        $square_price = $_POST["square_price"];
         $location = $_POST["location"];
         $description = preg_replace("/\n/", "<br>", ($_POST["description"]));
         $sale = $_POST["sale"];
@@ -21,7 +22,7 @@
                     $exp = explode(".", $_FILES["foto"]["name"]);
                     $fname = "/images/".getRandomString(20).".".end($exp);
                     move_uploaded_file($_FILES["foto"]["tmp_name"], $root.$fname);
-                    $sql = "INSERT INTO rooms (title, price, description, picture, sale, location) VALUES ('$title', '$price', '$description', '$fname', '$sale', '$location')";
+                    $sql = "INSERT INTO rooms (title, price, description, picture, sale, location, square_price) VALUES ('$title', '$price', '$description', '$fname', '$sale', '$location', '$square_price')";
                     $conn->query($sql);
                 }
             }
@@ -55,7 +56,6 @@
                         <p class="photo-title">
                             <i class="fa-regular fa-image"></i> Главная фотография помещения
                         </p>
-        
                         <div class="block-foto">
                             <input type="file" name="foto" id="foto" accept="image/jpeg,image/png,image/gif">
                             <label for="foto" class="foto-label">
@@ -65,10 +65,16 @@
                             </label>
                         </div>
                     </div>
+
+                    <div class="label-input">
+                        <label for="location">Местоположение</label>
+                        <input type="text" name="location" id="location" placeholder="Введите местоположение помещения">
+                    </div>
+
                     <div class="label-input">
                         <label for="select">Тип</label>
-                        <div class="select">
-                            <button type="button" class="select-btn">Аренда</button>
+                        <div class="select" id="select">
+                            <button type="button" class="select-btn"><span>Аренда</span><i class="fa-solid fa-chevron-down"></i></button>
                             <div class="drop-down" style="display: none">
                                 <label for="arenda">Аренда</label>
                                 <input type="radio" id="arenda" value="0" name="sale">
@@ -84,14 +90,17 @@
                         <label for="title">Название помещения</label>
                         <input type="text" name="title" id="title" placeholder="Введите название помещения">
                     </div>
+
                     <div class="label-input">
                         <label for="price">Цена (₽)</label>
                         <input type="number" name="price" id="price" placeholder="Введите цену помещения">
                     </div>
+
                     <div class="label-input">
-                        <label for="location">Местоположение</label>
-                        <input type="text" name="location" id="location" placeholder="Введите местоположение помещения">
+                        <label for="square_price">Цена за квадртный метр (₽)</label>
+                        <input type="number" name="square_price" id="square_price" placeholder="Введите цену за квадртный метр">
                     </div>
+
                     <div class="label-input">
                         <label for="description">Описание</label>
                         <textarea name="description" id="description" placeholder="Введите описание помещения"></textarea>
@@ -105,7 +114,7 @@
             </div>
         </form>
     </main>
-    <script src="/js/select.js"></script>
+    <script src="/js/select-admin.js"></script>
     <script src="/js/script.js"></script>
 </body>
 </html>

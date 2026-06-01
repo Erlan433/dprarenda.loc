@@ -9,7 +9,7 @@
         $email = $_POST["email"];
         $password = $_POST["password"];
         $sql = "SELECT password FROM admin WHERE email = '$email'";
-        $result = query($sql);
+        $result = $conn->query($sql);
         if($result->num_rows > 0){
             $data = $result->fetch_row();
             if($password == $data[0]){
@@ -51,7 +51,7 @@
             <button type="submit">Войти</button>
             <p class="msg"><?php echo $message ?></p>
         </form>
-        <a href="/" class="return">Вернуться назад</a>
+        <a href="/" class="return">Вернуться</a>
     </div>
 </body>
 </html>
