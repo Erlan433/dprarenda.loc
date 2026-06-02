@@ -4,13 +4,12 @@ const dropDown = document.querySelector(".drop-down");
 const filterSelectPrice = document.querySelector(".filter-select-price");
 const filterSelectSquarePrice = document.querySelector(".filter-select-square-price");
 
-// ПЕРЕМЕННЫЕ ФИЛЬТРА ЦЕНЫ
+// ПЕРЕМЕННЫЕ ФИЛЬТРА ЦЕНЫ И ЦЕНЫ ЗА КВАДРАТНЫЙ МЕТР
 const cover = document.querySelector(".cover");
-const priceModal = document.querySelector(".price-modal");
-const squarePriceModal = document.querySelector(".square-price-modal");
-const xmark = document.querySelector("#xmark");
-
-// ПЕРЕМЕННЫЕ ФИЛЬТРА ЦЕНЫ ЗА КВАДРАТНЫЙ МЕТР
+const priceModal = document.querySelector("#price-modal");
+const squarePriceModal = document.querySelector("#square-price-modal");
+const xmarkPrice = document.querySelector("#xmark-price");
+const xmarkSquarePrice = document.querySelector("#xmark-square-price");
 
 buttonFilter.onclick = function (){
     if (dropDown.style.display == 'none'){
@@ -32,7 +31,12 @@ filterSelectSquarePrice.onclick = function (){
     squarePriceModal.style.display = "flex";
 }
 
-xmark.onclick = function() {
+xmarkPrice.onclick = function() {
     cover.style.display = "none";
     priceModal.style.display = "none";
+}
+
+xmarkSquarePrice.onclick = function() {
+    cover.style.display = "none";
+    squarePriceModal.style.display = "none";
 }

@@ -2,7 +2,7 @@
     include $_SERVER["DOCUMENT_ROOT"]."/db.php";
     if(isset($_GET["i"])){
         $id = $_GET["i"];
-        $sql = "SELECT title, price, description, picture, sale FROM rooms WHERE id = $id";
+        $sql = "SELECT title, price, description, picture, sale, location, square_price FROM rooms WHERE id = $id";
         $result = $conn->query($sql);
         $room = $result->fetch_row();
         $sql = "SELECT id, picture FROM pictures WHERE room_id = $id";
@@ -37,18 +37,16 @@
                 <p class="item-description"><?php echo $room[2] ?></p>
             </div>
             <div class="right">
-                <p class="item-price"><?php echo $room[1] ?> ₽<?php echo ($room[4] == 0 ? " в месяц" : "") ?></p>
+                <div>
+                    <p class="item-price"><?php echo $room[1] ?> ₽ <?php echo ($room[4] == 0 ? "в месяц" : "") ?></p>
+                    <p class="item-square-price"><?php echo $room[6] ?> ₽ <?php echo ($room[4] == 0 ? "за м² в месяц" : "за м²") ?></p>
+                </div>
                 <div class="item-fotos">
                     <img src="<?php echo $room[3] ?>" alt="foto">
                     <?php for($i = 0; $i < count($pictures); $i++): ?>
                         <img src="<?php echo $pictures[$i][1] ?>" alt="foto">
                     <?php endfor; ?>
                 </div>
-            </div>
-            <h1><?php echo $room[0] ?></h1>
-            <div>
-                <p class="item-price"><?php echo $room[1] ?> ₽<?php echo ($room[4] == 0 ? " в месяц" : "") ?></p>
-                <p class="item-square-price"><?php echo $room[7]?> ₽<?php echo ($room[4] == 0 ? " за м² в месяц" : " за м²") ?></p>
             </div>
        </div> 
     </main>

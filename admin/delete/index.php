@@ -36,7 +36,7 @@
                 <button type="button" class="select-btn select-btn-delete"><span>-------</span><i class="fa-solid fa-chevron-down"></i></button>
                 <div class="drop-down drop-down-delete" style="display: none">
                     <label for="arenda">-------</label>
-                    <input type="radio" id="arenda" value="no" name="select">
+                    <input type="radio" id="arenda" value="no" name="select" checked>
                     <label for="prodaja">Удалить</label>
                     <input type="radio" id="prodaja" value="delete" name="select">
                 </div>

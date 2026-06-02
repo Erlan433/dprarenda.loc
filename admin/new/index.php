@@ -43,7 +43,7 @@
 <body>
     <main class="container">
         <form class="edit-card" action="" method="post" enctype="multipart/form-data">
-            <input type="hidden">
+            <input type="hidden" name="new" value="1">
 
             <div class="edit-card-content">
                 <div class="edit-left">
@@ -77,7 +77,7 @@
                             <button type="button" class="select-btn"><span>Аренда</span><i class="fa-solid fa-chevron-down"></i></button>
                             <div class="drop-down" style="display: none">
                                 <label for="arenda">Аренда</label>
-                                <input type="radio" id="arenda" value="0" name="sale">
+                                <input type="radio" id="arenda" value="0" name="sale" checked>
                                 <label for="prodaja">Продажа</label>
                                 <input type="radio" id="prodaja" value="1" name="sale">
                             </div>

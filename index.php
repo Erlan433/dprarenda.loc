@@ -8,11 +8,18 @@
     if(isset($_POST["seek"])){
         $search = $_POST["search"];
         $sql = "SELECT * FROM rooms WHERE title LIKE '%$search%'";
-    } else if(isset($_POST["from"]) || isset($_POST["to"])) {
+    } else if(isset($_POST["total"])) {
         $sales = $_POST["sale"] == -1 ? "0,1" : $_POST["sale"];
+        $sale = $_POST["sale"];
         $from = $_POST["from"] != "" ? $_POST["from"] : 0;
         $to = $_POST["to"] != "" ? $_POST["to"] : 1000000000;
         $sql = "SELECT * FROM rooms WHERE price BETWEEN $from AND $to AND sale IN ($sales)";
+    } else if(isset($_POST["meter"])) {
+        $sales = $_POST["sale"] == -1 ? "0,1" : $_POST["sale"];
+        $sale = $_POST["sale"];
+        $from = $_POST["from"] != "" ? $_POST["from"] : 0;
+        $to = $_POST["to"] != "" ? $_POST["to"] : 1000000000;
+        $sql = "SELECT * FROM rooms WHERE square_price BETWEEN $from AND $to AND sale IN ($sales)";
     } else if(isset($_GET["filter"])) {
         $filter = $_GET["filter"];
         if($filter == "rent"){
@@ -82,10 +89,11 @@
             </div>
 
             <!-- ФОРМОЧКА ФИЛЬТРА ЦЕНЫ -->
-            <form action="" method="post" class="price-modal" style="display: none;">
+            <form action="" method="post" class="price-modal" id="price-modal" style="display: none;">
+                <input type="hidden" name="total" value="1">
                 <input type="hidden" name="sale" value="<?php echo $sale ?>">
-                <div class="xmark"><i class="fa-solid fa-xmark" id="xmark"></i></div>
-                <div class="modal-h2"><h2>Фильтр цены</h2></div>
+                <div class="xmark" id="xmark-price"><i class="fa-solid fa-xmark" id="xmark"></i></div>
+                <div class="modal-h2" id="modal-h2-price"><h2>Фильтр цены</h2></div>
                 <label for="from">От</label>
                 <input type="number" name="from" id="from" placeholder="0">
                 <label for="to">До</label>
@@ -94,10 +102,11 @@
             </form>
 
             <!-- ФОРМОЧКА ФИЛЬТРА ЦЕНЫ ЗА КВАДРАТНЫЙ МЕТР -->
-            <form action="" method="post" class="square-price-modal" style="display: none;">
+            <form action="" method="post" class="square-price-modal" id="square-price-modal" style="display: none;">
+                <input type="hidden" name="meter" value="1">
                 <input type="hidden" name="sale" value="<?php echo $sale ?>">
-                <div class="xmark"><i class="fa-solid fa-xmark" id="xmark"></i></div>
-                <div class="modal-h2"><h2>Фильтр цены за квадратный метр</h2></div>
+                <div class="xmark" id="xmark-square-price"><i class="fa-solid fa-xmark" id="xmark"></i></div>
+                <div class="modal-h2"><h2>Фильтр цены за м²</h2></div>
                 <label for="from">От</label>
                 <input type="number" name="from" id="from" placeholder="0">
                 <label for="to">До</label>
