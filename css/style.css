@@ -74,7 +74,10 @@ main h1{
 .button-filter{
     width: 200px;
     height: 57px;
-    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 15px 50px;
     background-color: rgb(0, 150, 255);
     border: none;
     border-radius: 10px;
@@ -145,6 +148,9 @@ main h1{
     padding: 15px;
     border-radius: 12px;
     background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .search input{
@@ -407,6 +413,40 @@ footer .container .copyright{
         font-size: 40px;
     }
 
+    .filter{
+        gap: 10px;
+    }
+
+    .button-filter{
+        width: 100px;
+        height: 38.4px;
+        padding: 5px 12px;
+        font-size: 16px;
+    }
+
+    .search{
+        padding: 8px;
+    }
+
+    .search input{
+        width: 160px;
+        font-size: 16px;
+    }
+
+    .search i{
+        font-size: 14px;
+    }
+
+    .filter form input[type="submit"]{
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+
+    .selectType a{
+        padding: 10px 16px;
+        font-size: 16px;
+    }
+
     .pustPomesheniya{
         grid-template-columns: repeat(3, 1fr);
         gap: 15px;
@@ -423,7 +463,7 @@ footer .container .copyright{
         border-radius: 8px;
     }
 
-    .title, .price, .location{
+    .title, .square_price, .price, .location{
         font-size: 10px;
         margin: 3px 0;
         padding: 0 8px;
@@ -485,6 +525,29 @@ footer .container .copyright{
         font-size: 30px;
     }
 
+    .button-filter{
+        width: 80px;
+        height: 36px;
+        padding: 5px 5px;
+        font-size: 14px;
+    }
+
+    .search input{
+        font-size: 14px;
+    }
+
+    .search i{
+        font-size: 13px;
+    }
+
+    .filter form input[type="submit"]{
+        font-size: 14px;
+    }
+
+    .selectType a{
+        font-size: 14px;
+    }
+
     .pustPomesh{
         width: 180px;
         border-radius: 6px;
@@ -495,7 +558,7 @@ footer .container .copyright{
         border-radius: 6px;
     }
 
-    .title, .price, .location{
+    .title, .square_price, .price, .location{
         font-size: 8px;
         margin: 3px 0;
         padding: 0 6px;
