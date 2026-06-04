@@ -69,6 +69,8 @@
                     <div class="label-input">
                         <label for="location">Местоположение</label>
                         <input type="text" name="location" id="location" placeholder="Введите местоположение помещения">
+
+                        <a href="#" class="map-button">Показать на карте</a>
                     </div>
 
                     <div class="label-input">
@@ -114,6 +116,14 @@
             </div>
         </form>
     </main>
+
+    <div class="cover-map" style="dispay: none;"></div>
+    <div class="map-modal" style="dispay: none;">
+        <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/146/simferopol/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Симферополь</a><a href="https://yandex.ru/maps/146/simferopol/?ll=34.100318%2C44.948237&utm_medium=mapframe&utm_source=maps&z=13" style="color:#eee;font-size:12px;position:absolute;top:14px;">Яндекс Карты — транспорт, навигация, поиск мест</a><iframe src="https://yandex.ru/map-widget/v1/?ll=34.100318%2C44.948237&z=13" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+
+    </div>
+
+    <script src="/js/modal-map.js"></script>
     <script src="/js/select-admin.js"></script>
     <script src="/js/script.js"></script>
 </body>
