@@ -30,25 +30,40 @@
     </header>
     <main>
        <div class="container main-content">
-            <div class="left">
-                <h1><?php echo $room[0] ?></h1>
+            <div class="item-left">
                 <img src="<?php echo $room[3] ?>" alt="foto">
-                <h2>Описание</h2>
-                <p class="item-description"><?php echo $room[2] ?></p>
-            </div>
-            <div class="right">
                 <div>
-                    <p class="item-price"><?php echo $room[1] ?> ₽ <?php echo ($room[4] == 0 ? "в месяц" : "") ?></p>
-                    <p class="item-square-price"><?php echo $room[6] ?> ₽ <?php echo ($room[4] == 0 ? "за м² в месяц" : "за м²") ?></p>
-                </div>
-                <div class="item-fotos">
-                    <img src="<?php echo $room[3] ?>" alt="foto">
-                    <?php for($i = 0; $i < count($pictures); $i++): ?>
-                        <img src="<?php echo $pictures[$i][1] ?>" alt="foto">
-                    <?php endfor; ?>
+                    <button><</button>
+                    <div class="item-fotos">
+                        <img src="<?php echo $room[3] ?>" alt="foto">
+                        <?php for($i = 0; $i < count($pictures); $i++): ?>
+                            <img src="<?php echo $pictures[$i][1] ?>" alt="foto">
+                        <?php endfor; ?>
+                    </div>
+                    <button>></button>
                 </div>
             </div>
-       </div> 
+            <div class="item-right">
+                <h1><?php echo $room[0] ?></h1>
+                <span class="location">
+                    <i class="fa-solid fa-location-dot"></i><?php echo $rooms[$i][6]?>
+                </span>
+                <div>
+                    <label for="price">Цена</label>
+                    <p class="price" id="price"><?php echo $rooms[$i][2]?> ₽<?php echo ($rooms[$i][5] == 0 ? " в месяц" : "") ?></p>
+                    <label for="square_price">Цена за м²</label>
+                    <p class="square_price" id="square_price"><?php echo $rooms[$i][7]?> ₽<?php echo ($rooms[$i][5] == 0 ? " за м² в месяц" : " за м²") ?></p>
+                </div>
+                <button>Позвонить</button>
+                <div class="map">
+
+                </div>
+                <div>
+                    <h2>Описание</h2>
+                    <p class="item-description"><?php echo $room[2] ?></p>
+                </div>
+            </div>
+       </div>
     </main>
     <footer>
         <div class="container">
