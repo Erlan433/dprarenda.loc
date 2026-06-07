@@ -20,45 +20,48 @@
     <link rel="icon" href="/images/помещение №1.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/main.css">
+    <link href="/fontawesome/css/all.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="container">
-            <a href="/" class="logo">DPR</a>
-            <p class="telefon">+7(978)777-77-77</p>
+            <a href="/" class="logo">DPR </a>
+            <span class="telefon">
+                <a href="tel:+79782311637"><i class="fa-solid fa-phone"></i></a>
+                <p>+7(978) 231-16-37</p>
+            </span>
         </div>
     </header>
     <main>
        <div class="container main-content">
             <div class="item-left">
-                <img src="<?php echo $room[3] ?>" alt="foto">
-                <div>
-                    <button><</button>
-                    <div class="item-fotos">
-                        <img src="<?php echo $room[3] ?>" alt="foto">
-                        <?php for($i = 0; $i < count($pictures); $i++): ?>
-                            <img src="<?php echo $pictures[$i][1] ?>" alt="foto">
-                        <?php endfor; ?>
-                    </div>
-                    <button>></button>
+                <div class="item-main-foto" style="background-image: url(<?php echo $room[3] ?>);"></div>
+                <div class="item-caruosel-fotos">
+                    <button><i class="fa-solid fa-angle-left"></i></button>
+                    <img class="item-caruosel-foto" src="<?php echo $room[3] ?>" alt="foto">
+                    <?php for($i = 0; $i < count($pictures); $i++): ?>
+                        <img class="item-caruosel-foto" src="<?php echo $pictures[$i][1] ?>" alt="foto">
+                    <?php endfor; ?>
+                    <button><i class="fa-solid fa-angle-right"></i></button>
                 </div>
             </div>
             <div class="item-right">
-                <h1><?php echo $room[0] ?></h1>
-                <span class="location">
-                    <i class="fa-solid fa-location-dot"></i><?php echo $rooms[$i][6]?>
-                </span>
                 <div>
-                    <label for="price">Цена</label>
-                    <p class="price" id="price"><?php echo $rooms[$i][2]?> ₽<?php echo ($rooms[$i][5] == 0 ? " в месяц" : "") ?></p>
-                    <label for="square_price">Цена за м²</label>
-                    <p class="square_price" id="square_price"><?php echo $rooms[$i][7]?> ₽<?php echo ($rooms[$i][5] == 0 ? " за м² в месяц" : " за м²") ?></p>
+                    <h1><?php echo $room[0] ?></h1>
+                    <span class="item-location">
+                        <i class="fa-solid fa-location-dot"></i><?php echo $room[5]?>
+                    </span>
                 </div>
-                <button>Позвонить</button>
-                <div class="map">
-
+                <div class="item-prices">
+                    <label for="item-price">Цена</label>
+                    <p class="item-price" id="item-price"><?php echo $room[1]?> ₽<?php echo ($room[4] == 0 ? " в месяц" : "") ?></p>
+                    <label for="item-square_price">Цена за м²</label>
+                    <p class="item-square_price" id="item-square_price"><?php echo $room[6]?> ₽<?php echo ($room[4] == 0 ? " в месяц" : "") ?></p>
                 </div>
-                <div>
+                <div class="item-call-container">
+                    <a href="tel:+79782311637" class="item-call"><i class="fa-solid fa-phone"></i><span>Позвонить</span></a>
+                </div>
+                <div class="item-description-block">
                     <h2>Описание</h2>
                     <p class="item-description"><?php echo $room[2] ?></p>
                 </div>
