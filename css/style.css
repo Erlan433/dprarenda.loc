@@ -185,12 +185,21 @@ main h1{
     padding: 25px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) translateY(30px);
     flex-direction: column;
     background-color: white;
     box-shadow: 0 0 10px rgb(0, 0, 0);
     border-radius: 10px;
     z-index: 3;
+    opacity: 0;
+    animation: modalAppearFromBottom 0.5s forwards;
+}
+
+@keyframes modalAppearFromBottom {
+    to{
+        opacity: 1;
+        transform: translate(-50%, -50%) translateY(0);
+    }
 }
 
 .price-modal .xmark, .square-price-modal .xmark{
@@ -291,7 +300,7 @@ main h1{
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
     opacity: 0;
     transform: translateY(30px);
-    animation: appearanceFromBottom 0.6s 0.2s forwards;
+    animation: appearanceFromBottom 0.6s forwards;
 }
 
 @keyframes appearanceFromBottom {
@@ -384,6 +393,7 @@ footer .container .copyright{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
     overflow: hidden;
     z-index: 2;
 }
@@ -480,7 +490,7 @@ footer .container .copyright{
 
     .btn-pustPomesh{
         width: calc(100% - 16px);
-        height: 20px;
+        height: 26px;
         font-size: 10px;
         margin: 10px 0 0 8px;
         border-radius: 4px;
@@ -574,7 +584,6 @@ footer .container .copyright{
 
     .btn-pustPomesh{
         width: calc(100% - 12px);
-        height: 20px;
         font-size: 10px;
         margin: 10px 0 0 6px;
         gap: 8px;
@@ -601,14 +610,19 @@ footer .container .copyright{
     gap: 50px;
 }
 
+.item-left{
+    position: sticky;
+    top: 120px;
+    align-self: start;
+}
+
 .item-main-foto{
     width: 100%;
-    height: 600px;
+    height: 60vh;
+    border-radius: 15px;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
-    border-radius: 15px;
-
+    background-position: center;
 }
 
 .item-caruosel-fotos{
