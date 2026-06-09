@@ -348,6 +348,20 @@ textarea {
     z-index: 3;
 }
 
+.map-modal p{
+    position: absolute;
+    right: -35px;
+    top: -45px;
+    color: white;
+    font-size: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.map-modal p:hover{
+    color: red;
+}
+
 /* ── admin/edit/item/index.php ── */
 
 .edit-card {

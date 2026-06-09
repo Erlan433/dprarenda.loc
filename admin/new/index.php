@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/admin.css">
     <link href="/fontawesome/css/all.css" rel="stylesheet">
+    <script src="https://api-maps.yandex.ru/1.1/index.xml" type="text/javascript"></script>
 </head>
 <body>
     <main class="container">
@@ -117,14 +118,41 @@
         </form>
     </main>
 
-    <div class="cover-map" style="dispay: none;"></div>
-    <div class="map-modal" style="dispay: none;">
-        <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/146/simferopol/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Симферополь</a><a href="https://yandex.ru/maps/146/simferopol/?ll=34.100318%2C44.948237&utm_medium=mapframe&utm_source=maps&z=13" style="color:#eee;font-size:12px;position:absolute;top:14px;">Яндекс Карты — транспорт, навигация, поиск мест</a><iframe src="https://yandex.ru/map-widget/v1/?ll=34.100318%2C44.948237&z=13" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
-
+    <div class="cover-map" style="display: none;"></div>
+    <div class="map-modal" style="display: none;">
+        <p id="close-map">&times;</p>
+        <!-- <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/146/simferopol/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Симферополь</a><a href="https://yandex.ru/maps/146/simferopol/?ll=34.100318%2C44.948237&utm_medium=mapframe&utm_source=maps&z=13" style="color:#eee;font-size:12px;position:absolute;top:14px;">Яндекс Карты — транспорт, навигация, поиск мест</a><iframe src="https://yandex.ru/map-widget/v1/?ll=34.100318%2C44.948237&z=13" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div> -->
+        <div id="YMapsID" style="width:600px;height:400px"></div>
     </div>
 
     <script src="/js/modal-map.js"></script>
     <script src="/js/select-admin.js"></script>
     <script src="/js/script.js"></script>
+    <script type="text/javascript">
+        // Создает экземпляр карты и привязывает его к созданному контейнеру
+        var map = new ymaps.Map('map', {
+            center: [55.751574, 37.573856], // Координаты центра карты (Москва)
+            zoom: 10 // Уровень масштабирования
+        });
+
+        // Устанавливает начальные параметры отображения карты: центр карты и коэффициент масштабирования
+        map.setCenter(new YMaps.GeoPoint(37.64, 55.76), 10);
+
+        map.events.add('click', function (e) {
+            var coords = e.get('coords'); // Получаем координаты клика
+            console.log('Координаты клика:', coords); // Выводим координаты в консоль браузера
+
+            // Можно также отобразить координаты на карте, например, с помощью метки
+            var myPlacemark = new ymaps.Placemark(coords, {
+                hintContent: 'Координаты: ' + coords[0].toFixed(4) + ', ' + coords[1].toFixed(4)
+            }, {
+                preset: 'islands#redDotIcon' // Иконка метки
+            });
+            map.geoObjects.add(myPlacemark);
+
+            // Опционально: центрировать карту по клику
+            // myMap.setCenter(coords, 12, {checkZoomRange: true});
+        });
+    </script>
 </body>
 </html>
