@@ -13,6 +13,8 @@
         $location = $_POST["location"];
         $description = preg_replace("/\n/", "<br>", ($_POST["description"]));
         $sale = $_POST["sale"];
+        $lat = $_POST["lat"];
+        $lon = $_POST["lon"];
         if (isset($_FILES["foto"])){
             if($_FILES["foto"]["error"] == 0){
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -22,7 +24,7 @@
                     $exp = explode(".", $_FILES["foto"]["name"]);
                     $fname = "/images/".getRandomString(20).".".end($exp);
                     move_uploaded_file($_FILES["foto"]["tmp_name"], $root.$fname);
-                    $sql = "INSERT INTO rooms (title, price, description, picture, sale, location, square_price) VALUES ('$title', '$price', '$description', '$fname', '$sale', '$location', '$square_price')";
+                    $sql = "INSERT INTO rooms (title, price, description, picture, sale, location, square_price, lat, lon) VALUES ('$title', '$price', '$description', '$fname', '$sale', '$location', '$square_price', '$lat', '$lon')";
                     $conn->query($sql);
                 }
             }
@@ -39,7 +41,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/admin.css">
     <link href="/fontawesome/css/all.css" rel="stylesheet">
-    <script src="https://api-maps.yandex.ru/1.1/index.xml" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=4c10efde-32c8-4e71-8c69-1b34c8931969&lang=ru_RU" type="text/javascript"></script>
 </head>
 <body>
     <main class="container">
@@ -111,6 +113,9 @@
                 </div>
             </div>
 
+            <input type="hidden" name="lat" value="0" id="lat">
+            <input type="hidden" name="lon" value="0" id="lon">
+
             <div class="edit-footer">
                 <a href="/admin/" class="return">Отмена</a>
                 <input type="submit" value="Сохранить" class="safe-btn">
@@ -121,7 +126,6 @@
     <div class="cover-map" style="display: none;"></div>
     <div class="map-modal" style="display: none;">
         <p id="close-map">&times;</p>
-        <!-- <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/146/simferopol/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Симферополь</a><a href="https://yandex.ru/maps/146/simferopol/?ll=34.100318%2C44.948237&utm_medium=mapframe&utm_source=maps&z=13" style="color:#eee;font-size:12px;position:absolute;top:14px;">Яндекс Карты — транспорт, навигация, поиск мест</a><iframe src="https://yandex.ru/map-widget/v1/?ll=34.100318%2C44.948237&z=13" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div> -->
         <div id="YMapsID" style="width:600px;height:400px"></div>
     </div>
 
@@ -129,29 +133,41 @@
     <script src="/js/select-admin.js"></script>
     <script src="/js/script.js"></script>
     <script type="text/javascript">
-        // Создает экземпляр карты и привязывает его к созданному контейнеру
-        var map = new ymaps.Map('map', {
-            center: [55.751574, 37.573856], // Координаты центра карты (Москва)
-            zoom: 10 // Уровень масштабирования
-        });
-
-        // Устанавливает начальные параметры отображения карты: центр карты и коэффициент масштабирования
-        map.setCenter(new YMaps.GeoPoint(37.64, 55.76), 10);
-
-        map.events.add('click', function (e) {
-            var coords = e.get('coords'); // Получаем координаты клика
-            console.log('Координаты клика:', coords); // Выводим координаты в консоль браузера
-
-            // Можно также отобразить координаты на карте, например, с помощью метки
-            var myPlacemark = new ymaps.Placemark(coords, {
-                hintContent: 'Координаты: ' + coords[0].toFixed(4) + ', ' + coords[1].toFixed(4)
-            }, {
-                preset: 'islands#redDotIcon' // Иконка метки
+        let added = false;
+        ymaps.ready(function(){
+            let moscow_map = new ymaps.Map("YMapsID", {
+                center: [55.76, 37.64],
+                zoom: 10
             });
-            map.geoObjects.add(myPlacemark);
-
-            // Опционально: центрировать карту по клику
-            // myMap.setCenter(coords, 12, {checkZoomRange: true});
+            moscow_map.events.add("click", function(event){
+                if(!added){
+                    const coords = event.get("coords");
+                    const placeMark = new ymaps.Placemark(coords, {
+                        balloonContent: "Местоположение",
+                        hintContent: "Местоположение"
+                    }, {
+                        preset: "islands#dotIcon",
+                        iconColor: "#ff0000"
+                    });
+                    moscow_map.geoObjects.add(placeMark);
+                    added = true;
+                    document.getElementById("lat").value = coords[0];
+                    document.getElementById("lon").value = coords[1];
+                } else {
+                    moscow_map.geoObjects.removeAll()
+                    const coords = event.get("coords");
+                    const placeMark = new ymaps.Placemark(coords, {
+                        balloonContent: "Местоположение",
+                        hintContent: "Местоположение"
+                    }, {
+                        preset: "islands#dotIcon",
+                        iconColor: "#ff0000"
+                    });
+                    moscow_map.geoObjects.add(placeMark);
+                    document.getElementById("lat").value = coords[0];
+                    document.getElementById("lon").value = coords[1]; 
+                }
+            })
         });
     </script>
 </body>

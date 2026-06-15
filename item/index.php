@@ -2,7 +2,7 @@
     include $_SERVER["DOCUMENT_ROOT"]."/db.php";
     if(isset($_GET["i"])){
         $id = $_GET["i"];
-        $sql = "SELECT title, price, description, picture, sale, location, square_price FROM rooms WHERE id = $id";
+        $sql = "SELECT title, price, description, picture, sale, location, square_price, lat, lon FROM rooms WHERE id = $id";
         $result = $conn->query($sql);
         $room = $result->fetch_row();
         $sql = "SELECT id, picture FROM pictures WHERE room_id = $id";
@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/main.css">
     <link href="/fontawesome/css/all.css" rel="stylesheet">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=4c10efde-32c8-4e71-8c69-1b34c8931969&lang=ru_RU" type="text/javascript"></script>
 </head>
 <body>
     <header>
@@ -58,6 +59,9 @@
                     <label for="item-square_price">Цена за м²</label>
                     <p class="item-square_price" id="item-square_price"><?php echo $room[6]?> ₽<?php echo ($room[4] == 0 ? " в месяц" : "") ?></p>
                 </div>
+                <div class="item-map">
+                    <div id="YMapsID" style="width:100%;height:400px"></div>
+                </div>
                 <div class="item-call-container">
                     <a href="tel:+79782311637" class="item-call"><i class="fa-solid fa-phone"></i><span>Позвонить</span></a>
                 </div>
@@ -73,5 +77,30 @@
             <p class="copyright">&copy; 2026 Все права защищены</p>
         </div>
     </footer>
+
+    <script type="text/javascript">
+        let edit = false;
+        ymaps.ready(function(){
+            const coords = [<?php echo $room[7] ?>, <?php echo $room[8] ?>];
+            if(coords[0] == 0 && coords[1] == 0){
+                coords[0] = 44.95;
+                coords[1] = 34.1;
+            }
+
+            let moscow_map = new ymaps.Map("YMapsID", {
+                center: coords,
+                zoom: 10
+            });
+
+            const placeMark = new ymaps.Placemark(coords, {
+                balloonContent: "Местоположение",
+                hintContent: "Местоположение"
+            }, {
+                preset: "islands#dotIcon",
+                iconColor: "#ff0000"
+            });
+            moscow_map.geoObjects.add(placeMark);
+        })
+    </script>
 </body>
 </html>

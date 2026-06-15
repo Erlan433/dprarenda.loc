@@ -11,6 +11,8 @@
         $description = preg_replace("/\n/", "<br>", ($_POST["description"]));
         $image = $_POST["old_foto"];
         $sale = $_POST["sale"];
+        $lat = $_POST["lat"];
+        $lon = $_POST["lon"];
         if(isset($_FILES["foto"]) && $_FILES["foto"]["error"] == 0){
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $filetype = finfo_file($finfo, $_FILES["foto"]["tmp_name"]);
@@ -26,12 +28,12 @@
                 }
             }
         }
-        $sql = "UPDATE rooms SET title = '$title', price = '$price', description = '$description', picture = '$image', sale = '$sale', location = '$location', square_price = '$square_price' WHERE id = '$id'";
+        $sql = "UPDATE rooms SET title = '$title', price = '$price', description = '$description', picture = '$image', sale = '$sale', location = '$location', square_price = '$square_price', lat = '$lat', lon = '$lon' WHERE id = '$id'";
         $conn->query($sql);
         header("Location: /admin/edit/");
     } else if(isset($_GET["r"])) {
         $id = $_GET["r"];
-        $sql = "SELECT title, price, description, picture, sale, location FROM rooms WHERE id = $id";
+        $sql = "SELECT title, price, description, picture, sale, location, square_price, lat, lon FROM rooms WHERE id = $id";
         $result = $conn->query($sql);
         $room = $result->fetch_row();
         $room[2] = preg_replace("<<br>>", "\n", $room[2]);
@@ -50,6 +52,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/admin.css">
     <link href="/fontawesome/css/all.css" rel="stylesheet">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=4c10efde-32c8-4e71-8c69-1b34c8931969&lang=ru_RU" type="text/javascript"></script>
 </head>
 <body>
     <main class="container">
@@ -104,11 +107,13 @@
                     </div>
                     <div class="label-input">
                         <label for="square_price">Цена за квадртный метр (₽)</label>
-                        <input type="number" name="square_price" id="square_price" placeholder="Введите цену за квадртный метр">
+                        <input type="number" name="square_price" id="square_price" value="<?php echo $room[6] ?>" placeholder="Введите цену за квадртный метр">
                     </div>
                     <div class="label-input">
                         <label for="location">Местоположение</label>
                         <input type="text" name="location" id="location" value="<?php echo $room[5] ?>" placeholder="Введите местоположение помещения">
+
+                        <a href="#" class="map-button">Показать на карте</a>
                     </div>
                     <div class="label-input">
                         <label for="description">Описание</label>
@@ -129,6 +134,9 @@
                 </div>
             </div>
 
+            <input type="hidden" name="lat" value="0" id="lat">
+            <input type="hidden" name="lon" value="0" id="lon">
+
             <div class="edit-footer">
                 <a href="/admin/edit/" class="return">Отмена</a>
                 <input type="submit" value="Сохранить" class="safe-btn">
@@ -136,7 +144,53 @@
         </form>
     </main>
 
+    <div class="cover-map" style="display: none;"></div>
+    <div class="map-modal" style="display: none;">
+        <p id="close-map">&times;</p>
+        <div id="YMapsID" style="width:600px;height:400px"></div>
+    </div>
+
+    <script src="/js/modal-map.js"></script>
     <script src="/js/select-admin.js"></script>
     <script src="/js/script.js"></script>
+    <script type="text/javascript">
+        let edit = false;
+        ymaps.ready(function(){
+            const coords = [<?php echo $room[7] ?>, <?php echo $room[8] ?>];
+            if(coords[0] == 0 && coords[1] == 0){
+                coords[0] = 44.95;
+                coords[1] = 34.1;
+            }
+
+            let moscow_map = new ymaps.Map("YMapsID", {
+                center: coords,
+                zoom: 10
+            });
+
+            const placeMark = new ymaps.Placemark(coords, {
+                balloonContent: "Местоположение",
+                hintContent: "Местоположение"
+            }, {
+                preset: "islands#dotIcon",
+                iconColor: "#ff0000"
+            });
+            moscow_map.geoObjects.add(placeMark);
+
+            moscow_map.events.add("click", function(event){
+                moscow_map.geoObjects.removeAll()
+                const coords = event.get("coords");
+                const placeMark = new ymaps.Placemark(coords, {
+                    balloonContent: "Местоположение",
+                    hintContent: "Местоположение"
+                }, {
+                    preset: "islands#dotIcon",
+                    iconColor: "#ff0000"
+                });
+                moscow_map.geoObjects.add(placeMark);
+                document.getElementById("lat").value = coords[0];
+                document.getElementById("lon").value = coords[1]; 
+            })
+        });
+    </script>
 </body>
 </html>
