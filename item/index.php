@@ -39,10 +39,12 @@
                 <div class="item-main-foto" style="background-image: url(<?php echo $room[3] ?>);"></div>
                 <div class="item-caruosel-fotos">
                     <button><i class="fa-solid fa-angle-left"></i></button>
-                    <img class="item-caruosel-foto" src="<?php echo $room[3] ?>" alt="foto">
-                    <?php for($i = 0; $i < count($pictures); $i++): ?>
-                        <img class="item-caruosel-foto" src="<?php echo $pictures[$i][1] ?>" alt="foto">
-                    <?php endfor; ?>
+                    <div>
+                        <img class="item-caruosel-foto" id="pic-0" src="<?php echo $room[3] ?>" alt="foto">
+                        <?php for($i = 0; $i < count($pictures); $i++): ?>
+                            <img class="item-caruosel-foto" id="pic-<?php echo $i+1 ?>" src="<?php echo $pictures[$i][1] ?>" alt="foto">
+                        <?php endfor; ?>
+                    </div>
                     <button><i class="fa-solid fa-angle-right"></i></button>
                 </div>
             </div>
@@ -89,7 +91,8 @@
 
             let moscow_map = new ymaps.Map("YMapsID", {
                 center: coords,
-                zoom: 10
+                zoom: 10,
+                controls: ['zoomControl']
             });
 
             const placeMark = new ymaps.Placemark(coords, {

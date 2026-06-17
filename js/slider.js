@@ -1,0 +1,1 @@
+const itemMainFoto = document.querySelector(".item-main-foto");

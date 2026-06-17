@@ -626,11 +626,22 @@ footer .container .copyright{
 }
 
 .item-caruosel-fotos{
+    position: relative;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
+}
+
+.item-caruosel-fotos div{
+    position: relative;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    overflow: hidden;
 }
 
 .item-caruosel-fotos button{
@@ -649,6 +660,8 @@ footer .container .copyright{
 }
 
 .item-caruosel-foto{
+    position: relative;
+    /* left: -200px; */
     width: 200px;
     height: 120px;
     border-radius: 15px;
@@ -658,7 +671,7 @@ footer .container .copyright{
 }
 
 .item-caruosel-foto:hover{
-    transform: scale(1.08);
+    transform: scale(1.06);
 }
 
 h1{
@@ -698,6 +711,10 @@ h1{
     font-size: 25px;
     color: rgb(0, 100, 255);
     font-weight: bold;
+}
+
+.item-map{
+    width: 100%;
 }
 
 .item-call-container{
