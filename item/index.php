@@ -38,14 +38,14 @@
             <div class="item-left">
                 <div class="item-main-foto" style="background-image: url(<?php echo $room[3] ?>);"></div>
                 <div class="item-caruosel-fotos">
-                    <button><i class="fa-solid fa-angle-left"></i></button>
-                    <div>
-                        <img class="item-caruosel-foto" id="pic-0" src="<?php echo $room[3] ?>" alt="foto">
+                    <button id="item-btn-left"><i class="fa-solid fa-angle-left"></i></button>
+                    <div class="item-caruosel-block">
+                        <div class="item-caruosel-foto" id="pic-0" style="background-image: url(<?php echo $room[3] ?>);"></div>
                         <?php for($i = 0; $i < count($pictures); $i++): ?>
-                            <img class="item-caruosel-foto" id="pic-<?php echo $i+1 ?>" src="<?php echo $pictures[$i][1] ?>" alt="foto">
+                            <div class="item-caruosel-foto" id="pic-<?php echo $i+1 ?>" style="background-image: url(<?php echo $pictures[$i][1] ?>);"></div>
                         <?php endfor; ?>
                     </div>
-                    <button><i class="fa-solid fa-angle-right"></i></button>
+                    <button id="item-btn-right"><i class="fa-solid fa-angle-right"></i></button>
                 </div>
             </div>
             <div class="item-right">
@@ -80,6 +80,7 @@
         </div>
     </footer>
 
+    <script src="/js/slider.js"></script>
     <script type="text/javascript">
         let edit = false;
         ymaps.ready(function(){

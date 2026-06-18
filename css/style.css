@@ -627,21 +627,38 @@ footer .container .copyright{
 
 .item-caruosel-fotos{
     position: relative;
-    width: 100%;
+    width: 1000px;
+    height: 120px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-between;
+    overflow: hidden;
 }
 
-.item-caruosel-fotos div{
-    position: relative;
-    width: 80%;
+.item-caruosel-block{
+    position: absolute;
+    width: fit-content;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
     overflow: hidden;
+    z-index: -1;
+}
+
+.item-caruosel-foto{
+    position: relative;
+    left: 0;
+    width: 200px;
+    height: 120px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    padding: 2px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .item-caruosel-fotos button{
@@ -657,17 +674,6 @@ footer .container .copyright{
 
 .item-caruosel-fotos button:hover{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-}
-
-.item-caruosel-foto{
-    position: relative;
-    /* left: -200px; */
-    width: 200px;
-    height: 120px;
-    border-radius: 15px;
-    padding: 2px;
-    cursor: pointer;
-    transition: 0.3s;
 }
 
 .item-caruosel-foto:hover{
