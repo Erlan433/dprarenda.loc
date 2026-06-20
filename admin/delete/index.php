@@ -55,6 +55,6 @@
         <a href="/admin/" class="return">Вернуться</a>
     </form>
 
-    <script src="/js/select-admin.js"></script>
+    <script src="/js/admin/select-admin.js"></script>
 </body>
 </html>

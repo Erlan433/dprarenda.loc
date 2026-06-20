@@ -26,7 +26,7 @@
 <body>
     <header>
         <div class="container">
-            <a href="/" class="logo">DPR </a>
+            <a href="/" class="logo">DPR</a>
             <span class="telefon">
                 <a href="tel:+79782311637"><i class="fa-solid fa-phone"></i></a>
                 <p>+7(978) 231-16-37</p>
@@ -36,14 +36,19 @@
     <main>
        <div class="container main-content">
             <div class="item-left">
-                <div class="item-main-foto" style="background-image: url(<?php echo $room[3] ?>);"></div>
+                <div>
+                    <a href="/" class="back-arrow"><i class="fa-solid fa-left-long"></i><span>назад</span></a>
+                    <div class="item-main-foto" style="background-image: url(<?php echo $room[3] ?>);"></div>
+                </div>
                 <div class="item-caruosel-fotos">
                     <button id="item-btn-left"><i class="fa-solid fa-angle-left"></i></button>
                     <div class="item-caruosel-block">
-                        <div class="item-caruosel-foto" id="pic-0" style="background-image: url(<?php echo $room[3] ?>);"></div>
-                        <?php for($i = 0; $i < count($pictures); $i++): ?>
-                            <div class="item-caruosel-foto" id="pic-<?php echo $i+1 ?>" style="background-image: url(<?php echo $pictures[$i][1] ?>);"></div>
-                        <?php endfor; ?>
+                        <div class="item-fotos">
+                            <div class="item-caruosel-foto" id="pic-0" style="background-image: url(<?php echo $room[3] ?>);"></div>
+                            <?php for($i = 0; $i < count($pictures); $i++): ?>
+                                <div class="item-caruosel-foto" id="pic-<?php echo $i+1 ?>" style="background-image: url(<?php echo $pictures[$i][1] ?>);"></div>
+                            <?php endfor; ?>
+                        </div>
                     </div>
                     <button id="item-btn-right"><i class="fa-solid fa-angle-right"></i></button>
                 </div>
@@ -80,7 +85,7 @@
         </div>
     </footer>
 
-    <script src="/js/slider.js"></script>
+    <script src="/js/item/slider.js"></script>
     <script type="text/javascript">
         let edit = false;
         ymaps.ready(function(){

@@ -15,7 +15,7 @@ body{
 }
 
 .form{
-    background: linear-gradient(45deg,rgb(193, 193, 193) 80%, rgb(255, 255, 255) 100%);
+    background-color: rgb(238, 238, 238);
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -60,70 +60,50 @@ h1{
 .operationButn, .exitAdminButn, .safe-btn, .apply-btn{
     height: 90px;
     width: 280px;
-    background: linear-gradient(45deg,rgb(0, 0, 0) 0%, rgb(102, 102, 102) 100%);
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
-    color: white;
+    color: blue;
     font-size: 25px;
     border: none;
     border-radius: 12px;
     margin: 0 20px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
 
 .exitAdminButn{
-    background: linear-gradient(45deg,rgb(146, 48, 48) 0%, rgb(255, 52, 52) 100%);
+    background-color: red;
     height: 100px;
     width: 300px;
+    color: white;
+    box-shadow: none;
 }
 
-.safe-btn {
+.safe-btn, .apply-btn {
+    background-color: blue;
+    color: white;
     height: 70px;
-}
-
-.operationButn::after{
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 100px;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.142) 0%, transparent 70%);
-    opacity: 0;
-    transform: scale(0.4);
-    transition: all 0.15s ease;
-    pointer-events: none;
+    box-shadow: none;
 }
 
 .operationButn:hover, .exitAdminButn:hover, .safe-btn:hover, .apply-btn:hover {
-    background: linear-gradient(45deg, rgb(33, 33, 33) 0%, rgb(140, 140, 140) 100%);
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+    border: 2px solid blue;
+}
+
+.safe-btn:hover, .apply-btn:hover {
+    background-color: rgb(0, 0, 180);
+    border: none;
 }
 
 .exitAdminButn:hover{
-    background: linear-gradient(45deg, rgb(170, 33, 33) 0%, rgb(255, 0, 0) 100%);
-    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.5);
-}
-
-.operationButn:hover::after{
-    opacity: 1;
-    transform: scale(1);
-}
-
-.operationButn:active, .exitAdminButn:active, .safe-btn:active, .apply-btn:active {
-    transform: translateY(1px) scale(0.98);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(45deg, rgb(10, 10, 10) 0%, rgb(80, 80, 80) 100%);
-    transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.08s ease;
-}
-
-.exitAdminButn:active{
-    background: linear-gradient(45deg, rgb(112, 37, 37) 0%, rgb(182, 27, 27) 100%);
+    background-color: rgb(210, 0, 0);
+    box-shadow: none;
+    border: none;
 }
 
 .label-input{
@@ -176,18 +156,20 @@ textarea {
     justify-content: center;
     width: 400px;
     min-height: 50px;
-    border: 2px solid rgb(160, 160, 160);
     border-radius: 10px;
+    margin-top: 5px;
     background: #fff;
-    color: #444;
+    color: blue;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.32s;
 }
 
 .map-button:hover{
-    border-color: #000000;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    border: 2px solid blue;
 }
 
 .select-btn {
@@ -306,7 +288,6 @@ textarea {
 .return:hover{
     color: #000000;
     scale: 1.02;
-    transform: translateY(-2px);
 }
 
 .form ul{
@@ -387,7 +368,7 @@ textarea {
 /* ── admin/edit/item/index.php ── */
 
 .edit-card {
-    background: linear-gradient(45deg, rgb(193,193,193) 80%, rgb(255,255,255) 100%);
+    background-color: rgb(238, 238, 238);
     border-radius: 15px;
     padding: 30px;
     display: grid;
@@ -400,8 +381,9 @@ textarea {
 }
 
 .edit-card-header {
+    width: 100%;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 14px;
     margin-bottom: 20px;
     color: #222;
@@ -412,10 +394,15 @@ textarea {
     font-weight: 700;
 }
 
-.edit-card-header p{ 
-    font-size: 13px;
-    color: #555;
-    margin-top: 3px;
+.edit-card-header i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    color: white;
+    background-color: blue;
+    border-radius: 10px;
+    font-size: 25px;
 }
 
 .edit-photo-preview{
@@ -529,7 +516,7 @@ hr{
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     max-height: 55vh;
     overflow-y: auto;
     scrollbar-width: thin;

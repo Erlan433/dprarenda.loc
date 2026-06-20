@@ -129,9 +129,9 @@
         <div id="YMapsID" style="width:600px;height:400px"></div>
     </div>
 
-    <script src="/js/modal-map.js"></script>
-    <script src="/js/select-admin.js"></script>
-    <script src="/js/script.js"></script>
+    <script src="/js/admin/modal-map.js"></script>
+    <script src="/js/admin/select-admin.js"></script>
+    <script src="/js/admin/script.js"></script>
     <script type="text/javascript">
         let added = false;
         ymaps.ready(function(){

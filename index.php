@@ -35,7 +35,6 @@
     if ($result && $result->num_rows > 0) {
         $rooms = $result->fetch_all();
     }
-    echo $sale;
 ?>
 
 <!DOCTYPE html>
@@ -152,6 +151,6 @@
 
     <div class="cover" style="display: none;"></div>
 
-    <script src="/js/select-filter.js"></script>
+    <script src="/js/home/select-filter.js"></script>
 </body>
 </html>
