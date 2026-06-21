@@ -30,13 +30,13 @@ function btnIsActive(){
     if(offset != 0){
         btnLeft.style.opacity = 1;
     } else {
-        btnLeft.style.opacity = 0.5;
+        btnLeft.style.opacity = 0.4;
     }
 
     if(offset != -((caruoselFotoLength - 4) * 220)){
         btnRight.style.opacity = 1;
     } else  {
-        btnRight.style.opacity = 0.5;
+        btnRight.style.opacity = 0.4;
     }
 }
 

@@ -34,7 +34,7 @@
         </div>
     </header>
     <main>
-       <div class="container main-content">
+       <div class="main-content">
             <div class="item-left">
                 <div>
                     <a href="/" class="back-arrow"><i class="fa-solid fa-left-long"></i><span>назад</span></a>
@@ -55,7 +55,7 @@
             </div>
             <div class="item-right">
                 <div>
-                    <h1><?php echo $room[0] ?></h1>
+                    <h1 class="item-h1"><?php echo $room[0] ?></h1>
                     <span class="item-location">
                         <i class="fa-solid fa-location-dot"></i><?php echo $room[5]?>
                     </span>

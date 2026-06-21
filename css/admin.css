@@ -209,8 +209,8 @@ textarea {
 
 .drop-down label:has(+ input:checked){
     font-weight: bold;
-    color: rgb(0, 150, 255);
-    border-left: 3px solid rgb(0, 150, 255);
+    color: blue;
+    border-left: 3px solid blue;
 }
 
 .drop-down input{

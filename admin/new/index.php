@@ -126,7 +126,7 @@
     <div class="cover-map" style="display: none;"></div>
     <div class="map-modal" style="display: none;">
         <p id="close-map">&times;</p>
-        <div id="YMapsID" style="width:600px;height:400px"></div>
+        <div id="YMapsID" style="width:600px;height:400px;"></div>
     </div>
 
     <script src="/js/admin/modal-map.js"></script>

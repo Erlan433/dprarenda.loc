@@ -602,7 +602,9 @@ footer .container .copyright{
     display: grid;
     grid-template-columns: 60% 40%;
     gap: 50px;
+    margin: 0 80px;
 }
+
 
 .item-left, .item-right{
     display: flex;
@@ -650,12 +652,13 @@ footer .container .copyright{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    align-self: center;
     gap: 20px;
 }
 
 .item-caruosel-block{
     position: relative;
-    width: 1000px;
+    width: 100%;
     height: 120px;
     display: flex;
     align-items: center;
@@ -706,7 +709,7 @@ footer .container .copyright{
     transform: scale(1.06);
 }
 
-h1{
+.item-h1{
     margin-bottom: 15px;
 }
 
@@ -787,4 +790,136 @@ h1{
 .item-description{
     color: rgb(70, 70, 70);
     font-size: 18px;
+}
+
+@media(max-width: 1800px){
+    .main-content{
+        grid-template-columns: 1fr;
+        margin: 0 800px;
+    }
+
+    .item-left{
+        position: static;
+    }
+
+    .item-caruosel-fotos{
+        width: 780px;
+        height: 96px;
+    }
+}
+
+@media(max-width: 850px) {
+    .main-content{
+        gap: 50px;
+    }
+
+    .item-left, .item-right{
+        gap: 50px;
+    }
+
+    .back-arrow{
+        gap: 10px;
+        font-size: 14px;
+    }
+
+    .item-main-foto{
+        margin-top: 20px;
+        width: 100%;
+        height: 60vh;
+        border-radius: 10px;
+    }
+
+    .item-caruosel-fotos{
+        width: 530px;
+        height: 60px;
+        gap: 10px;
+    }
+
+    .item-caruosel-block{
+        width: 100%;
+        height: 120px;
+    }
+
+    .item-fotos{
+        height: 120px;
+        gap: 10px;
+    }
+
+    .item-caruosel-foto{
+        width: 50px;
+        height: 30px;
+        border-radius: 10px;
+        padding: 2px;
+    }
+
+    .item-caruosel-fotos button{
+        padding: 10px;
+        font-size: 14px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .item-caruosel-fotos button:hover{
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .item-caruosel-foto:hover{
+        transform: scale(1.06);
+    }
+
+    .item-h1{
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+
+    .item-location{
+        font-size: 14px;
+    }
+
+    .fa-location-dot{
+        font-size: 14px;
+    }
+
+    .item-prices{
+        gap: 10px;
+        padding: 30px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+    }
+
+    .item-prices label{
+        font-size: 14px;
+    }
+
+    .item-price{
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .item-square_price{
+        font-size: 14px;
+    }
+
+    .item-map{
+        width: 100%;
+    }
+
+    .item-call{
+        gap: 10px;
+        width: 600px;
+        height: 80px;
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+    .item-description-block{
+        gap: 30px;
+        padding: 30px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+    .item-description{
+        font-size: 14px;
+    }
 }
