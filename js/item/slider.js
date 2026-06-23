@@ -15,9 +15,20 @@ let sumFotosInWindow = Math.round(parseFloat(caruoselBlockWidth / widthAndGap));
 
 caruoselFoto.forEach(foto => {
     foto.onclick = function (){
+        caruoselFoto.forEach(fotoBorder => {
+            if (fotoBorder.classList.contains('item-foto-selected')){
+                fotoBorder.classList.remove('item-foto-selected');
+            }
+        })
+        foto.classList.add('item-foto-selected');
         itemMainFoto.style.backgroundImage = "url(" + foto.dataset.img + ")";
     }
 })
+
+if(caruoselFotoLength <= sumFotosInWindow){
+    btnLeft.style.display = "none";
+    btnRight.style.display = "none";
+}
 
 btnLeft.onclick = function(){
     if(offset != 0){

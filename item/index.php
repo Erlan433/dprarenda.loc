@@ -44,7 +44,7 @@
                     <button id="item-btn-left"><i class="fa-solid fa-angle-left"></i></button>
                     <div class="item-caruosel-block">
                         <div class="item-fotos">
-                            <div class="item-caruosel-foto" id="pic-0" data-img="<?php echo $room[3] ?>" style="background-image: url(<?php echo $room[3] ?>);"></div>
+                            <div class="item-caruosel-foto item-foto-selected" id="pic-0" data-img="<?php echo $room[3] ?>" style="background-image: url(<?php echo $room[3] ?>);"></div>
                             <?php for($i = 0; $i < count($pictures); $i++): ?>
                                 <div class="item-caruosel-foto" id="pic-<?php echo $i+1 ?>" data-img="<?php echo $pictures[$i][1] ?>" style="background-image: url(<?php echo $pictures[$i][1] ?>);"></div>
                             <?php endfor; ?>
@@ -85,7 +85,7 @@
         </div>
     </footer>
 
-    <script src="/js/item/slider.js"></script>
+    <script src="/js/item/slider.js?m=<?php echo rand() ?>"></script>
     <script type="text/javascript">
         let edit = false;
         ymaps.ready(function(){

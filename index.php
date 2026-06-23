@@ -151,6 +151,6 @@
 
     <div class="cover" style="display: none;"></div>
 
-    <script src="/js/home/select-filter.js"></script>
+    <script src="/js/home/select-filter.js?m=<?php echo rand() ?>"></script>
 </body>
 </html>

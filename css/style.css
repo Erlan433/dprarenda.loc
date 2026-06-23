@@ -485,9 +485,17 @@ footer .container .copyright{
     background-position: center center;
     background-repeat: no-repeat;
     border-radius: 15px;
-    padding: 2px;
+    padding: 0 20px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: left 0.3s;
+}
+
+.item-caruosel-foto:hover{
+    border: 3px solid rgb(115, 115, 115);
+}
+
+.item-foto-selected{
+    border: 3px solid blue !important;
 }
 
 .item-caruosel-fotos button{
@@ -503,10 +511,6 @@ footer .container .copyright{
 
 .item-caruosel-fotos button:hover{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-}
-
-.item-caruosel-foto:hover{
-    transform: scale(1.06);
 }
 
 .item-h1{
@@ -550,6 +554,8 @@ footer .container .copyright{
 
 .item-map{
     width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .ymaps-2-1-79-gototech, .ymaps-2-1-79-gotoymaps__container{
@@ -826,15 +832,14 @@ footer .container .copyright{
     }
 
     .item-main-foto{
-        margin-top: 0px;
         width: 100%;
-        height: 40vh;
+        height: 30vh;
         border-radius: 0px;
         transform: scaleX(1.125);
     }
 
     .item-caruosel-fotos{
-        width: 310px;
+        width: 314px;
         height: 60px;
         gap: 10px;
     }
@@ -847,6 +852,7 @@ footer .container .copyright{
     .item-fotos{
         height: 120px;
         gap: 10px;
+        margin-left: 4px;
     }
 
     .item-caruosel-foto{
@@ -854,6 +860,14 @@ footer .container .copyright{
         height: 60px;
         border-radius: 10px;
         padding: 2px;
+    }
+
+    .item-caruosel-foto:hover{
+        border: 2px solid rgb(115, 115, 115);
+    }
+
+    .item-foto-selected{
+        border: 2px solid blue !important;
     }
 
     .item-caruosel-fotos button{
@@ -872,15 +886,15 @@ footer .container .copyright{
 
     .item-h1{
         margin-bottom: 15px;
-        font-size: 20px;
+        font-size: 28px;
     }
 
     .item-location{
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .item-location-dot{
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .item-prices{
@@ -891,20 +905,24 @@ footer .container .copyright{
     }
 
     .item-prices label{
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .item-price{
-        font-size: 14px;
+        font-size: 20px;
         margin-bottom: 10px;
     }
 
     .item-square_price{
-        font-size: 14px;
+        font-size: 20px;
+    }
+
+    .item-map{
+        border-radius: 10px;
     }
 
     #YMapsID{
-        height: 200px!important;
+        height: 300px!important;
     }
 
     .item-call{
