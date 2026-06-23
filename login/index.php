@@ -23,13 +23,21 @@
         }
     }
     
+    if(isset($_POST["screen-width"])){
+        $screen_width = intval($_POST["screen-width"]);
+
+        if($screen_width < 1200){
+            header("Location: /");
+        }
+    }
+
 ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login DPR</title>
-    <link rel="icon" href="./images/помещение №1.png" type="image/x-icon">
+    <link rel="icon" href="/images/dpr-logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/login.css">
     <link href="/fontawesome/css/all.css" rel="stylesheet">
@@ -53,5 +61,17 @@
         </form>
         <a href="/" class="return">Вернуться</a>
     </div>
+
+    <?php if(!isset($_POST["screen-width"])): ?>
+        <form action="" style="display: none;" id="data" method="POST">
+            <input type="hidden" name="screen-width" id="screen-width">
+            <input type="submit">
+        </form>
+        <script>
+            let screenWidth = window.innerWidth;
+            document.getElementById("screen-width").value = screenWidth;
+            document.forms.namedItem("data").submit();
+        </script>
+    <?php endif; ?>
 </body>
 </html>

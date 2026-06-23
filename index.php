@@ -43,7 +43,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DPR &mdash; продажа пустых помещений</title>
-    <link rel="icon" href="/images/помещение №1.png" type="image/x-icon">
+    <link rel="icon" href="/images/dpr-logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="/css/style.css?m=<?php echo rand() ?>">
     <link rel="stylesheet" href="/css/main.css?m=<?php echo rand() ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,7 +53,7 @@
 <body>
     <header>
         <div class="container">
-            <a href="/" class="logo">DPR </a>
+            <a href="/" class="logo">DPR</a>
             <span class="telefon">
                 <a href="tel:+79782311637"><i class="fa-solid fa-phone"></i></a>
                 <p>+7(978) 231-16-37</p>
@@ -130,7 +130,7 @@
                     <p class="price"><?php echo $rooms[$i][2]?> ₽<?php echo ($rooms[$i][5] == 0 ? " в месяц" : "") ?></p>
                     <p class="square_price"><?php echo $rooms[$i][7]?> ₽<?php echo ($rooms[$i][5] == 0 ? " за м² в месяц" : " за м²") ?></p>
                     <span class="location">
-                        <i class="fa-solid fa-location-dot"></i><?php echo $rooms[$i][6]?>
+                        <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $rooms[$i][6]?>
                     </span>
                     <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="btn-pustPomesh">
                         <span>Подробнее</span>

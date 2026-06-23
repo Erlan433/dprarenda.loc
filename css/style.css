@@ -341,7 +341,7 @@ main h1{
     font-weight: bold;
 }
 
-.fa-location-dot{
+.location-dot{
     margin-right: 5px;
     font-size: 14px;
 }
@@ -396,206 +396,6 @@ footer .container .copyright{
     backdrop-filter: blur(5px);
     overflow: hidden;
     z-index: 2;
-}
-
-@media(max-width: 1500px){
-    .pustPomesheniya{
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media(max-width: 1200px){
-    .pustPomesheniya{
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media(max-width: 768px){
-    header .container .logo{
-        font-size: 30px;
-    }
-
-    header .container .telefon{
-        font-size: 20px;
-    }
-
-    main h1{
-        font-size: 40px;
-    }
-
-    .filter{
-        gap: 10px;
-    }
-
-    .button-filter{
-        width: 100px;
-        height: 38.4px;
-        padding: 5px 12px;
-        font-size: 16px;
-    }
-
-    .search{
-        padding: 8px;
-    }
-
-    .search input{
-        width: 160px;
-        font-size: 16px;
-    }
-
-    .search i{
-        font-size: 14px;
-    }
-
-    .filter form input[type="submit"]{
-        padding: 10px 15px;
-        font-size: 16px;
-    }
-
-    .selectType a{
-        padding: 10px 16px;
-        font-size: 16px;
-    }
-
-    .pustPomesheniya{
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-    }
-
-    .pustPomesh{
-        width: 200px;
-        border-radius: 8px;
-        padding-bottom: 10px;
-    }
-
-    .img{
-        height: 120px;
-        border-radius: 8px;
-    }
-
-    .title, .square_price, .price, .location{
-        font-size: 10px;
-        margin: 3px 0;
-        padding: 0 8px;
-    }
-
-    .price{
-        font-size: 12px;
-    }
-
-    .fa-location-dot{
-        margin-right: 4px;
-        font-size: 8px;
-    }
-
-    .btn-pustPomesh{
-        width: calc(100% - 16px);
-        height: 26px;
-        font-size: 10px;
-        margin: 10px 0 0 8px;
-        border-radius: 4px;
-        gap: 10px;
-    }
-
-    footer .container .copyright{
-        font-size: 16px;
-    }
-}
-
-@media(max-width: 655px){
-    .pustPomesheniya{
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media(max-width: 445px){
-    header{
-        height: 50px;
-    }
-    
-    header .container .logo{
-        font-size: 30px;
-    }
-
-    header .container .telefon{
-        font-size: 18px;
-        gap: 10px;
-    }
-
-    main{
-        /* header=50px + footer=50px, остаток заполняем */
-        min-height: calc(100vh - 100px);
-        /* отступ равен высоте фиксированного хедера иначе все уходит под header*/
-        margin-top: 50px;
-        gap: 30px;
-        padding: 20px 0;
-    }
-
-    main h1{
-        font-size: 30px;
-    }
-
-    .button-filter{
-        width: 80px;
-        height: 36px;
-        padding: 5px 5px;
-        font-size: 14px;
-    }
-
-    .search input{
-        font-size: 14px;
-    }
-
-    .search i{
-        font-size: 13px;
-    }
-
-    .filter form input[type="submit"]{
-        font-size: 14px;
-    }
-
-    .selectType a{
-        font-size: 14px;
-    }
-
-    .pustPomesh{
-        width: 180px;
-        border-radius: 6px;
-        padding-bottom: 8px;
-    }
-
-    .img{
-        border-radius: 6px;
-    }
-
-    .title, .square_price, .price, .location{
-        font-size: 8px;
-        margin: 3px 0;
-        padding: 0 6px;
-    }
-
-    .price{
-        font-size: 10px;
-    }
-
-    .fa-location-dot{
-        margin-right: 3px;
-    }
-
-    .btn-pustPomesh{
-        width: calc(100% - 12px);
-        font-size: 10px;
-        margin: 10px 0 0 6px;
-        gap: 8px;
-    }
-
-    footer{
-        height: 50px
-    }
-
-    footer .container .copyright{
-        font-size: 14px;
-    }
 }
 
 .main-content{
@@ -718,7 +518,7 @@ footer .container .copyright{
     font-size: 20px;
 }
 
-.fa-location-dot{
+.item-location-dot{
     font-size: 16px;
 }
 
@@ -750,6 +550,10 @@ footer .container .copyright{
 
 .item-map{
     width: 100%;
+}
+
+.ymaps-2-1-79-gototech, .ymaps-2-1-79-gotoymaps__container{
+    display: none!important;
 }
 
 .item-call-container{
@@ -808,29 +612,229 @@ footer .container .copyright{
     }
 }
 
-@media(max-width: 850px) {
+@media(max-width: 1500px){
+    .pustPomesheniya{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width: 1200px){
+    .pustPomesheniya{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 768px){
+    header .container .logo{
+        font-size: 30px;
+    }
+
+    header .container .telefon{
+        font-size: 20px;
+    }
+
+    main h1{
+        font-size: 40px;
+    }
+
+    .filter{
+        gap: 10px;
+    }
+
+    .button-filter{
+        width: 100px;
+        height: 38.4px;
+        padding: 5px 12px;
+        font-size: 16px;
+    }
+
+    .search{
+        padding: 8px;
+    }
+
+    .search input{
+        width: 160px;
+        font-size: 16px;
+    }
+
+    .search i{
+        font-size: 14px;
+    }
+
+    .filter form input[type="submit"]{
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+
+    .selectType a{
+        padding: 10px 16px;
+        font-size: 16px;
+    }
+
+    .pustPomesheniya{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .pustPomesh{
+        width: 200px;
+        border-radius: 8px;
+        padding-bottom: 10px;
+    }
+
+    .img{
+        height: 120px;
+        border-radius: 8px;
+    }
+
+    .title, .square_price, .price, .location{
+        font-size: 10px;
+        margin: 3px 0;
+        padding: 0 8px;
+    }
+
+    .price{
+        font-size: 12px;
+    }
+
+    .location-dot{
+        margin-right: 4px;
+        font-size: 8px;
+    }
+
+    .btn-pustPomesh{
+        width: calc(100% - 16px);
+        height: 26px;
+        font-size: 10px;
+        margin: 10px 0 0 8px;
+        border-radius: 4px;
+        gap: 10px;
+    }
+
+    footer .container .copyright{
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 655px){
+    .pustPomesheniya{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 445px) {
+    header{
+        height: 50px;
+    }
+    
+    header .container .logo{
+        font-size: 30px;
+    }
+
+    header .container .telefon{
+        font-size: 18px;
+        gap: 10px;
+    }
+
+    main{
+        /* header=50px + footer=50px, остаток заполняем */
+        min-height: calc(100vh - 100px);
+        /* отступ равен высоте фиксированного хедера иначе все уходит под header*/
+        margin-top: 50px;
+        gap: 30px;
+        padding: 20px 0;
+    }
+
+    main h1{
+        font-size: 30px;
+    }
+
+    .button-filter{
+        width: 80px;
+        height: 36px;
+        padding: 5px 5px;
+        font-size: 14px;
+    }
+
+    .search input{
+        font-size: 14px;
+    }
+
+    .search i{
+        font-size: 13px;
+    }
+
+    .filter form input[type="submit"]{
+        font-size: 14px;
+    }
+
+    .selectType a{
+        font-size: 14px;
+    }
+
+    .pustPomesh{
+        width: 180px;
+        border-radius: 6px;
+        padding-bottom: 8px;
+    }
+
+    .img{
+        border-radius: 6px;
+    }
+
+    .title, .square_price, .price, .location{
+        font-size: 8px;
+        margin: 3px 0;
+        padding: 0 6px;
+    }
+
+    .price{
+        font-size: 10px;
+    }
+
+    .location-dot{
+        margin-right: 3px;
+    }
+
+    .btn-pustPomesh{
+        width: calc(100% - 12px);
+        font-size: 10px;
+        margin: 10px 0 0 6px;
+        gap: 8px;
+    }
+
+    footer{
+        height: 50px
+    }
+
+    footer .container .copyright{
+        font-size: 14px;
+    }
+
     .main-content{
-        gap: 50px;
+        gap: 20px;
+        margin: 0 20px;
     }
 
     .item-left, .item-right{
-        gap: 50px;
+        gap: 20px;
     }
 
     .back-arrow{
-        gap: 10px;
+        gap: 6px;
         font-size: 14px;
     }
 
     .item-main-foto{
-        margin-top: 20px;
+        margin-top: 0px;
         width: 100%;
-        height: 60vh;
-        border-radius: 10px;
+        height: 40vh;
+        border-radius: 0px;
+        transform: scaleX(1.125);
     }
 
     .item-caruosel-fotos{
-        width: 530px;
+        width: 310px;
         height: 60px;
         gap: 10px;
     }
@@ -846,8 +850,8 @@ footer .container .copyright{
     }
 
     .item-caruosel-foto{
-        width: 50px;
-        height: 30px;
+        width: 100px;
+        height: 60px;
         border-radius: 10px;
         padding: 2px;
     }
@@ -868,14 +872,14 @@ footer .container .copyright{
 
     .item-h1{
         margin-bottom: 15px;
-        font-size: 14px;
+        font-size: 20px;
     }
 
     .item-location{
         font-size: 14px;
     }
 
-    .fa-location-dot{
+    .item-location-dot{
         font-size: 14px;
     }
 
@@ -899,14 +903,14 @@ footer .container .copyright{
         font-size: 14px;
     }
 
-    .item-map{
-        width: 100%;
+    #YMapsID{
+        height: 200px!important;
     }
 
     .item-call{
         gap: 10px;
-        width: 600px;
-        height: 80px;
+        width: 300px;
+        height: 50px;
         border-radius: 10px;
         font-size: 14px;
     }

@@ -6,12 +6,12 @@ const caruoselBlock = document.querySelector(".item-caruosel-block");
 const caruoselFoto = document.querySelectorAll(".item-caruosel-foto");
 
 let offset = 0;
-const caruoselFotoLength = caruoselFoto.length;
-const caruoselFotoWidth = Math.round(parseFloat(window.getComputedStyle(document.querySelector(".item-caruosel-foto")).width));
-const fotosGap = Math.round(parseFloat(window.getComputedStyle(fotos).gap));
-const widthAndGap = caruoselFotoWidth + fotosGap;
-const caruoselBlockWidth = Math.round(parseFloat(window.getComputedStyle(caruoselBlock).width));
-const sumFotosInWindow = Math.round(parseFloat(caruoselBlockWidth / widthAndGap));
+let caruoselFotoLength = caruoselFoto.length;
+let caruoselFotoWidth = Math.round(parseFloat(window.getComputedStyle(document.querySelector(".item-caruosel-foto")).width));
+let fotosGap = Math.round(parseFloat(window.getComputedStyle(fotos).gap));
+let widthAndGap = caruoselFotoWidth + fotosGap;
+let caruoselBlockWidth = Math.round(parseFloat(window.getComputedStyle(caruoselBlock).width));
+let sumFotosInWindow = Math.round(parseFloat(caruoselBlockWidth / widthAndGap));
 
 caruoselFoto.forEach(foto => {
     foto.onclick = function (){

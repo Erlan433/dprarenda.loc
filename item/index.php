@@ -17,9 +17,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $room[0] ?></title>
-    <link rel="icon" href="/images/помещение №1.png" type="image/x-icon">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="icon" href="/images/dpr-logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css?m=<?php echo rand() ?>">
+    <link rel="stylesheet" href="/css/main.css?m=<?php echo rand() ?>">
     <link href="/fontawesome/css/all.css" rel="stylesheet">
     <script src="https://api-maps.yandex.ru/2.1/?apikey=4c10efde-32c8-4e71-8c69-1b34c8931969&lang=ru_RU" type="text/javascript"></script>
 </head>
@@ -57,7 +57,7 @@
                 <div>
                     <h1 class="item-h1"><?php echo $room[0] ?></h1>
                     <span class="item-location">
-                        <i class="fa-solid fa-location-dot"></i><?php echo $room[5]?>
+                        <i class="fa-solid fa-location-dot item-location-dot"></i><?php echo $room[5]?>
                     </span>
                 </div>
                 <div class="item-prices">
