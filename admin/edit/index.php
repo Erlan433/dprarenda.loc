@@ -14,7 +14,8 @@
     <title>Admin DPR</title>
     <link rel="icon" href="/images/dpr-logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/admin/admin-common.css">
+    <link rel="stylesheet" href="/css/admin/admin-edits/admin-edit.css">
 </head>
 <body>
     <main class="form">

@@ -14,6 +14,11 @@ body{
     padding: 40px 0;
 }
 
+h1{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
 .form{
     background-color: rgb(238, 238, 238);
     display: flex;
@@ -27,13 +32,6 @@ body{
     animation: appearanceFromBottom 0.6s 0.3s forwards, formShadow 0.6s 0.6s forwards;
 }
 
-.form form{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    align-items: center;
-}
-
 @keyframes formShadow {
     to{box-shadow: 30px 30px 10px rgba(0, 0, 0)}
 }
@@ -45,16 +43,11 @@ body{
     }
 }
 
-h1{
-    font-size: 40px;
-    margin-bottom: 20px;
-}
-
-.adminOperations{
+.form form{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 30px;
     align-items: center;
-    margin: 50px 0;
 }
 
 .operationButn, .exitAdminButn, .safe-btn, .apply-btn{
@@ -75,14 +68,6 @@ h1{
     cursor: pointer;
 }
 
-.exitAdminButn{
-    background-color: red;
-    height: 100px;
-    width: 300px;
-    color: white;
-    box-shadow: none;
-}
-
 .safe-btn, .apply-btn {
     background-color: blue;
     color: white;
@@ -97,12 +82,6 @@ h1{
 
 .safe-btn:hover, .apply-btn:hover {
     background-color: rgb(0, 0, 180);
-    border: none;
-}
-
-.exitAdminButn:hover{
-    background-color: rgb(210, 0, 0);
-    box-shadow: none;
     border: none;
 }
 
@@ -225,12 +204,6 @@ textarea {
     display: none;
 }
 
-.new-block-foto{
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
 .foto-label {
     display: flex;
     flex-direction: column;
@@ -290,48 +263,6 @@ textarea {
     scale: 1.02;
 }
 
-.form ul{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding: 0;
-    max-height: 55vh;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #888 #ddd;
-}
-
-.form ul a li{
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    background: rgba(255,255,255,0.65);
-    border-radius: 10px;
-    border: 2px solid transparent;
-    transition: background 0.2s, transform 0.2s;
-}
-
-.form ul a li:hover{
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid rgba(108, 108, 108, 0.5);
-}
-
-.form ul a li img{
-    width: 100px;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 7px;
-    flex-shrink: 0;
-}
-
-.form ul a p.title{
-    font-size: 18px;
-    color: #1a1a1a;
-    font-weight: 500;
-    transition: color 0.2s;
-}
-
 .cover-map{
     position: fixed;
     top: 0;
@@ -365,8 +296,6 @@ textarea {
     color: red;
 }
 
-/* ── admin/edit/item/index.php ── */
-
 .edit-card {
     background-color: rgb(238, 238, 238);
     border-radius: 15px;
@@ -389,7 +318,7 @@ textarea {
     color: #222;
 }
 
-.edit-card-header h2 { 
+.edit-card-header h2 {
     font-size: 25px;
     font-weight: 700;
 }
@@ -405,42 +334,9 @@ textarea {
     font-size: 25px;
 }
 
-.edit-photo-preview{
-    width: 100%;
-    max-height: 180px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 2px solid #bbb;
-    margin-bottom: 12px;
-}
-
 .edit-card-content{
     display: flex;
     gap: 20px;
-}
-
-.fotos{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 15px;
-    margin-top: 12px;
-}
-
-.fotos .img-item{
-    width: 100%;
-    height: 120px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    border-radius: 5px;
-}
-
-.fotos .img-item .cross{
-    color: red;
-    font-size: 30px;
-    float: right;
-    margin: 0 5px;
-    cursor: pointer;
 }
 
 .edit-left {
@@ -449,18 +345,10 @@ textarea {
     gap: 16px;
 }
 
-hr{
-    border: 1px solid rgb(150, 150, 150);
-}
-
 .edit-right {
     display: flex;
     flex-direction: column;
     gap: 16px;
-}
-
-#file_select{
-    display: none;
 }
 
 .edit-footer {
@@ -483,78 +371,4 @@ hr{
     margin: 0;
     width: auto;
     padding: 0 36px;
-}
-
-/* ── admin/delete/index.php ── */
-
-.container form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-}
-
-.delete-toolbar{
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-
-.select-btn-delete, .drop-down-delete{
-    width: 200px;
-}
-
-.apply-btn{
-    width: 200px;
-    height: 50px;
-    font-size: 16px;
-    margin: 0;
-}
-
-.delete-list{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-height: 55vh;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #888 #ddd;
-}
-
-.delete-list li{
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: rgba(255,255,255,0.65);
-    border: 2px solid transparent;
-    border-radius: 10px;
-    padding: 0 15px 0 0;
-    transition: background 0.2s;
-    cursor: pointer;
-}
-
-.delete-list li:hover{
-    background: rgba(255,255,255,0.9);
-}
-
-.delete-list li input[type="checkbox"]{
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-
-.delete-list li img{
-    width: 100px;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 7px;
-}
-
-.delete-list li label{
-    font-size: 17px;
-    font-weight: 500;
-    color: #1a1a1a;
-    cursor: pointer;
 }

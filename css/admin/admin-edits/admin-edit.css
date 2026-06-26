@@ -1,0 +1,41 @@
+.form ul{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 0;
+    max-height: 55vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #ddd;
+}
+
+.form ul a li{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: rgba(255,255,255,0.65);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.form ul a li:hover{
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(108, 108, 108, 0.5);
+}
+
+.form ul a li img{
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 7px;
+    flex-shrink: 0;
+}
+
+.form ul a p.title{
+    font-size: 18px;
+    color: #1a1a1a;
+    font-weight: 500;
+    transition: color 0.2s;
+}

@@ -1,0 +1,20 @@
+.adminOperations{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.exitAdminButn{
+    background-color: red;
+    height: 100px;
+    width: 300px;
+    color: white;
+    box-shadow: none;
+}
+
+.exitAdminButn:hover{
+    background-color: rgb(210, 0, 0);
+    box-shadow: none;
+    border: none;
+}

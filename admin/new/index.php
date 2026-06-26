@@ -40,7 +40,8 @@
     <title>Admin DPR</title>
     <link rel="icon" href="/images/dpr-logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/admin/admin-common.css">
+    <link rel="stylesheet" href="/css/admin/admin-new.css">
     <link href="/fontawesome/css/all.css" rel="stylesheet">
     <script src="https://api-maps.yandex.ru/2.1/?apikey=4c10efde-32c8-4e71-8c69-1b34c8931969&lang=ru_RU" type="text/javascript"></script>
 </head>
