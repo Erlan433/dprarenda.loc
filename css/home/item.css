@@ -1,0 +1,348 @@
+.main-content{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: 50px;
+    margin: 0 80px;
+}
+
+.item-left, .item-right{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.item-left{
+    position: sticky;
+    top: 120px;
+    align-self: start;
+}
+
+.back-arrow{
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 25px;
+    color: rgb(115, 115, 115);
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.back-arrow:hover{
+    color: rgb(81, 81, 81);
+    border-bottom: 2px solid rgb(81, 81, 81);
+}
+
+.item-main-foto{
+    margin-top: 20px;
+    width: 100%;
+    height: 60vh;
+    border-radius: 15px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.item-caruosel-fotos{
+    position: relative;
+    width: 990px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-self: center;
+    gap: 20px;
+}
+
+.item-caruosel-block{
+    position: relative;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.item-fotos{
+    position: absolute;
+    width: fit-content;
+    left: 0;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.item-caruosel-foto{
+    position: relative;
+    left: 0;
+    width: 200px;
+    height: 120px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    padding: 0 20px;
+    cursor: pointer;
+    transition: left 0.3s;
+}
+
+.item-caruosel-foto:hover{
+    border: 3px solid rgb(115, 115, 115);
+}
+
+.item-foto-selected{
+    border: 3px solid blue !important;
+}
+
+.item-caruosel-fotos button{
+    padding: 10px;
+    background-color: white;
+    border: none;
+    border-radius: 100px;
+    font-size: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.item-caruosel-fotos button:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.item-h1{
+    margin-bottom: 15px;
+}
+
+.item-location{
+    color: rgb(101, 101, 101);
+    font-size: 20px;
+}
+
+.item-location-dot{
+    font-size: 16px;
+}
+
+.item-prices{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+
+.item-prices label{
+    font-size: 22px;
+    color: rgb(101, 101, 101);
+}
+
+.item-price{
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.item-square_price{
+    font-size: 25px;
+    color: rgb(0, 100, 255);
+    font-weight: bold;
+}
+
+.item-map{
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.ymaps-2-1-79-gototech, .ymaps-2-1-79-gotoymaps__container{
+    display: none!important;
+}
+
+.item-call-container{
+    display: flex;
+    justify-content: center;
+}
+
+.item-call{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 600px;
+    height: 80px;
+    background-color: rgb(0, 100, 255);
+    color: white;
+    border-radius: 15px;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.item-call:hover{
+    background-color: rgb(0, 50, 255);
+}
+
+.item-description-block{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    font-size: 25px;
+}
+
+.item-description{
+    color: rgb(70, 70, 70);
+    font-size: 18px;
+}
+
+@media(max-width: 1800px){
+    .main-content{
+        grid-template-columns: 1fr;
+        margin: 0 800px;
+    }
+
+    .item-left{
+        position: static;
+    }
+
+    .item-caruosel-fotos{
+        width: 780px;
+        height: 96px;
+    }
+}
+
+@media(max-width: 445px) {
+    .main-content{
+        gap: 20px;
+        margin: 0 20px;
+    }
+
+    .item-left, .item-right{
+        gap: 20px;
+    }
+
+    .back-arrow{
+        gap: 6px;
+        font-size: 14px;
+    }
+
+    .item-main-foto{
+        width: 100%;
+        height: 30vh;
+        border-radius: 0px;
+        transform: scaleX(1.125);
+    }
+
+    .item-caruosel-fotos{
+        width: 314px;
+        height: 60px;
+        gap: 10px;
+    }
+
+    .item-caruosel-block{
+        width: 100%;
+        height: 120px;
+    }
+
+    .item-fotos{
+        height: 120px;
+        gap: 10px;
+        margin-left: 4px;
+    }
+
+    .item-caruosel-foto{
+        width: 100px;
+        height: 60px;
+        border-radius: 10px;
+        padding: 2px;
+    }
+
+    .item-caruosel-foto:hover{
+        border: 2px solid rgb(115, 115, 115);
+    }
+
+    .item-foto-selected{
+        border: 2px solid blue !important;
+    }
+
+    .item-caruosel-fotos button{
+        padding: 10px;
+        font-size: 14px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .item-caruosel-fotos button:hover{
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .item-caruosel-foto:hover{
+        transform: scale(1.06);
+    }
+
+    .item-h1{
+        margin-bottom: 15px;
+        font-size: 28px;
+    }
+
+    .item-location{
+        font-size: 18px;
+    }
+
+    .item-location-dot{
+        font-size: 18px;
+    }
+
+    .item-prices{
+        gap: 10px;
+        padding: 30px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+    }
+
+    .item-prices label{
+        font-size: 18px;
+    }
+
+    .item-price{
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .item-square_price{
+        font-size: 20px;
+    }
+
+    .item-map{
+        border-radius: 10px;
+    }
+
+    #YMapsID{
+        height: 300px!important;
+    }
+
+    .item-call{
+        gap: 10px;
+        width: 300px;
+        height: 50px;
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+    .item-description-block{
+        gap: 30px;
+        padding: 30px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+    .item-description{
+        font-size: 14px;
+    }
+}

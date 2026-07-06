@@ -154,7 +154,8 @@
 
     <script src="/js/admin/modal-map.js"></script>
     <script src="/js/admin/select-admin.js"></script>
-    <script src="/js/script.js"></script>
+    <script src="/js/admin/pick-foto.js"></script>
+    <script src="/js/admin/upload-img.js"></script>
     <script type="text/javascript">
         let edit = false;
         ymaps.ready(function(){

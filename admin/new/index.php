@@ -133,7 +133,7 @@
 
     <script src="/js/admin/modal-map.js"></script>
     <script src="/js/admin/select-admin.js"></script>
-    <script src="/js/admin/script.js"></script>
+    <script src="/js/admin/pick-foto.js"></script>
     <script type="text/javascript">
         let added = false;
         ymaps.ready(function(){

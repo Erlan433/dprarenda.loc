@@ -14,7 +14,7 @@ function getRandomString($n) {
     $randomString = '';
 
     for ($i = 0; $i < $n; $i++) {
-        $index = random_int(0, strlen($characters) - 1);
+        $index = rand(0, strlen($characters) - 1);
         $randomString .= $characters[$index];
     }
 
