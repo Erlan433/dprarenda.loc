@@ -2,32 +2,9 @@
     include $_SERVER["DOCUMENT_ROOT"]."/db.php";
     
     $rooms = array();
-    $search = "";
-    $filter = "";
-    $sale = -1;
     if(isset($_POST["seek"])){
         $search = $_POST["search"];
         $sql = "SELECT * FROM rooms WHERE title LIKE '%$search%'";
-    } else if(isset($_POST["total"])) {
-        $sales = $_POST["sale"] == -1 ? "0,1" : $_POST["sale"];
-        $sale = $_POST["sale"];
-        $from = $_POST["from"] != "" ? $_POST["from"] : 0;
-        $to = $_POST["to"] != "" ? $_POST["to"] : 1000000000;
-        $sql = "SELECT * FROM rooms WHERE price BETWEEN $from AND $to AND sale IN ($sales)";
-    } else if(isset($_POST["meter"])) {
-        $sales = $_POST["sale"] == -1 ? "0,1" : $_POST["sale"];
-        $sale = $_POST["sale"];
-        $from = $_POST["from"] != "" ? $_POST["from"] : 0;
-        $to = $_POST["to"] != "" ? $_POST["to"] : 1000000000;
-        $sql = "SELECT * FROM rooms WHERE square_price BETWEEN $from AND $to AND sale IN ($sales)";
-    } else if(isset($_GET["filter"])) {
-        $filter = $_GET["filter"];
-        if($filter == "rent"){
-            $sale = 0;
-        } else {
-            $sale = 1;
-        }
-        $sql = "SELECT * FROM rooms WHERE sale = $sale";
     } else {
         $sql = "SELECT * FROM rooms";
     }
@@ -62,86 +39,102 @@
         </div>
     </header>
     <main>
-        <h1>Пустые помещения</h1>
+        <h1>Наши объекты</h1>
 
-        <div class="filters">
-            <div class="filter">
-                <!-- ФИЛЬТР -->
-                 <div style="position: relative;">
-                     <button class="button-filter"><i class="fa-solid fa-filter"></i> Фильтр</button>
-                     <div class="drop-down" style="display: none">
-                         <button class="filter-select-price">Цена</button>
-                         <button class="filter-select-square-price">Цена за м²</button>
-                     </div>
-                 </div>
-
-                <!-- ПОИСКОВИК -->
-                <div class="searchAndBtn">
-                    <form action="" method="post">
-                        <input type="hidden" name="seek" value="1">
-                        <div class="search">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <input type="text" name="search" placeholder="Поиск..." value="<?php echo $search ?>" autocomplete="off">
-                        </div>
-                        <input type="submit" value="Найти">
-                    </form>
-                </div>
+        <div class="category">
+            <div class="subtitle">
+                <h2>Складские помещения</h2>
+                <span><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></span>
             </div>
-
-            <!-- ФОРМОЧКА ФИЛЬТРА ЦЕНЫ -->
-            <form action="" method="post" class="price-modal" id="price-modal" style="display: none;">
-                <input type="hidden" name="total" value="1">
-                <input type="hidden" name="sale" value="<?php echo $sale ?>">
-                <div class="xmark" id="xmark-price"><i class="fa-solid fa-xmark" id="xmark"></i></div>
-                <div class="modal-h2" id="modal-h2-price"><h2>Фильтр цены</h2></div>
-                <label for="from">От</label>
-                <input type="number" name="from" id="from" placeholder="0">
-                <label for="to">До</label>
-                <input type="number" name="to" id="to" placeholder="&infin;">
-                <input type="submit" value="Показать">
-            </form>
-
-            <!-- ФОРМОЧКА ФИЛЬТРА ЦЕНЫ ЗА КВАДРАТНЫЙ МЕТР -->
-            <form action="" method="post" class="square-price-modal" id="square-price-modal" style="display: none;">
-                <input type="hidden" name="meter" value="1">
-                <input type="hidden" name="sale" value="<?php echo $sale ?>">
-                <div class="xmark" id="xmark-square-price"><i class="fa-solid fa-xmark" id="xmark"></i></div>
-                <div class="modal-h2"><h2>Фильтр цены за м²</h2></div>
-                <label for="from">От</label>
-                <input type="number" name="from" id="from" placeholder="0">
-                <label for="to">До</label>
-                <input type="number" name="to" id="to" placeholder="&infin;">
-                <input type="submit" value="Показать">
-            </form>
-    
-            <!-- ВЫБОР ТИПА -->
-            <div class="selectType">
-                <a href="?" style="<?php echo ($sale == -1 ? 'border: 2px solid rgb(0, 150, 255)' : '') ?>">Все</a>
-                <a href="?filter=rent" style="<?php echo ($sale == 0 ? 'border: 2px solid rgb(0, 150, 255)' : '') ?>">В аренду</a>
-                <a href="?filter=sale" style="<?php echo ($sale == 1 ? 'border: 2px solid rgb(0, 150, 255)' : '') ?>">В продажу</a>
+            <div class="pustPomesheniya">
+                <?php for($i = 0; $i < 4; $i++): ?>
+                    <div class="pustPomesh">
+                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="img" style="background-image: url(<?php echo $rooms[$i][4]?>)"></a>
+                        <a class="title" href="/item/?i=<?php echo $rooms[$i][0]?>"><?php echo $rooms[$i][1]?></a>
+                        <p class="price"><?php echo $rooms[$i][2]?> ₽</p>
+                        <p class="square_price"><?php echo $rooms[$i][6]?> ₽</p>
+                        <span class="location">
+                            <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $rooms[$i][5]?>
+                        </span>
+                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="btn-pustPomesh">
+                            <span>Подробнее</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                <?php endfor ?>
             </div>
         </div>
 
-        <!-- ПУСТЫЕ ПОМЕЩЕНИЯ -->
-        <div class="pustPomesheniya container">
-            <?php for($i = 0; $i < count($rooms); $i++): ?>
-                <div class="pustPomesh">
-                    <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="img" style="background-image: url(<?php echo $rooms[$i][4]?>)"></a>
-                    <a class="title" href="/item/?i=<?php echo $rooms[$i][0]?>"><?php echo $rooms[$i][1]?></a>
-                    <p class="price"><?php echo $rooms[$i][2]?> ₽<?php echo ($rooms[$i][5] == 0 ? " в месяц" : "") ?></p>
-                    <p class="square_price"><?php echo $rooms[$i][7]?> ₽<?php echo ($rooms[$i][5] == 0 ? " за м² в месяц" : " за м²") ?></p>
-                    <span class="location">
-                        <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $rooms[$i][6]?>
-                    </span>
-                    <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="btn-pustPomesh">
-                        <span>Подробнее</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            <?php endfor ?>
-            <?php if(count($rooms) == 0): ?>
-                <h2>Пустых помещений нет!</h2>
-            <?php endif ?>
+        <div class="category">
+            <div class="subtitle">
+                <h2>Торговые помещения</h2>
+                <span><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+            <div class="pustPomesheniya">
+                <?php for($i = 0; $i < 4; $i++): ?>
+                    <div class="pustPomesh">
+                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="img" style="background-image: url(<?php echo $rooms[$i][4]?>)"></a>
+                        <a class="title" href="/item/?i=<?php echo $rooms[$i][0]?>"><?php echo $rooms[$i][1]?></a>
+                        <p class="price"><?php echo $rooms[$i][2]?> ₽</p>
+                        <p class="square_price"><?php echo $rooms[$i][6]?> ₽</p>
+                        <span class="location">
+                            <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $rooms[$i][5]?>
+                        </span>
+                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="btn-pustPomesh">
+                            <span>Подробнее</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                <?php endfor ?>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="subtitle">
+                <h2>Площадки</h2>
+                <span><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+            <div class="pustPomesheniya">
+                <?php for($i = 0; $i < 4; $i++): ?>
+                    <div class="pustPomesh">
+                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="img" style="background-image: url(<?php echo $rooms[$i][4]?>)"></a>
+                        <a class="title" href="/item/?i=<?php echo $rooms[$i][0]?>"><?php echo $rooms[$i][1]?></a>
+                        <p class="price"><?php echo $rooms[$i][2]?> ₽</p>
+                        <p class="square_price"><?php echo $rooms[$i][6]?> ₽</p>
+                        <span class="location">
+                            <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $rooms[$i][5]?>
+                        </span>
+                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="btn-pustPomesh">
+                            <span>Подробнее</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                <?php endfor ?>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="subtitle">
+                <h2>Офисные помещения</h2>
+                <span><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+            <div class="pustPomesheniya">
+                <?php for($i = 0; $i < 4; $i++): ?>
+                    <div class="pustPomesh">
+                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="img" style="background-image: url(<?php echo $rooms[$i][4]?>)"></a>
+                        <a class="title" href="/item/?i=<?php echo $rooms[$i][0]?>"><?php echo $rooms[$i][1]?></a>
+                        <p class="price"><?php echo $rooms[$i][2]?> ₽</p>
+                        <p class="square_price"><?php echo $rooms[$i][6]?> ₽</p>
+                        <span class="location">
+                            <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $rooms[$i][5]?>
+                        </span>
+                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="btn-pustPomesh">
+                            <span>Подробнее</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                <?php endfor ?>
+            </div>
         </div>
     </main>
     <footer>
@@ -151,7 +144,5 @@
     </footer>
 
     <div class="cover" style="display: none;"></div>
-
-    <script src="/js/home/select-filter.js?m=<?php echo rand() ?>"></script>
 </body>
 </html>

@@ -227,6 +227,29 @@ main h1{
     background-color: rgb(210, 210, 210);
 }
 
+.subtitle{
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.subtitle h2{
+    font-size: 40px;
+}
+
+.subtitle span{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #0064FF;
+}
+
+.subtitle span p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .pustPomesheniya{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
