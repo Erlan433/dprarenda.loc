@@ -32,6 +32,12 @@
     <header>
         <div class="container">
             <a href="/" class="logo">DPR</a>
+            <nav>
+                <a href="/categories/warehouses/" class="nav-category">Склады</a>
+                <a href="/categories/shops/" class="nav-category">Магазины</a>
+                <a href="/categories/spaces/" class="nav-category">Площадки</a>
+                <a href="/categories/offices/" class="nav-category">Офисы</a>
+            </nav>
             <span class="telefon">
                 <a href="tel:+79782311637"><i class="fa-solid fa-phone"></i></a>
                 <p>+7(978) 231-16-37</p>
@@ -44,7 +50,7 @@
         <div class="category">
             <div class="subtitle">
                 <h2>Складские помещения</h2>
-                <span><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></span>
+                <a href="/categories/warehouses/"><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div class="pustPomesheniya">
                 <?php for($i = 0; $i < 4; $i++): ?>
@@ -68,7 +74,7 @@
         <div class="category">
             <div class="subtitle">
                 <h2>Торговые помещения</h2>
-                <span><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></span>
+                <a href="/categories/shops/"><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div class="pustPomesheniya">
                 <?php for($i = 0; $i < 4; $i++): ?>
@@ -92,7 +98,7 @@
         <div class="category">
             <div class="subtitle">
                 <h2>Площадки</h2>
-                <span><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></span>
+                <a href="/categories/spaces/"><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div class="pustPomesheniya">
                 <?php for($i = 0; $i < 4; $i++): ?>
@@ -116,7 +122,7 @@
         <div class="category">
             <div class="subtitle">
                 <h2>Офисные помещения</h2>
-                <span><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></span>
+                <a href="/categories/offices/"><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div class="pustPomesheniya">
                 <?php for($i = 0; $i < 4; $i++): ?>

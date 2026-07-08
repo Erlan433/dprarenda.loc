@@ -2,7 +2,7 @@
     include $_SERVER["DOCUMENT_ROOT"]."/db.php";
     if(isset($_GET["i"])){
         $id = $_GET["i"];
-        $sql = "SELECT title, price, description, picture, sale, location, square_price, lat, lon FROM rooms WHERE id = $id";
+        $sql = "SELECT title, price, description, picture, location, square_price, lat, lon FROM rooms WHERE id = $id";
         $result = $conn->query($sql);
         $room = $result->fetch_row();
         $sql = "SELECT id, picture FROM pictures WHERE room_id = $id";
@@ -58,14 +58,14 @@
                 <div>
                     <h1 class="item-h1"><?php echo $room[0] ?></h1>
                     <span class="item-location">
-                        <i class="fa-solid fa-location-dot item-location-dot"></i><?php echo $room[5]?>
+                        <i class="fa-solid fa-location-dot item-location-dot"></i><?php echo $room[4]?>
                     </span>
                 </div>
                 <div class="item-prices">
                     <label for="item-price">Цена</label>
-                    <p class="item-price" id="item-price"><?php echo $room[1]?> ₽<?php echo ($room[4] == 0 ? " в месяц" : "") ?></p>
+                    <p class="item-price" id="item-price"><?php echo $room[1]?> ₽ в месяц</p>
                     <label for="item-square_price">Цена за м²</label>
-                    <p class="item-square_price" id="item-square_price"><?php echo $room[6]?> ₽<?php echo ($room[4] == 0 ? " в месяц" : "") ?></p>
+                    <p class="item-square_price" id="item-square_price"><?php echo $room[5]?> ₽ в месяц</p>
                 </div>
                 <div class="item-map">
                     <div id="YMapsID" style="width:100%;height:400px"></div>
@@ -90,7 +90,7 @@
     <script type="text/javascript">
         let edit = false;
         ymaps.ready(function(){
-            const coords = [<?php echo $room[7] ?>, <?php echo $room[8] ?>];
+            const coords = [<?php echo $room[6] ?>, <?php echo $room[7] ?>];
             if(coords[0] == 0 && coords[1] == 0){
                 coords[0] = 44.95;
                 coords[1] = 34.1;

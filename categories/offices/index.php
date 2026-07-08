@@ -46,7 +46,7 @@
     <link rel="icon" href="/images/dpr-logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="/css/main.css?m=<?php echo rand() ?>">
     <link rel="stylesheet" href="/css/home/common.css?m=<?php echo rand() ?>">
-    <link rel="stylesheet" href="/css/home/style.css?m=<?php echo rand() ?>">
+    <link rel="stylesheet" href="/css/home/categories/offices.css?m=<?php echo rand() ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="/fontawesome/css/all.css" rel="stylesheet">
@@ -55,6 +55,12 @@
     <header>
         <div class="container">
             <a href="/" class="logo">DPR</a>
+            <nav>
+                <a href="/categories/warehouses/" class="nav-category nav-warehouses">Склады</a>
+                <a href="/categories/shops/" class="nav-category nav-shops">Магазины</a>
+                <a href="/categories/spaces/" class="nav-category nav-spaces">Площадки</a>
+                <a href="/categories/offices/" class="nav-category nav-offices">Офисы</a>
+            </nav>
             <span class="telefon">
                 <a href="tel:+79782311637"><i class="fa-solid fa-phone"></i></a>
                 <p>+7(978) 231-16-37</p>
@@ -62,7 +68,7 @@
         </div>
     </header>
     <main>
-        <h1>Пустые помещения</h1>
+        <h1>Офисные помещения</h1>
         <div class="filter">
             <!-- ФИЛЬТР -->
             <button class="button-filter"><i class="fa-solid fa-filter"></i> Фильтр</button>

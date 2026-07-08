@@ -46,7 +46,7 @@
     <link rel="icon" href="/images/dpr-logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="/css/main.css?m=<?php echo rand() ?>">
     <link rel="stylesheet" href="/css/home/common.css?m=<?php echo rand() ?>">
-    <link rel="stylesheet" href="/css/home/style.css?m=<?php echo rand() ?>">
+    <link rel="stylesheet" href="/css/home/categories/warehouses.css?m=<?php echo rand() ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="/fontawesome/css/all.css" rel="stylesheet">
@@ -55,6 +55,12 @@
     <header>
         <div class="container">
             <a href="/" class="logo">DPR</a>
+            <nav>
+                <a href="/categories/warehouses/" class="nav-category nav-warehouses">Склады</a>
+                <a href="/categories/shops/" class="nav-category nav-shops">Магазины</a>
+                <a href="/categories/spaces/" class="nav-category nav-spaces">Площадки</a>
+                <a href="/categories/offices/" class="nav-category nav-offices">Офисы</a>
+            </nav>
             <span class="telefon">
                 <a href="tel:+79782311637"><i class="fa-solid fa-phone"></i></a>
                 <p>+7(978) 231-16-37</p>
@@ -62,45 +68,65 @@
         </div>
     </header>
     <main>
-        <h1>Пустые помещения</h1>
-        <div class="filter">
-            <!-- ФИЛЬТР -->
-            <button class="button-filter"><i class="fa-solid fa-filter"></i> Фильтр</button>
+        <h1>Складские помещения</h1>
 
             <!-- ПОИСКОВИК -->
-            <div class="searchAndBtn">
-                <form action="" method="post">
-                    <input type="hidden" name="seek" value="1">
-                    <div class="search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" name="search" placeholder="Поиск..." value="<?php echo $search ?>" autocomplete="off">
-                    </div>
-                    <input type="submit" value="Найти">
+        <div class="searchAndBtn">
+            <form action="" method="post">
+                <input type="hidden" name="seek" value="1">
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" name="search" placeholder="Поиск..." value="<?php echo $search ?>" autocomplete="off">
+                </div>
+                <input type="submit" value="Найти">
+            </form>
+        </div>
+
+        <div class="main-content container">
+            <div class="filters">
+                <form action="">
+                    <h2>Цена, ₽</h2>
+                    <input type="text" placeholder="От">
+                    <input type="text" placeholder="До">
+
+                    <h2>Цена, ₽</h2>
+                    <input type="text" placeholder="От">
+                    <input type="text" placeholder="До">
+
+                    <h2>Высота потолков</h2>
+                    <input type="text" placeholder="От">
+                    <input type="text" placeholder="До">
+
+                    <h2>Пол</h2>
+                    <input type="radio" name="pol">
+                    <label for="">Ровный</label>
+                    <input type="radio" name="pol">
+                    <label for="">Не ровный</label>
                 </form>
+            </div>
+            <!-- ПУСТЫЕ ПОМЕЩЕНИЯ -->
+            <div class="pustPomesheniya">
+                <?php for($i = 0; $i < count($rooms); $i++): ?>
+                    <div class="pustPomesh">
+                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="img" style="background-image: url(<?php echo $rooms[$i][4]?>)"></a>
+                        <a class="title" href="/item/?i=<?php echo $rooms[$i][0]?>"><?php echo $rooms[$i][1]?></a>
+                        <p class="price"><?php echo $rooms[$i][2]?> ₽<?php echo ($rooms[$i][5] == 0 ? " в месяц" : "") ?></p>
+                        <p class="square_price"><?php echo $rooms[$i][7]?> ₽<?php echo ($rooms[$i][5] == 0 ? " за м² в месяц" : " за м²") ?></p>
+                        <span class="location">
+                            <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $rooms[$i][6]?>
+                        </span>
+                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="btn-pustPomesh">
+                            <span>Подробнее</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                <?php endfor ?>
+                <?php if(count($rooms) == 0): ?>
+                    <h2>Пустых помещений нет!</h2>
+                <?php endif ?>
             </div>
         </div>
 
-        <!-- ПУСТЫЕ ПОМЕЩЕНИЯ -->
-        <div class="pustPomesheniya container">
-            <?php for($i = 0; $i < count($rooms); $i++): ?>
-                <div class="pustPomesh">
-                    <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="img" style="background-image: url(<?php echo $rooms[$i][4]?>)"></a>
-                    <a class="title" href="/item/?i=<?php echo $rooms[$i][0]?>"><?php echo $rooms[$i][1]?></a>
-                    <p class="price"><?php echo $rooms[$i][2]?> ₽<?php echo ($rooms[$i][5] == 0 ? " в месяц" : "") ?></p>
-                    <p class="square_price"><?php echo $rooms[$i][7]?> ₽<?php echo ($rooms[$i][5] == 0 ? " за м² в месяц" : " за м²") ?></p>
-                    <span class="location">
-                        <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $rooms[$i][6]?>
-                    </span>
-                    <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="btn-pustPomesh">
-                        <span>Подробнее</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            <?php endfor ?>
-            <?php if(count($rooms) == 0): ?>
-                <h2>Пустых помещений нет!</h2>
-            <?php endif ?>
-        </div>
     </main>
     <footer>
         <div class="container">

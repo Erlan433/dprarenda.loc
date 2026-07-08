@@ -5,7 +5,7 @@ body{
 header{
     width: 100%;
     height: 70px;
-    background: linear-gradient(to right,rgb(0, 0, 0) 0%, rgb(102, 102, 102) 100%);
+    background: linear-gradient(to right,rgb(0, 0, 0) 0%, var(--logo-gray) 100%);
     position: fixed;
     top: 0;
     box-shadow: 0 0 10px black;
@@ -23,6 +23,23 @@ header .container .logo{
     color: rgb(255, 255, 255);
 }
 
+header .container nav{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.nav-category{
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.nav-category:hover{
+    color: var(--logo-blue-hover);
+}
+
 header .container .telefon{
     display: flex;
     align-items: center;
@@ -34,10 +51,16 @@ header .container .telefon{
 header .container .telefon .fa-phone{
     width: auto;
     background-color: rgba(255, 255, 255, 0.15);
-    color: rgba(0, 160, 255, 0.9);
-    border: 2px solid rgba(0, 160, 255, 0.9);
+    color: var(--logo-blue);
+    border: 2px solid var(--logo-blue);
     padding: 5px;
     border-radius: 10px;
+    transition: 0.2s;
+}
+
+header .container .telefon .fa-phone:hover{
+    color: var(--logo-blue-hover);
+    border: 2px solid var(--logo-blue-hover);
 }
 
 main{
@@ -53,10 +76,165 @@ main{
     margin-top: 70px;
 }
 
+main h1{
+    color: rgb(0, 0, 0);
+    font-size: 50px;
+}
+
+.searchAndBtn{
+    background-color: var(--logo-blue);
+    border-radius: 12px;
+}
+
+.searchAndBtn form{
+    display: flex;
+    align-items: center;
+}
+
+.search{
+    border: 2px solid var(--logo-blue);
+    padding: 15px;
+    border-radius: 12px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search input{
+    border: none;
+    outline: none;
+    width: 500px;
+    font-size: 20px;
+}
+
+.search i{
+    font-size: 18px;
+    color: gray;
+}
+
+.searchAndBtn form input[type="submit"]{
+    background-color: var(--logo-blue);
+    padding: 17px 30px;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.searchAndBtn form input[type="submit"]:hover{
+    background-color: var(--logo-blue-hover);
+}
+
+.main-content{
+    display: flex;
+    gap: 50px;
+}
+
+.pustPomesheniya{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.pustPomesh{
+    width: 350px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 15px;
+    transition: 0.15s;
+    color: black;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: appearanceFromBottom 0.6s forwards;
+}
+
+@keyframes appearanceFromBottom {
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.img{
+    width: 100%;
+    height: 225px;
+    background-color: rgb(200, 200, 200);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 15px 15px 0 0;
+}
+
+.title, .square_price, .price, .location{
+    font-size: 16px;
+    margin: 5px 0;
+    padding: 0 10px;
+    color: black;
+    transition: 0.3s;
+}
+
+.title{
+    margin-top: 12px;
+}
+
+.title:hover{
+    color: var(--logo-blue-hover);
+}
+
+.price{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.location-dot{
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.btn-pustPomesh{
+    width: calc(100% - 20px);
+    height: 40px;
+    font-size: 16px;
+    margin: 20px 0 0 10px;
+    background-color: rgb(240, 240, 240);
+    color: var(--logo-blue);
+    font-weight: bold;
+    border: 2px solid rgb(200, 200, 200);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    transition: 0.3s;
+}
+
+.btn-pustPomesh:hover{
+    color: var(--logo-blue-hover);
+    border: 2px solid var(--logo-blue-hover);
+}
+
+.cover{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+    z-index: 2;
+}
+
 footer{
     width: 100%;
     height: 70px;
-    background: linear-gradient(to right,rgb(0, 0, 0) 0%, rgb(102, 102, 102) 100%);
+    background: linear-gradient(to right,rgb(0, 0, 0) 0%, var(--logo-gray) 100%);
     color: white;
     box-shadow: 0 0 10px black;
 }
@@ -71,6 +249,18 @@ footer .container .copyright{
     font-size: 20px;
 }
 
+@media(max-width: 1500px){
+    .pustPomesheniya{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width: 1200px){
+    .pustPomesheniya{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media(max-width: 768px){
     header .container .logo{
         font-size: 30px;
@@ -80,8 +270,87 @@ footer .container .copyright{
         font-size: 20px;
     }
 
+        main h1{
+        font-size: 40px;
+    }
+
+    .filter{
+        gap: 10px;
+    }
+
+    .button-filter{
+        width: 100px;
+        height: 38.4px;
+        padding: 5px 12px;
+        font-size: 16px;
+    }
+
+    .search{
+        padding: 8px;
+    }
+
+    .search input{
+        width: 160px;
+        font-size: 16px;
+    }
+
+    .search i{
+        font-size: 14px;
+    }
+
+    .filter form input[type="submit"]{
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+
+    .pustPomesheniya{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .pustPomesh{
+        width: 200px;
+        border-radius: 8px;
+        padding-bottom: 10px;
+    }
+
+    .img{
+        height: 120px;
+        border-radius: 8px;
+    }
+
+    .title, .square_price, .price, .location{
+        font-size: 10px;
+        margin: 3px 0;
+        padding: 0 8px;
+    }
+
+    .price{
+        font-size: 12px;
+    }
+
+    .location-dot{
+        margin-right: 4px;
+        font-size: 8px;
+    }
+
+    .btn-pustPomesh{
+        width: calc(100% - 16px);
+        height: 26px;
+        font-size: 10px;
+        margin: 10px 0 0 8px;
+        border-radius: 4px;
+        gap: 10px;
+    }
+
     footer .container .copyright{
         font-size: 16px;
+    }
+}
+
+@media(max-width: 655px){
+    .pustPomesheniya{
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -106,6 +375,60 @@ footer .container .copyright{
         margin-top: 50px;
         gap: 30px;
         padding: 20px 0;
+    }
+
+    main h1{
+        font-size: 30px;
+    }
+
+    .button-filter{
+        width: 80px;
+        height: 36px;
+        padding: 5px 5px;
+        font-size: 14px;
+    }
+
+    .search input{
+        font-size: 14px;
+    }
+
+    .search i{
+        font-size: 13px;
+    }
+
+    .filter form input[type="submit"]{
+        font-size: 14px;
+    }
+
+    .pustPomesh{
+        width: 180px;
+        border-radius: 6px;
+        padding-bottom: 8px;
+    }
+
+    .img{
+        border-radius: 6px;
+    }
+
+    .title, .square_price, .price, .location{
+        font-size: 8px;
+        margin: 3px 0;
+        padding: 0 6px;
+    }
+
+    .price{
+        font-size: 10px;
+    }
+
+    .location-dot{
+        margin-right: 3px;
+    }
+
+    .btn-pustPomesh{
+        width: calc(100% - 12px);
+        font-size: 10px;
+        margin: 10px 0 0 6px;
+        gap: 8px;
     }
 
     footer{

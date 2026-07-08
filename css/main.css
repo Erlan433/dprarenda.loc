@@ -1,3 +1,9 @@
+:root{
+    --logo-gray: rgb(75, 75, 75);
+    --logo-blue: rgb(0, 150, 255);
+    --logo-blue-hover: rgb(0, 100, 255);
+}
+
 *{
     box-sizing: border-box;
     text-decoration: none;
