@@ -30,6 +30,10 @@
             }
         }
     }
+
+    $sql = "SELECT * FROM categories";
+    $result = $conn->query($sql);
+    $categories = $result->fetch_all();
 ?>
 
 <!DOCTYPE html>
