@@ -12,9 +12,9 @@
         $square_price = $_POST["square_price"];
         $location = $_POST["location"];
         $description = preg_replace("/\n/", "<br>", ($_POST["description"]));
-        $sale = $_POST["sale"];
         $lat = $_POST["lat"];
         $lon = $_POST["lon"];
+        $category = $_POST["category"];
         if (isset($_FILES["foto"])){
             if($_FILES["foto"]["error"] == 0){
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -24,16 +24,23 @@
                     $exp = explode(".", $_FILES["foto"]["name"]);
                     $fname = "/images/".getRandomString(20).".".end($exp);
                     move_uploaded_file($_FILES["foto"]["tmp_name"], $root.$fname);
-                    $sql = "INSERT INTO rooms (title, price, description, picture, sale, location, square_price, lat, lon) VALUES ('$title', '$price', '$description', '$fname', '$sale', '$location', '$square_price', '$lat', '$lon')";
+                    $sql = "INSERT INTO rooms (title, price, description, picture, location, square_price, lat, lon, category) VALUES ('$title', '$price', '$description', '$fname', '$location', '$square_price', '$lat', '$lon', '$category')";
+                    $conn->query($sql);
+                    $lastId = mysqli_insert_id($conn);
+                    if ($category == 1){
+                        $sql = "INSERT INTO warehouses (room_id) VALUES ('$lastId')";
+                    } elseif ($category == 2){
+                        $sql = "INSERT INTO shops (room_id) VALUES ('$lastId')";
+                    } elseif ($category == 3){
+                        $sql = "INSERT INTO spaces (room_id) VALUES ('$lastId')";
+                    } elseif ($category == 4){
+                        $sql = "INSERT INTO offices (room_id) VALUES ('$lastId')";
+                    }
                     $conn->query($sql);
                 }
             }
         }
     }
-
-    $sql = "SELECT * FROM categories";
-    $result = $conn->query($sql);
-    $categories = $result->fetch_all();
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +49,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin DPR</title>
-    <link rel="icon" href="/images/dpr-logo.jpg" type="image/x-icon">
+    <link rel="icon" href="/siteImgs/dpr-logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/admin/admin-common.css">
     <link rel="stylesheet" href="/css/admin/admin-new.css">
@@ -83,14 +90,18 @@
                     </div>
 
                     <div class="label-input">
-                        <label for="select">Тип</label>
+                        <label for="select">Категория</label>
                         <div class="select" id="select">
-                            <button type="button" class="select-btn"><span>Аренда</span><i class="fa-solid fa-chevron-down"></i></button>
+                            <button type="button" class="select-btn"><span>Складское</span><i class="fa-solid fa-chevron-down"></i></button>
                             <div class="drop-down" style="display: none">
-                                <label for="arenda">Аренда</label>
-                                <input type="radio" id="arenda" value="0" name="sale" checked>
-                                <label for="prodaja">Продажа</label>
-                                <input type="radio" id="prodaja" value="1" name="sale">
+                                <label for="warehouse">Складское</label>
+                                <input type="radio" id="warehouse" value="1" name="category" checked>
+                                <label for="shop">Торговое</label>
+                                <input type="radio" id="shop" value="2" name="category">
+                                <label for="space">Площадка</label>
+                                <input type="radio" id="space" value="3" name="category">
+                                <label for="office">Офисное</label>
+                                <input type="radio" id="office" value="4" name="category">
                             </div>
                         </div>
                     </div>
@@ -142,7 +153,7 @@
         let added = false;
         ymaps.ready(function(){
             let moscow_map = new ymaps.Map("YMapsID", {
-                center: [55.76, 37.64],
+                center: [44.95, 34.1],
                 zoom: 10
             });
             moscow_map.events.add("click", function(event){

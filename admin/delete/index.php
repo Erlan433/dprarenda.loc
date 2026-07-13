@@ -10,10 +10,18 @@
             $foto = $result->fetch_row();
             unlink($_SERVER["DOCUMENT_ROOT"]. $foto[0]);
         }
+        $sql = "DELETE FROM warehouses WHERE room_id IN ($del)";
+        $conn->query($sql);
+        $sql = "DELETE FROM shops WHERE room_id IN ($del)";
+        $conn->query($sql);
+        $sql = "DELETE FROM spaces WHERE room_id IN ($del)";
+        $conn->query($sql);
+        $sql = "DELETE FROM offices WHERE room_id IN ($del)";
+        $conn->query($sql);
         $sql = "DELETE FROM rooms WHERE id IN ($del)";
         $conn->query($sql);
     }
-    $sql = "SELECT id, title, picture FROM rooms";
+    $sql = "SELECT id, title, picture, category FROM rooms";
     $result = $conn->query($sql);
     $rooms = $result->fetch_all();
 ?>
@@ -24,7 +32,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin DPR</title>
-    <link rel="icon" href="/images/dpr-logo.jpg" type="image/x-icon">
+    <link rel="icon" href="/siteImgs/dpr-logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/admin/admin-common.css">
     <link rel="stylesheet" href="/css/admin/admin-delete.css">
@@ -51,6 +59,22 @@
                     <img src="<?php echo $rooms[$i][2] ?>" alt="foto">
                     <input type="checkbox" name="check[]" id="check<?php echo $rooms[$i][0] ?>" value="<?php echo $rooms[$i][0] ?>">
                     <label for="check<?php echo $rooms[$i][0] ?>"><?php echo $rooms[$i][1] ?></label>
+                    <?php 
+                        $category_id = $rooms[$i][3];
+                        $sql = "SELECT category_name FROM categories WHERE id = $category_id";
+                        $result = $conn->query($sql);
+                        $category = $result->fetch_column();
+                        if($category == "warehouses"){
+                            $rus_text = "склад";
+                        } elseif($category == "shops"){
+                            $rus_text = "магазин";
+                        } elseif($category == "spaces"){
+                            $rus_text = "площадка";
+                        } elseif($category == "offices"){
+                            $rus_text = "офис";
+                        }
+                    ?>
+                    <p class="<?php echo $category ?>"><?php echo $rus_text ?></p>
                 </li>
             <?php endfor ?>
         </ul>

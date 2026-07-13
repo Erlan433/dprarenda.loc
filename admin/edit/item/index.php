@@ -10,9 +10,29 @@
         $location = $_POST["location"];
         $description = preg_replace("/\n/", "<br>", ($_POST["description"]));
         $image = $_POST["old_foto"];
-        $sale = $_POST["sale"];
         $lat = $_POST["lat"];
         $lon = $_POST["lon"];
+        $sql = "SELECT category FROM rooms WHERE id = $id";
+        $result = $conn->query($sql);
+        $category = $result->fetch_column();
+        if($category == 1){
+            $ceiling_height = $_POST["ceiling_height"];
+            $level_floor = $_POST["level_floor"];
+            $ramp_access = $_POST["ramp_access"];
+            $crane_beam = $_POST["crane_beam"];
+        } elseif($category == 2){
+            $ramp_access = $_POST["ramp_access"];
+            $sewerage = $_POST["sewerage"];
+            $crane_beam = $_POST["crane_beam"];
+            $water_supply = $_POST["water_supply"];
+            $level_floor = $_POST["level_floor"];
+        } elseif($category == 4){
+            $legal_address = $_POST["legal_address"];
+            $air_conditining = $_POST["air_conditining"];
+            $water_supply = $_POST["water_supply"];
+            $sewerage = $_POST["sewerage"];
+        }
+
         if(isset($_FILES["foto"]) && $_FILES["foto"]["error"] == 0){
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $filetype = finfo_file($finfo, $_FILES["foto"]["tmp_name"]);
@@ -28,18 +48,44 @@
                 }
             }
         }
-        $sql = "UPDATE rooms SET title = '$title', price = '$price', description = '$description', picture = '$image', sale = '$sale', location = '$location', square_price = '$square_price', lat = '$lat', lon = '$lon' WHERE id = '$id'";
+        $sql = "UPDATE rooms SET title = '$title', price = '$price', description = '$description', picture = '$image', location = '$location', square_price = '$square_price', lat = '$lat', lon = '$lon' WHERE id = '$id'";
+        $conn->query($sql);
+        if($category == 1){
+            $sql = "UPDATE warehouses SET ceiling_height = '$ceiling_height', level_floor = '$level_floor', ramp_access = '$ramp_access', crane_beam = '$crane_beam' WHERE room_id = '$id'";
+        } elseif($category == 2){
+            $sql = "UPDATE shops SET ramp_access = '$ramp_access', sewerage = '$sewerage', crane_beam = '$crane_beam', water_supply = '$water_supply', level_floor = '$level_floor' WHERE room_id = '$id'";
+        } elseif($category == 4){
+            $sql = "UPDATE offices SET legal_address = '$legal_address', air_conditining = '$air_conditining', water_supply = '$water_supply', sewerage = '$sewerage' WHERE room_id = '$id'";
+        }
         $conn->query($sql);
         header("Location: /admin/edit/");
     } else if(isset($_GET["r"])) {
         $id = $_GET["r"];
-        $sql = "SELECT title, price, description, picture, sale, location, square_price, lat, lon FROM rooms WHERE id = $id";
+        $sql = "SELECT title, price, description, picture, location, square_price, lat, lon, category FROM rooms WHERE id = $id";
         $result = $conn->query($sql);
         $room = $result->fetch_row();
         $room[2] = preg_replace("<<br>>", "\n", $room[2]);
         $sql = "SELECT id, picture FROM pictures WHERE room_id = $id";
         $result = $conn->query($sql);
         $pictures = $result->fetch_all();
+        if($room[8] == 1){
+            $sql = "SELECT ceiling_height, level_floor, ramp_access, crane_beam FROM warehouses WHERE room_id = $id";
+            $rus_text = "склад";
+            $eng_text = "warehouses";
+        } else if($room[8] == 2){
+            $sql = "SELECT ramp_access, sewerage, crane_beam, water_supply, level_floor FROM shops WHERE room_id = $id";
+            $rus_text = "магазин";
+            $eng_text = "shops";
+        }else if($room[8] == 3){
+            $rus_text = "площадка";
+            $eng_text = "spaces";
+        } else if($room[8] == 4){
+            $sql = "SELECT legal_address, air_conditining, water_supply, sewerage FROM offices WHERE room_id = $id";
+            $rus_text = "офис";
+            $eng_text = "offices";
+        }
+        $result = $conn->query($sql);
+        $category_details = $result->fetch_row();
     }
 ?>
 
@@ -49,7 +95,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin DPR</title>
-    <link rel="icon" href="/images/dpr-logo.jpg" type="image/x-icon">
+    <link rel="icon" href="/siteImgs/dpr-logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/admin/admin-common.css">
     <link rel="stylesheet" href="/css/admin/admin-edits/admin-item.css">
@@ -85,6 +131,10 @@
 
                     <hr>
 
+                    <p class="photo-title">
+                        <i class="fa-regular fa-image"></i> Дополнительные фотографии
+                    </p>
+
                     <input type="file" id="file_select" onchange="uploadImg(this.files, <?php echo $id ?>)" accept="image/jpeg,image/png,image/gif">
                     <input type="button" id="add_pictures" value="добавить фото">
 
@@ -99,40 +149,103 @@
                 </div>
     
                 <div class="edit-right">
+                    <h2 class="<?php echo $eng_text ?>"><?php echo $rus_text ?></h2>
+
                     <div class="label-input">
                         <label for="title">Название помещения</label>
                         <input type="text" name="title" id="title" value="<?php echo $room[0] ?>" placeholder="Введите название помещения">
                     </div>
+
                     <div class="label-input">
                         <label for="price">Цена (₽)</label>
                         <input type="number" name="price" id="price" value="<?php echo $room[1] ?>" placeholder="Введите цену помещения">
                     </div>
+
                     <div class="label-input">
                         <label for="square_price">Цена за квадртный метр (₽)</label>
-                        <input type="number" name="square_price" id="square_price" value="<?php echo $room[6] ?>" placeholder="Введите цену за квадртный метр">
+                        <input type="number" name="square_price" id="square_price" value="<?php echo $room[5] ?>" placeholder="Введите цену за квадртный метр">
                     </div>
+
                     <div class="label-input">
                         <label for="location">Местоположение</label>
-                        <input type="text" name="location" id="location" value="<?php echo $room[5] ?>" placeholder="Введите местоположение помещения">
+                        <input type="text" name="location" id="location" value="<?php echo $room[4] ?>" placeholder="Введите местоположение помещения">
 
                         <a href="#" class="map-button">Показать на карте</a>
                     </div>
+
                     <div class="label-input">
                         <label for="description">Описание</label>
                         <textarea name="description" id="description" placeholder="Введите описание помещения"><?php echo $room[2] ?></textarea>
                     </div>
-                    <div class="label-input">
-                        <label for="select">Тип</label>
-                        <div class="select" id="select">
-                            <button type="button" class="select-btn"><span><?php echo ($room[4] == 1 ? "Продажа" : "Аренда") ?></span><i class="fa-solid fa-chevron-down"></i></button>
-                            <div class="drop-down" style="display: none;">
-                                <label for="arenda">Аренда</label>
-                                <input type="radio" id="arenda" value="0" name="sale" <?php echo ($room[4] == 0) ? 'checked' : ''; ?>>
-                                <label for="prodaja">Продажа</label>
-                                <input type="radio" id="prodaja" value="1" name="sale" <?php echo ($room[4] == 1) ? 'checked' : ''; ?>>
-                            </div>
+
+                    <?php if($room[8] == 1): ?>
+                        <div class="label-input">
+                            <label for="ceiling_height">Высота потолка</label>
+                            <input type="number" step="0.1" name="ceiling_height" id="ceiling_height" value="<?php echo $category_details[0] ?>" placeholder="Введите высоту потолка">
+                        </div class="category-checkbox">
+
+                        <div class="category-checkbox">
+                            <input type="checkbox" <?php echo ($category_details[1] == 1 ? "checked" : "")?> name="level_floor" id="level_floor" value="1">
+                            <label for="level_floor">Ровный пол</label>
                         </div>
-                    </div>
+
+                        <div class="category-checkbox">
+                            <input type="checkbox" <?php echo ($category_details[2] == 1 ? "checked" : "")?> name="ramp_access" id="ramp_access" value="1">
+                            <label for="ramp_access">Наличие рампа</label>
+                        </div>
+
+                        <div class="category-checkbox">
+                            <input type="checkbox" <?php echo ($category_details[3] == 1 ? "checked" : "")?> name="crane_beam" id="crane_beam" value="1">
+                            <label for="crane_beam">Наличие кран-балки</label>
+                        </div>
+                    <?php elseif($room[8] == 2): ?>
+                        <div class="category-checkbox">
+                            <input type="checkbox" <?php echo ($category_details[0] == 1 ? "checked" : "")?> name="ramp_access" id="ramp_access" value="1">
+                            <label for="ramp_access">Наличие рампа</label>
+                        </div>
+
+                        <div class="category-checkbox">
+                            <input type="checkbox" <?php echo ($category_details[1] == 1 ? "checked" : "")?> name="sewerage" id="sewerage" value="1">
+                            <label for="sewerage">Наличие канализации</label>
+                        </div>
+
+                        <div class="category-checkbox">
+                            <input type="checkbox" <?php echo ($category_details[2] == 1 ? "checked" : "")?> name="crane_beam" id="crane_beam" value="1">
+                            <label for="crane_beam">Наличие кран-балки</label>
+                        </div>
+
+                        <div class="category-checkbox">
+                            <input type="checkbox" <?php echo ($category_details[3] == 1 ? "checked" : "")?> name="water_supply" id="water_supply" value="1">
+                            <label for="water_supply">Водоснабжение</label>
+                        </div>
+
+                        <div class="category-checkbox">
+                            <input type="checkbox" <?php echo ($category_details[4] == 1 ? "checked" : "")?> name="level_floor" id="level_floor" value="1">
+                            <label for="level_floor">Ровный пол</label>
+                        </div>
+
+                    <?php elseif($room[8] == 4): ?>
+                        <div class="category-checkbox">
+                            <input type="checkbox" <?php echo ($category_details[0] == 1 ? "checked" : "")?> name="legal_address" id="legal_address" value="1">
+                            <label for="legal_address">Возможность оформления юридического адреса</label>
+                        </div>
+
+                        <div class="category-checkbox">
+                            <input type="checkbox" <?php echo ($category_details[1] == 1 ? "checked" : "")?> name="air_conditining" id="air_conditining" value="1">
+                            <label for="air_conditining">Наличие кондиционера</label>
+                        </div>
+
+                        <div class="category-checkbox">
+                            <input type="checkbox" <?php echo ($category_details[2] == 1 ? "checked" : "")?> name="water_supply" id="water_supply" value="1">
+                            <label for="water_supply">Водоснабжение</label>
+                        </div>
+
+                        <div class="category-checkbox">
+                            <input type="checkbox" <?php echo ($category_details[3] == 1 ? "checked" : "")?> name="sewerage" id="sewerage" value="1">
+                            <label for="sewerage">Наличие канализации</label>
+                        </div>
+                    <?php endif; ?>
+
                 </div>
             </div>
 
@@ -159,7 +272,7 @@
     <script type="text/javascript">
         let edit = false;
         ymaps.ready(function(){
-            const coords = [<?php echo $room[7] ?>, <?php echo $room[8] ?>];
+            const coords = [<?php echo $room[6] ?>, <?php echo $room[7] ?>];
             if(coords[0] == 0 && coords[1] == 0){
                 coords[0] = 44.95;
                 coords[1] = 34.1;

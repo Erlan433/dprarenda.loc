@@ -1,17 +1,21 @@
 <?php
     include $_SERVER["DOCUMENT_ROOT"]."/db.php";
     
-    $rooms = array();
-    if(isset($_POST["seek"])){
-        $search = $_POST["search"];
-        $sql = "SELECT * FROM rooms WHERE title LIKE '%$search%'";
-    } else {
-        $sql = "SELECT * FROM rooms";
-    }
+    $sql = "SELECT * FROM rooms WHERE category = 1";
     $result = $conn->query($sql);
-    if ($result && $result->num_rows > 0) {
-        $rooms = $result->fetch_all();
-    }
+    $warehouses = $result->fetch_all();
+
+    $sql = "SELECT * FROM rooms WHERE category = 2";
+    $result = $conn->query($sql);
+    $shops = $result->fetch_all();
+
+    $sql = "SELECT * FROM rooms WHERE category = 3";
+    $result = $conn->query($sql);
+    $spaces = $result->fetch_all();
+
+    $sql = "SELECT * FROM rooms WHERE category = 4";
+    $result = $conn->query($sql);
+    $offices = $result->fetch_all();
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +24,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DPR &mdash; продажа пустых помещений</title>
-    <link rel="icon" href="/images/dpr-logo.jpg" type="image/x-icon">
+    <link rel="icon" href="/siteImgs/dpr-logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="/css/main.css?m=<?php echo rand() ?>">
     <link rel="stylesheet" href="/css/home/common.css?m=<?php echo rand() ?>">
     <link rel="stylesheet" href="/css/home/style.css?m=<?php echo rand() ?>">
@@ -55,14 +59,14 @@
             <div class="pustPomesheniya">
                 <?php for($i = 0; $i < 4; $i++): ?>
                     <div class="pustPomesh">
-                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="img" style="background-image: url(<?php echo $rooms[$i][4]?>)"></a>
-                        <a class="title" href="/item/?i=<?php echo $rooms[$i][0]?>"><?php echo $rooms[$i][1]?></a>
-                        <p class="price"><?php echo $rooms[$i][2]?> ₽</p>
-                        <p class="square_price"><?php echo $rooms[$i][6]?> ₽</p>
+                        <a href="/item/?i=<?php echo $warehouses[$i][0]?>" class="img" style="background-image: url(<?php echo $warehouses[$i][4]?>)"></a>
+                        <a class="title" href="/item/?i=<?php echo $warehouses[$i][0]?>"><?php echo $warehouses[$i][1]?></a>
+                        <p class="price"><?php echo $warehouses[$i][2]?> ₽ в месяц</p>
+                        <p class="square_price"><?php echo $warehouses[$i][6]?> ₽ за м²</p>
                         <span class="location">
-                            <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $rooms[$i][5]?>
+                            <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $warehouses[$i][5]?>
                         </span>
-                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="btn-pustPomesh">
+                        <a href="/item/?i=<?php echo $warehouses[$i][0]?>" class="btn-pustPomesh">
                             <span>Подробнее</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
@@ -79,14 +83,14 @@
             <div class="pustPomesheniya">
                 <?php for($i = 0; $i < 4; $i++): ?>
                     <div class="pustPomesh">
-                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="img" style="background-image: url(<?php echo $rooms[$i][4]?>)"></a>
-                        <a class="title" href="/item/?i=<?php echo $rooms[$i][0]?>"><?php echo $rooms[$i][1]?></a>
-                        <p class="price"><?php echo $rooms[$i][2]?> ₽</p>
-                        <p class="square_price"><?php echo $rooms[$i][6]?> ₽</p>
+                        <a href="/item/?i=<?php echo $shops[$i][0]?>" class="img" style="background-image: url(<?php echo $shops[$i][4]?>)"></a>
+                        <a class="title" href="/item/?i=<?php echo $shops[$i][0]?>"><?php echo $shops[$i][1]?></a>
+                        <p class="price"><?php echo $shops[$i][2]?> ₽ в месяц</p>
+                        <p class="square_price"><?php echo $shops[$i][6]?> ₽ за м²</p>
                         <span class="location">
-                            <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $rooms[$i][5]?>
+                            <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $shops[$i][5]?>
                         </span>
-                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="btn-pustPomesh">
+                        <a href="/item/?i=<?php echo $shops[$i][0]?>" class="btn-pustPomesh">
                             <span>Подробнее</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
@@ -103,14 +107,14 @@
             <div class="pustPomesheniya">
                 <?php for($i = 0; $i < 4; $i++): ?>
                     <div class="pustPomesh">
-                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="img" style="background-image: url(<?php echo $rooms[$i][4]?>)"></a>
-                        <a class="title" href="/item/?i=<?php echo $rooms[$i][0]?>"><?php echo $rooms[$i][1]?></a>
-                        <p class="price"><?php echo $rooms[$i][2]?> ₽</p>
-                        <p class="square_price"><?php echo $rooms[$i][6]?> ₽</p>
+                        <a href="/item/?i=<?php echo $spaces[$i][0]?>" class="img" style="background-image: url(<?php echo $spaces[$i][4]?>)"></a>
+                        <a class="title" href="/item/?i=<?php echo $spaces[$i][0]?>"><?php echo $spaces[$i][1]?></a>
+                        <p class="price"><?php echo $spaces[$i][2]?> ₽ в месяц</p>
+                        <p class="square_price"><?php echo $spaces[$i][6]?> ₽ за м²</p>
                         <span class="location">
-                            <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $rooms[$i][5]?>
+                            <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $spaces[$i][5]?>
                         </span>
-                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="btn-pustPomesh">
+                        <a href="/item/?i=<?php echo $spaces[$i][0]?>" class="btn-pustPomesh">
                             <span>Подробнее</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
@@ -127,14 +131,14 @@
             <div class="pustPomesheniya">
                 <?php for($i = 0; $i < 4; $i++): ?>
                     <div class="pustPomesh">
-                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="img" style="background-image: url(<?php echo $rooms[$i][4]?>)"></a>
-                        <a class="title" href="/item/?i=<?php echo $rooms[$i][0]?>"><?php echo $rooms[$i][1]?></a>
-                        <p class="price"><?php echo $rooms[$i][2]?> ₽</p>
-                        <p class="square_price"><?php echo $rooms[$i][6]?> ₽</p>
+                        <a href="/item/?i=<?php echo $offices[$i][0]?>" class="img" style="background-image: url(<?php echo $offices[$i][4]?>)"></a>
+                        <a class="title" href="/item/?i=<?php echo $offices[$i][0]?>"><?php echo $offices[$i][1]?></a>
+                        <p class="price"><?php echo $offices[$i][2]?> ₽ в месяц</p>
+                        <p class="square_price"><?php echo $offices[$i][6]?> ₽ за м²</p>
                         <span class="location">
-                            <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $rooms[$i][5]?>
+                            <i class="fa-solid fa-location-dot locatoin-dot"></i><?php echo $offices[$i][5]?>
                         </span>
-                        <a href="/item/?i=<?php echo $rooms[$i][0]?>" class="btn-pustPomesh">
+                        <a href="/item/?i=<?php echo $offices[$i][0]?>" class="btn-pustPomesh">
                             <span>Подробнее</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>

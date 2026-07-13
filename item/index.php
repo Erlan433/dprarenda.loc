@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $room[0] ?></title>
-    <link rel="icon" href="/images/dpr-logo.jpg" type="image/x-icon">
+    <link rel="icon" href="/siteImgs/dpr-logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="/css/main.css?m=<?php echo rand() ?>">
     <link rel="stylesheet" href="/css/home/common.css?m=<?php echo rand() ?>">
     <link rel="stylesheet" href="/css/home/item.css?m=<?php echo rand() ?>">

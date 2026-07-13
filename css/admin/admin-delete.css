@@ -50,12 +50,6 @@
     background: rgba(255,255,255,0.9);
 }
 
-.delete-list li input[type="checkbox"]{
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-
 .delete-list li img{
     width: 100px;
     height: 70px;

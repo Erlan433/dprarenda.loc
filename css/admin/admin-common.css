@@ -3,7 +3,7 @@ body{
     height: auto;
     width: 100%;
     background: linear-gradient(45deg,rgb(0, 0, 0) 0%, rgb(102, 102, 102) 100%);
-    background-image: url(/images/AdminFon.jpg);
+    background-image: url(/siteImgs/AdminFon.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -127,6 +127,12 @@ textarea:focus {
 textarea {
     min-height: 110px;
     resize: vertical;
+}
+
+input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
 
 .map-button{
@@ -369,4 +375,30 @@ textarea {
     margin: 0;
     width: auto;
     padding: 0 36px;
+}
+
+.warehouses, .shops, .spaces, .offices{
+    padding: 6px 10px;
+    border-radius: 15px;
+    margin-right: 5px;
+}
+
+.warehouses{
+    color: rgb(50, 50, 255);
+    background-color: rgba(160, 160, 255, 0.5);
+}
+
+.shops{
+    color: rgb(211, 165, 0);
+    background-color: rgba(255, 215, 150, 0.5);
+}
+
+.spaces{
+    color: rgb(0, 167, 8);
+    background-color: rgba(161, 255, 160, 0.5);
+}
+
+.offices{
+    color: rgb(255, 50, 50);
+    background-color: rgba(255, 160, 160, 0.5);
 }
