@@ -70,22 +70,17 @@
         $pictures = $result->fetch_all();
         if($room[8] == 1){
             $sql = "SELECT ceiling_height, level_floor, ramp_access, crane_beam FROM warehouses WHERE room_id = $id";
-            $rus_text = "склад";
-            $eng_text = "warehouses";
         } else if($room[8] == 2){
             $sql = "SELECT ramp_access, sewerage, crane_beam, water_supply, level_floor FROM shops WHERE room_id = $id";
-            $rus_text = "магазин";
-            $eng_text = "shops";
-        }else if($room[8] == 3){
-            $rus_text = "площадка";
-            $eng_text = "spaces";
         } else if($room[8] == 4){
             $sql = "SELECT legal_address, air_conditining, water_supply, sewerage FROM offices WHERE room_id = $id";
-            $rus_text = "офис";
-            $eng_text = "offices";
         }
         $result = $conn->query($sql);
         $category_details = $result->fetch_row();
+        $category_id = $room[8];
+        $sql = "SELECT category_name, rus_name FROM categories WHERE id = $category_id";
+        $result = $conn->query($sql);
+        $category_name = $result->fetch_row();
     }
 ?>
 
@@ -149,7 +144,7 @@
                 </div>
     
                 <div class="edit-right">
-                    <h2 class="<?php echo $eng_text ?>"><?php echo $rus_text ?></h2>
+                    <h2 class="<?php echo $category_name[0] ?>"><?php echo $category_name[1] ?></h2>
 
                     <div class="label-input">
                         <label for="title">Название помещения</label>

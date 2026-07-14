@@ -61,20 +61,11 @@
                     <label for="check<?php echo $rooms[$i][0] ?>"><?php echo $rooms[$i][1] ?></label>
                     <?php 
                         $category_id = $rooms[$i][3];
-                        $sql = "SELECT category_name FROM categories WHERE id = $category_id";
+                        $sql = "SELECT category_name, rus_name FROM categories WHERE id = $category_id";
                         $result = $conn->query($sql);
-                        $category = $result->fetch_column();
-                        if($category == "warehouses"){
-                            $rus_text = "склад";
-                        } elseif($category == "shops"){
-                            $rus_text = "магазин";
-                        } elseif($category == "spaces"){
-                            $rus_text = "площадка";
-                        } elseif($category == "offices"){
-                            $rus_text = "офис";
-                        }
+                        $category = $result->fetch_row();
                     ?>
-                    <p class="<?php echo $category ?>"><?php echo $rus_text ?></p>
+                    <p class="<?php echo $category[0] ?>"><?php echo $category[1] ?></p>
                 </li>
             <?php endfor ?>
         </ul>

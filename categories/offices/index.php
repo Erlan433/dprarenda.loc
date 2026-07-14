@@ -58,7 +58,46 @@
         </div>
 
         <div class="main-content container">
+            <div class="filters">
+                <form action="">
+                    <div class="filter">
+                        <h3>Цена, ₽</h3>
+                        <div class="number-input">
+                            <input type="number" placeholder="От">
+                            <input type="number" placeholder="До">
+                        </div>
+                    </div>
 
+                    <div class="filter">
+                        <h3>Цена за м², ₽</h3>
+                        <div class="number-input">
+                            <input type="number" placeholder="От">
+                            <input type="number" placeholder="До">
+                        </div>
+                    </div>
+
+                    <div class="filter">
+                        <h3>Дополнительные характеристики</h3>
+                        <div class="checkbox-input">
+                            <input type="checkbox" id="legal_address">
+                            <label for="legal_address">Возможность оформления юридического адреса</label>
+                        </div>
+                        <div class="checkbox-input">
+                            <input type="checkbox" id="air_conditining">
+                            <label for="air_conditining">Кондиционер</label>
+                        </div>
+                        <div class="checkbox-input">
+                            <input type="checkbox" id="water_supply">
+                            <label for="water_supply">Водоснабжение</label>
+                        </div>
+                        <div class="checkbox-input">
+                            <input type="checkbox" id="sewerage">
+                            <label for="sewerage">Канализация</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
             <!-- ПУСТЫЕ ПОМЕЩЕНИЯ -->
             <div class="pustPomesheniya">
                 <?php for($i = 0; $i < count($offices); $i++): ?>

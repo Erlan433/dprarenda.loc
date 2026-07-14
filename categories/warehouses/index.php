@@ -62,49 +62,41 @@
                 <form action="">
                     <div class="filter">
                         <h3>Цена, ₽</h3>
-                        <div class="text-input">
-                            <input type="text" placeholder="От">
-                            <input type="text" placeholder="До">
+                        <div class="number-input">
+                            <input type="number" placeholder="От">
+                            <input type="number" placeholder="До">
                         </div>
                     </div>
 
                     <div class="filter">
-                        <h3>Цена, ₽</h3>
-                        <div class="text-input">
-                            <input type="text" placeholder="От">
-                            <input type="text" placeholder="До">
+                        <h3>Цена за м², ₽</h3>
+                        <div class="number-input">
+                            <input type="number" placeholder="От">
+                            <input type="number" placeholder="До">
                         </div>
                     </div>
 
                     <div class="filter">
                         <h3>Высота потолков</h3>
-                        <div class="text-input">
-                            <input type="text" placeholder="От">
-                            <input type="text" placeholder="До">
+                        <div class="number-input">
+                            <input type="number" placeholder="От">
+                            <input type="number" placeholder="До">
                         </div>
                     </div>
 
                     <div class="filter">
-                        <h3>Характеристики пола</h3>
+                        <h3>Дополнительные характеристики</h3>
                         <div class="checkbox-input">
-                            <input type="checkbox" id="level_floor">
+                            <input type="checkbox" id="level_floor" onchange="levelFloorChange(this)">
                             <label for="level_floor">Ровный пол</label>
                         </div>
-                    </div>
-
-                    <div class="filter">
-                        <h3>Наличие рампы</h3>
                         <div class="checkbox-input">
-                            <input type="checkbox" id="level_floor">
-                            <label for="level_floor">Есть рампа</label>
+                            <input type="checkbox" id="ramp_access">
+                            <label for="ramp_access">Рампа</label>
                         </div>
-                    </div>
-
-                    <div class="filter">
-                        <h3>Наличие кран-балки</h3>
                         <div class="checkbox-input">
-                            <input type="checkbox" id="level_floor">
-                            <label for="level_floor">Есть кран-балка</label>
+                            <input type="checkbox" id="crane_beam">
+                            <label for="crane_beam">Кран-балка</label>
                         </div>
                     </div>
                 </form>
@@ -138,5 +130,7 @@
     </footer>
 
     <div class="cover" style="display: none;"></div>
+
+    <script src="/js/home/upload.js"></script>
 </body>
 </html>

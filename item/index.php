@@ -2,12 +2,21 @@
     include $_SERVER["DOCUMENT_ROOT"]."/db.php";
     if(isset($_GET["i"])){
         $id = $_GET["i"];
-        $sql = "SELECT title, price, description, picture, location, square_price, lat, lon FROM rooms WHERE id = $id";
+        $sql = "SELECT title, price, description, picture, location, square_price, lat, lon, category FROM rooms WHERE id = $id";
         $result = $conn->query($sql);
         $room = $result->fetch_row();
         $sql = "SELECT id, picture FROM pictures WHERE room_id = $id";
         $result = $conn->query($sql);
         $pictures = $result->fetch_all();
+        if($room[8] == 1){
+            $sql = "SELECT ceiling_height, level_floor, ramp_access, crane_beam FROM warehouses WHERE room_id = $id";
+        } else if($room[8] == 2){
+            $sql = "SELECT ramp_access, sewerage, crane_beam, water_supply, level_floor FROM shops WHERE room_id = $id";
+        } else if($room[8] == 4){
+            $sql = "SELECT legal_address, air_conditining, water_supply, sewerage FROM offices WHERE room_id = $id";
+        }
+        $result = $conn->query($sql);
+        $category = $result->fetch_row();
     }
 ?>
 
@@ -67,6 +76,67 @@
                     <label for="item-square_price">Цена за м²</label>
                     <p class="item-square_price" id="item-square_price"><?php echo $room[5]?> ₽ в месяц</p>
                 </div>
+                <?php if($room[8] != 3): ?>
+                    <div class="item-spec">
+                        <h2>Дополнительные характеристики</h2>
+                        <?php if($room[8] == 1): ?>
+                            <div class="category">
+                                <span class="category-name">Высота полка:</span>
+                                <span class="category-value"><?php echo $category[0] ?> м</span>
+                            </div>
+                            <div class="category">
+                                <span class="category-name">Ровный пол:</span>
+                                <span class="category-value"><?php echo ($category[1] == 1 ? "да" : "нет") ?></span>
+                            </div>
+                            <div class="category">
+                                <span class="category-name">Наличие рампы:</span>
+                                <span class="category-value"><?php echo ($category[2] == 1 ? "да" : "нет") ?></span>
+                            </div>
+                            <div class="category">
+                                <span class="category-name">Наличие кран-балки:</span>
+                                <span class="category-value"><?php echo ($category[3] == 1 ? "да" : "нет") ?></span>
+                            </div>
+                        <?php elseif($room[8] == 2): ?>
+                            <div class="category">
+                                <span class="category-name">Наличие рампы:</span>
+                                <span class="category-value"><?php echo ($category[0] == 1 ? "да" : "нет") ?></span>
+                            </div>
+                            <div class="category">
+                                <span class="category-name">Наличие канализации:</span>
+                                <span class="category-value"><?php echo ($category[1] == 1 ? "да" : "нет") ?></span>
+                            </div>
+                            <div class="category">
+                                <span class="category-name">Наличие кран-балки:</span>
+                                <span class="category-value"><?php echo ($category[2] == 1 ? "да" : "нет") ?></span>
+                            </div>
+                            <div class="category">
+                                <span class="category-name">Водоснабжение:</span>
+                                <span class="category-value"><?php echo ($category[3] == 1 ? "есть" : "нет") ?></span>
+                            </div>
+                            <div class="category">
+                                <span class="category-name">Ровный пол:</span>
+                                <span class="category-value"><?php echo ($category[4] == 1 ? "да" : "нет") ?></span>
+                            </div>
+                        <?php elseif($room[8] == 4): ?>
+                            <div class="category">
+                                <span class="category-name">Возможность оформления юридического адреса:</span>
+                                <span class="category-value"><?php echo ($category[3] == 1 ? "есть" : "нет") ?></span>
+                            </div>
+                            <div class="category">
+                                <span class="category-name">Наличие кондиционера:</span>
+                                <span class="category-value"><?php echo ($category[3] == 1 ? "да" : "нет") ?></span>
+                            </div>
+                            <div class="category">
+                                <span class="category-name">Водоснабжение:</span>
+                                <span class="category-value"><?php echo ($category[3] == 1 ? "есть" : "нет") ?></span>
+                            </div>
+                            <div class="category">
+                                <span class="category-name">Наличие канализации:</span>
+                                <span class="category-value"><?php echo ($category[1] == 1 ? "да" : "нет") ?></span>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
                 <div class="item-map">
                     <div id="YMapsID" style="width:100%;height:400px"></div>
                 </div>

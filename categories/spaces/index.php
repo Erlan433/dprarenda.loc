@@ -58,6 +58,25 @@
         </div>
 
         <div class="main-content container">
+            <div class="filters">
+                <form action="">
+                    <div class="filter">
+                        <h3>Цена, ₽</h3>
+                        <div class="number-input">
+                            <input type="number" placeholder="От">
+                            <input type="number" placeholder="До">
+                        </div>
+                    </div>
+
+                    <div class="filter">
+                        <h3>Цена за м², ₽</h3>
+                        <div class="number-input">
+                            <input type="number" placeholder="От">
+                            <input type="number" placeholder="До">
+                        </div>
+                    </div>
+                </form>
+            </div>
             
             <!-- ПУСТЫЕ ПОМЕЩЕНИЯ -->
             <div class="pustPomesheniya">

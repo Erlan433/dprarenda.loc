@@ -58,7 +58,50 @@
         </div>
 
         <div class="main-content container">
+            <div class="filters">
+                <form action="">
+                    <div class="filter">
+                        <h3>Цена, ₽</h3>
+                        <div class="number-input">
+                            <input type="number" placeholder="От">
+                            <input type="number" placeholder="До">
+                        </div>
+                    </div>
 
+                    <div class="filter">
+                        <h3>Цена за м², ₽</h3>
+                        <div class="number-input">
+                            <input type="number" placeholder="От">
+                            <input type="number" placeholder="До">
+                        </div>
+                    </div>
+
+                    <div class="filter">
+                        <h3>Дополнительные характеристики</h3>
+                        <div class="checkbox-input">
+                            <input type="checkbox" id="ramp_access">
+                            <label for="ramp_access">Рампа</label>
+                        </div>
+                        <div class="checkbox-input">
+                            <input type="checkbox" id="sewerage">
+                            <label for="sewerage">Канализация</label>
+                        </div>
+                        <div class="checkbox-input">
+                            <input type="checkbox" id="crane_beam">
+                            <label for="crane_beam">Кран-балка</label>
+                        </div>
+                        <div class="checkbox-input">
+                            <input type="checkbox" id="water_supply">
+                            <label for="water_supply">Водоснабжение</label>
+                        </div>
+                        <div class="checkbox-input">
+                            <input type="checkbox" id="level_floor" onchange="levelFloorChange(this)">
+                            <label for="level_floor">Ровный пол</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
             <!-- ПУСТЫЕ ПОМЕЩЕНИЯ -->
             <div class="pustPomesheniya">
                 <?php for($i = 0; $i < count($shops); $i++): ?>
