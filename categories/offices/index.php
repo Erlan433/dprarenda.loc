@@ -40,6 +40,9 @@
                 <a href="tel:+79782311637"><i class="fa-solid fa-phone"></i></a>
                 <p>+7(978) 231-16-37</p>
             </span>
+            <button class="nav-toggle" type="button" aria-label="Меню" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
     </header>
     <main>
@@ -126,5 +129,6 @@
     </footer>
 
     <div class="cover" style="display: none;"></div>
+    <script src="/js/home/nav.js"></script>
 </body>
 </html>

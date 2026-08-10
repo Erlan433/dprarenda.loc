@@ -46,6 +46,9 @@
                 <a href="tel:+79782311637"><i class="fa-solid fa-phone"></i></a>
                 <p>+7(978) 231-16-37</p>
             </span>
+            <button class="nav-toggle" type="button" aria-label="Меню" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
     </header>
     <main>
@@ -54,7 +57,7 @@
         <div class="category">
             <div class="subtitle">
                 <h2>Складские помещения</h2>
-                <a href="/categories/warehouses/"><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></a>
+                <a href="/categories/warehouses/"><p><!-- текст в css --></p><i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div class="pustPomesheniya">
                 <?php for($i = 0; $i < 4; $i++): ?>
@@ -78,7 +81,7 @@
         <div class="category">
             <div class="subtitle">
                 <h2>Торговые помещения</h2>
-                <a href="/categories/shops/"><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></a>
+                <a href="/categories/shops/"><p><!-- текст в css --></p><i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div class="pustPomesheniya">
                 <?php for($i = 0; $i < 4; $i++): ?>
@@ -102,7 +105,7 @@
         <div class="category">
             <div class="subtitle">
                 <h2>Площадки</h2>
-                <a href="/categories/spaces/"><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></a>
+                <a href="/categories/spaces/"><p><!-- текст в css --></p><i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div class="pustPomesheniya">
                 <?php for($i = 0; $i < 4; $i++): ?>
@@ -126,7 +129,7 @@
         <div class="category">
             <div class="subtitle">
                 <h2>Офисные помещения</h2>
-                <a href="/categories/offices/"><p>Посмотреть все</p><i class="fa-solid fa-arrow-right"></i></a>
+                <a href="/categories/offices/"><p><!-- текст в css --></p><i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div class="pustPomesheniya">
                 <?php for($i = 0; $i < 4; $i++): ?>
@@ -154,5 +157,6 @@
     </footer>
 
     <div class="cover" style="display: none;"></div>
+    <script src="/js/home/nav.js"></script>
 </body>
 </html>

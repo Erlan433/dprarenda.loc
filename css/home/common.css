@@ -9,7 +9,7 @@ header{
     position: fixed;
     top: 0;
     box-shadow: 0 0 10px black;
-    z-index: 1;
+    z-index: 10;
 }
 
 header .container{
@@ -26,7 +26,7 @@ header .container .logo{
 header .container nav{
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 40px;
 }
 
 .nav-category{
@@ -38,6 +38,26 @@ header .container nav{
 
 .nav-category:hover{
     color: var(--logo-blue-hover);
+}
+
+.nav-toggle{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--logo-blue);
+    border: 2px solid var(--logo-blue);
+    border-radius: 10px;
+    padding: 5px 2px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+    z-index: 12;
+}
+
+.nav-toggle:hover{
+    color: var(--logo-blue-hover);
+    border-color: var(--logo-blue-hover);
 }
 
 header .container .telefon{
@@ -78,7 +98,9 @@ main{
 
 main h1{
     color: rgb(0, 0, 0);
-    font-size: 50px;
+    font-size: clamp(28px, 5vw, 50px);
+    padding: 0 clamp(20px, 5vw, 80px);
+    text-align: center;
 }
 
 .searchAndBtn{
@@ -99,13 +121,22 @@ main h1{
     display: flex;
     align-items: center;
     gap: 5px;
+    flex: 1 1 200px;
+    min-width: 0;
 }
 
 .search input{
     border: none;
     outline: none;
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     font-size: 20px;
+}
+
+@media (min-width: 769px) {
+    .search input{
+        width: 500px;
+    }
 }
 
 .search i{
@@ -132,6 +163,9 @@ main h1{
     display: flex;
     justify-content: center;
     gap: 50px;
+    width: 100%;
+    max-width: 1520px;
+    padding: 0 clamp(20px, 5vw, 80px);
 }
 
 .filters form{
@@ -196,13 +230,17 @@ input[type=number] {
 }
 
 .pustPomesheniya{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
     gap: 30px;
+    width: 100%;
+    padding: 0 auto-fit;
 }
 
 .pustPomesh{
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
+    justify-self: center;
     padding-bottom: 20px;
     display: flex;
     flex-direction: column;
@@ -225,7 +263,7 @@ input[type=number] {
 
 .img{
     width: 100%;
-    height: 225px;
+    height: 185px;
     background-color: rgb(200, 200, 200);
     background-size: cover;
     background-position: center;
@@ -311,29 +349,65 @@ footer .container .copyright{
     font-size: 20px;
 }
 
-@media(max-width: 1500px){
-    .pustPomesheniya{
-        grid-template-columns: repeat(3, 1fr);
+@media (max-width: 1150px){
+    header .container .telefon p{
+        display: none;
+    }
+
+    .filters{
+        display: none;
     }
 }
 
-@media(max-width: 1200px){
-    .pustPomesheniya{
-        grid-template-columns: repeat(2, 1fr);
+@media (max-width: 900px){
+    .nav-toggle{
+        display: flex;
+        margin-left: 12px;
     }
-}
 
-@media(max-width: 768px){
-    header .container .logo{
-        font-size: 30px;
+    header .container nav{
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: min(280px, 85vw);
+        height: 100vh;
+        background: linear-gradient(to bottom, rgb(0, 0, 0) 0%, var(--logo-gray) 100%);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 80px 28px 28px;
+        gap: 28px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 11;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.35);
+    }
+
+    header .container nav.nav-open{
+        transform: translateX(0);
+    }
+
+    .nav-category{
+        font-size: 20px;
+        width: 100%;
     }
 
     header .container .telefon{
-        font-size: 20px;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 768px){
+    header .container .logo{
+        font-size: 45px;
     }
 
-        main h1{
-        font-size: 40px;
+    main{
+        gap: 36px;
+        padding: 36px 0;
+    }
+
+    .pustPomesheniya{
+        gap: 20px;
     }
 
     .filter{
@@ -352,12 +426,16 @@ footer .container .copyright{
     }
 
     .search input{
-        width: 160px;
+        max-width: none;
         font-size: 16px;
     }
 
     .search i{
         font-size: 14px;
+    }
+
+    .searchAndBtn form input[type="submit"]{
+        padding: 8px 10px;
     }
 
     .filter form input[type="submit"]{
@@ -365,136 +443,41 @@ footer .container .copyright{
         font-size: 16px;
     }
 
-    .pustPomesheniya{
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-    }
-
-    .pustPomesh{
-        width: 200px;
-        border-radius: 8px;
-        padding-bottom: 10px;
-    }
-
-    .img{
-        height: 120px;
-        border-radius: 8px;
-    }
-
-    .title, .square_price, .price, .location{
-        font-size: 10px;
-        margin: 3px 0;
-        padding: 0 8px;
-    }
-
-    .price{
-        font-size: 12px;
-    }
-
-    .location-dot{
-        margin-right: 4px;
-        font-size: 8px;
-    }
-
-    .btn-pustPomesh{
-        width: calc(100% - 16px);
-        height: 26px;
-        font-size: 10px;
-        margin: 10px 0 0 8px;
-        border-radius: 4px;
-        gap: 10px;
-    }
-
     footer .container .copyright{
         font-size: 16px;
     }
 }
 
-@media(max-width: 655px){
-    .pustPomesheniya{
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media(max-width: 445px) {
-    header{
-        height: 50px;
-    }
-    
-    header .container .logo{
-        font-size: 30px;
-    }
-
-    header .container .telefon{
-        font-size: 18px;
-        gap: 10px;
-    }
-
+@media (max-width: 480px){
     main{
-        /* header=50px + footer=50px, остаток заполняем */
-        min-height: calc(100vh - 100px);
-        /* отступ равен высоте фиксированного хедера иначе все уходит под header*/
-        margin-top: 50px;
-        gap: 30px;
-        padding: 20px 0;
+        gap: 28px;
+        padding: 24px 0;
+        min-height: calc(100vh - 120px);
     }
 
-    main h1{
-        font-size: 30px;
-    }
-
-    .button-filter{
-        width: 80px;
-        height: 36px;
-        padding: 5px 5px;
-        font-size: 14px;
-    }
-
-    .search input{
-        font-size: 14px;
-    }
-
-    .search i{
-        font-size: 13px;
-    }
-
-    .filter form input[type="submit"]{
-        font-size: 14px;
+    .pustPomesheniya{
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .pustPomesh{
-        width: 180px;
-        border-radius: 6px;
-        padding-bottom: 8px;
+        max-width: none;
     }
 
     .img{
-        border-radius: 6px;
+        height: 120px;
     }
 
-    .title, .square_price, .price, .location{
-        font-size: 8px;
-        margin: 3px 0;
-        padding: 0 6px;
-    }
-
-    .price{
+    .title, .square_price, .price, .location, .btn-pustPomesh{
         font-size: 10px;
-    }
-
-    .location-dot{
-        margin-right: 3px;
     }
 
     .btn-pustPomesh{
-        width: calc(100% - 12px);
-        font-size: 10px;
-        margin: 10px 0 0 6px;
-        gap: 8px;
+        height: 25px;
     }
 
     footer{
-        height: 50px
+        height: 50px;
     }
 
     footer .container .copyright{
