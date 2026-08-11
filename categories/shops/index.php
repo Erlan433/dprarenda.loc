@@ -82,23 +82,23 @@
                     <div class="filter">
                         <h3>Дополнительные характеристики</h3>
                         <div class="checkbox-input">
-                            <input type="checkbox" id="ramp_access">
+                            <input type="checkbox" id="ramp_access" onchange="filterChange()">
                             <label for="ramp_access">Рампа</label>
                         </div>
                         <div class="checkbox-input">
-                            <input type="checkbox" id="sewerage">
+                            <input type="checkbox" id="sewerage" onchange="filterChange()">
                             <label for="sewerage">Канализация</label>
                         </div>
                         <div class="checkbox-input">
-                            <input type="checkbox" id="crane_beam">
+                            <input type="checkbox" id="crane_beam" onchange="filterChange()">
                             <label for="crane_beam">Кран-балка</label>
                         </div>
                         <div class="checkbox-input">
-                            <input type="checkbox" id="water_supply">
+                            <input type="checkbox" id="water_supply" onchange="filterChange()">
                             <label for="water_supply">Водоснабжение</label>
                         </div>
                         <div class="checkbox-input">
-                            <input type="checkbox" id="level_floor" onchange="levelFloorChange(this)">
+                            <input type="checkbox" id="level_floor" onchange="filterChange()">
                             <label for="level_floor">Ровный пол</label>
                         </div>
                     </div>
@@ -134,5 +134,6 @@
 
     <div class="cover" style="display: none;"></div>
     <script src="/js/home/nav.js"></script>
+    <script src="/js/home/shops-upload.js"></script>
 </body>
 </html>

@@ -82,19 +82,19 @@
                     <div class="filter">
                         <h3>Дополнительные характеристики</h3>
                         <div class="checkbox-input">
-                            <input type="checkbox" id="legal_address">
+                            <input type="checkbox" id="legal_address" onchange="filterChange()">
                             <label for="legal_address">Возможность оформления юридического адреса</label>
                         </div>
                         <div class="checkbox-input">
-                            <input type="checkbox" id="air_conditining">
+                            <input type="checkbox" id="air_conditining" onchange="filterChange()">
                             <label for="air_conditining">Кондиционер</label>
                         </div>
                         <div class="checkbox-input">
-                            <input type="checkbox" id="water_supply">
+                            <input type="checkbox" id="water_supply" onchange="filterChange()">
                             <label for="water_supply">Водоснабжение</label>
                         </div>
                         <div class="checkbox-input">
-                            <input type="checkbox" id="sewerage">
+                            <input type="checkbox" id="sewerage" onchange="filterChange()">
                             <label for="sewerage">Канализация</label>
                         </div>
                     </div>
@@ -130,5 +130,6 @@
 
     <div class="cover" style="display: none;"></div>
     <script src="/js/home/nav.js"></script>
+    <script src="/js/home/offices-upload.js"></script>
 </body>
 </html>

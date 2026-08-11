@@ -94,14 +94,14 @@
                         <div class="select" id="select">
                             <button type="button" class="select-btn"><span>Складское</span><i class="fa-solid fa-chevron-down"></i></button>
                             <div class="drop-down" style="display: none">
-                                <label for="warehouse">Складское</label>
                                 <input type="radio" id="warehouse" value="1" name="category" checked>
-                                <label for="shop">Торговое</label>
+                                <label for="warehouse">Складское</label>
                                 <input type="radio" id="shop" value="2" name="category">
-                                <label for="space">Площадка</label>
+                                <label for="shop">Торговое</label>
                                 <input type="radio" id="space" value="3" name="category">
-                                <label for="office">Офисное</label>
+                                <label for="space">Площадка</label>
                                 <input type="radio" id="office" value="4" name="category">
+                                <label for="office">Офисное</label>
                             </div>
                         </div>
                     </div>

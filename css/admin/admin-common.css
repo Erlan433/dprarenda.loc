@@ -192,7 +192,7 @@ input[type="checkbox"]{
     background-color: #e0e0e0;
 }
 
-.drop-down label:has(+ input:checked){
+.drop-down input:checked + label{
     font-weight: bold;
     color: blue;
     border-left: 3px solid blue;
